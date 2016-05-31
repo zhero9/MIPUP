@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Writter {
 
-	public Writter(boolean[][] matrix, int[] rows, String colNames,
+	/*public Writter(boolean[][] matrix, int[] rows, String colNames,
 			String[] rowNames, String path, String alg) {
 		this.matrix = matrix;
 		this.rows = rows;
@@ -15,10 +15,10 @@ public class Writter {
 		this.path = makePath(path).concat("_"+alg);
 		this.columns = colNames.split(";");
 		//this.alg = alg;
-	}
+	}*/
 	
 	public Writter(boolean[][] matrix,boolean[][] filteredMatrix ,int[] rows, String colNames,
-			String[] rowNames, String path, String alg) {
+			String[] rowNames, String path, String alg,Vector<Vector<Integer>> columnsCopies ) {
 		this.matrix = matrix;
 		this.matrixF = filteredMatrix;
 		this.rows = rows;
@@ -26,7 +26,7 @@ public class Writter {
 		this.rowNames = rowNames;
 		this.path = makePath(path).concat("_"+alg);
 		this.columns = colNames.split(";");
-		//this.alg = alg;
+		this.columnsCopies = columnsCopies;
 	}
 	
 
@@ -37,10 +37,15 @@ public class Writter {
 	private String[] rowNames;
 	private String path;
 	private String[] columns;
-	//private String alg;
-	
-	String[] nodeColors = {"#73B2F9", "#EC7877", "#8ACB69", "#F5DB5D", "#BD80E5", "#F2A253", "#A37242", "#3D73A3", "#43A373", "#724AA4"};
+	public Vector<Vector<Integer>> columnsCopies;
 	public Vector<String> rowN;
+
+	//String[] nodeColors = {"#73B2F9", "#EC7877", "#8ACB69", "#F5DB5D", "#BD80E5", "#F2A253", "#A37242", "#3D73A3", "#43A373", "#724AA4", "#EBAEC3",
+	//		"#E1EBAE",};
+	
+	String[] nodeColors = { "#7d87b9", "#c6dec7","#bec1d4", "#f3e1eb", "#bb7784",  "#4a6fe3", "#8595e1","#AEEBD7","#E1EBAE", "#f79cd4", "#b5bbe3", "#e6afb9",  
+			"#d33f6a", "#F2A253","#8e063b","#11c638", "#8ACB69","#023fa5",  "#ead3c6", "#f0b98d", "#ef9708","#8dd593", "#0fcfc0","#D99DF5", "#9cded6", "#d5eae7", "#d6bcc0", "#f6c4e1", 
+			"#73B2F9", "#EC7877",  "#F5DB5D", "#BD80E5", "#e07b91"};
 
 	public String makePath(String p){
 		return p.substring(0, p.length()-4);
@@ -146,10 +151,11 @@ public class Writter {
 			writer.newLine();
 			
 			/// Writing leafs on the tree:
+			///System.out.println("Total number of colors"+nodeColors.length);
 			for(int i = 0; i<rowCopies.size();i++){
 				int t = rowCopies.elementAt(i).elementAt(0);
-				if(i < nodeColors.length){
-					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[i]+"\"];");
+				if(rows[i] < nodeColors.length){
+					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[rows[i]]+"\"];");
 				}else{
 					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[i%nodeColors.length]+"\"];");
 				}
@@ -171,6 +177,22 @@ public class Writter {
 				writer.write("legend[label=\" Matrix without conflicts.\",shape = box,fontsize=18];");
 				writer.newLine();
 			}
+			
+			/// Write legend for equal columns:
+			/*if(columnsCopies.size() > 0){
+				writer.write("legend[label=\" Folowing mutations-columns are equal:");
+				writer.newLine();
+				for(int k=0; k< columnsCopies.size(); k++){
+					writer.write(""+(columns[columnsCopies.elementAt(k).elementAt(0)]));
+					for(int t = 1; t<columnsCopies.elementAt(k).size(); t++){
+						//writer.write("=");
+						writer.write("="+(columns[columnsCopies.elementAt(k).elementAt(t)]));
+					}
+					writer.newLine();
+				}
+				writer.write("\",shape=box,fontsize=18];");
+				writer.newLine();
+			}*/
 			
 			/// adding inner points and edges to the tree:
 			int numOfInV = 0;

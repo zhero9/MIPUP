@@ -12,28 +12,36 @@ public class RowSplit {
 	public  int[] rows;
 	private Digraph optB;
 	private Vector<Vector<Integer>> out;
-	private static Vector<Vector<Integer>> columnsCopies;
+	public static Vector<Vector<Integer>> columnsCopies;
 
 	public RowSplit(boolean[][] mat,String alg){
 		matrix = filterDoubleColumns(mat);
 		m = matrix.length; // number of rows
 		n = matrix[0].length; // number of columns
 		if(alg.equals("ip")){
+			System.out.println("RowSplit: Started ILP...");
 			ILP lp = new ILP(matrix);
 			optB = lp.solveOpt();
 			t = lp.value;
+			System.out.println("RowSplit: ILP finished succesfully.");
 		}else if(alg.equals("greedy")){
+			System.out.println("RowSplit: Greedy started...");
 			SequentialGreedy sg = new SequentialGreedy(matrix);
 			optB = sg.solve();
 			t = sg.value();
+			System.out.println("RowSplit: Greedy algorithm finished.");
 		} else if(alg.equals("ls")){
+			System.out.println("RowSplit: Local Search started on random branchin ...");
 			LocalSearch ls = new LocalSearch(matrix);
 			optB = ls.branching;
 			t = evaluateBranching(optB);
+			System.out.println("RowSplit: Local Search finished.");
 		}else if (alg.equals("ipd")){
+			System.out.println("RowSplit: Started ILP (min distinct rows)...");
 			MinDistinctILP distinct = new MinDistinctILP(matrix);
 			optB = distinct.solveOpt();
 			t = evaluateBranching(optB); 
+			System.out.println("RowSplit: ILP finished succesfully.");
 		}
 		
 		rows = new int [t];
@@ -157,5 +165,9 @@ public class RowSplit {
 			if(s[i]) size++;
 		}
 		return size;
+	}
+	
+	public Vector<Vector<Integer>> getCC(){
+		return columnsCopies;
 	}
 }
