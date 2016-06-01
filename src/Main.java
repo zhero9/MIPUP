@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Vector;
 
 public class Main {
 
@@ -10,7 +11,7 @@ public class Main {
 		String pathToMatrix = null;
 		String formatOfInput = null;
 		double minVAFPresent = -1;
-		String alg = "ip";
+		String alg = "ipd";
 
 		if (args.length == 2) {
 			pathToMatrix = args[0];
@@ -23,18 +24,19 @@ public class Main {
 		} else {
 			System.out.println("Wrong number of arguments");
 			return;
-		}
+		}/**/
 
-		 /*pathToMatrix = "/home/edin/ConflictFreeExamples/TCBB/RMH004.csv";
-		 formatOfInput = "VAF+nooot";
-		 minVAFPresent = 0.1;
-		 alg = "ip";*/
+		/*pathToMatrix = "/home/edin/ConflictFreeExamples/case5.txt";
+		 formatOfInput = "VAF";
+		 minVAFPresent = 0.04;
+		 alg = "ipd"; */
 
 		boolean[][] matrix; // first given matrix
-		boolean[][] matrixF; // no duplicated columns row split
+		boolean[][] matrixF = null; // no duplicated columns row split
 		String colName;
 		String[] rowName;
-		int[] rows; // holds info about which row splits in what
+		int[] rows = null; // holds info about which row splits in what
+		Vector<Vector<Integer>> cc = null;
 
 		if (formatOfInput.equals("VAF")) { // reads VAF files, \t separated
 			ReaderVAF rVAF = new ReaderVAF(pathToMatrix, minVAFPresent);
@@ -62,14 +64,14 @@ public class Main {
 				rd.readFile();
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
-				System.out
-						.println("RowSplit: Couldn't read file. Check if it is .csv file.");
+				System.out.println("RowSplit: Couldn't read file. Check if it is .csv file.");
 				e.printStackTrace();
+				return;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				System.out
-						.println("RowSplit: Couldn't read file. Check if it is .csv file.");
+				System.out.println("RowSplit: Couldn't read file. Check if it is .csv file.");
 				e.printStackTrace();
+				return;
 			}
 
 			matrix = rd.matrix;
@@ -83,12 +85,15 @@ public class Main {
 			matrix = x.solution;
 			matrixF = x.rowSplitM;
 			rows = x.rows;
-			Writter w = new Writter(matrix, matrixF, rows, colName, rowName,
-					pathToMatrix, alg, x.getCC());
-			w.writeFile();
-			w.writePhylogenyTreeFile();
+			cc = x.getCC();
 		} catch (Exception e) {
 			System.out.println("RowSplit: Something went wrong at row splting matrix. Perhaps you  didn't choose a good algorithm.");
+			return;
 		}
+		
+		Writter w = new Writter(matrix, matrixF, rows, colName, rowName,pathToMatrix, alg, cc);
+		w.writeFile();
+		w.writePhylogenyTreeFile();
+		
 	}
 }

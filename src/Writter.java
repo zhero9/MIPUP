@@ -39,13 +39,14 @@ public class Writter {
 	private String[] columns;
 	public Vector<Vector<Integer>> columnsCopies;
 	public Vector<String> rowN;
-
-	//String[] nodeColors = {"#73B2F9", "#EC7877", "#8ACB69", "#F5DB5D", "#BD80E5", "#F2A253", "#A37242", "#3D73A3", "#43A373", "#724AA4", "#EBAEC3",
-	//		"#E1EBAE",};
 	
-	String[] nodeColors = { "#7d87b9", "#c6dec7","#bec1d4", "#f3e1eb", "#bb7784",  "#4a6fe3", "#8595e1","#AEEBD7","#E1EBAE", "#f79cd4", "#b5bbe3", "#e6afb9",  
-			"#d33f6a", "#F2A253","#8e063b","#11c638", "#8ACB69","#023fa5",  "#ead3c6", "#f0b98d", "#ef9708","#8dd593", "#0fcfc0","#D99DF5", "#9cded6", "#d5eae7", "#d6bcc0", "#f6c4e1", 
-			"#73B2F9", "#EC7877",  "#F5DB5D", "#BD80E5", "#e07b91"};
+	String[] nodeColors = {   "#a4c639", "#cd9575","#7fffd4","#e9d66b","#ff9966","#ffe135","#5d8aa8" ,"#efdecd",
+			"#98777b","#fe6f5e","#ace5ee","#a2a2d0","#bf94e4","#ffc1cc","#f0dc82","#a67b5b","#ffff99","#ff7f50",
+			"#bdb76b","#6c541e", // old ones: 			
+			"#AEEBD7","#8595e1","#EBAEC3",
+			"#f79cd4", "#b5bbe3", "#e6afb9",  "#d33f6a", "#8e063b","#11c638", "#8ACB69","#023fa5", "#43A373",
+			"#ead3c6", "#f0b98d", "#ef9708","#8dd593", "#0fcfc0","#A37242","#D99DF5", "#9cded6", "#d5eae7", "#d6bcc0", "#f6c4e1", 
+			"#73B2F9", "#EC7877", "#BD80E5", "#e07b91","#bec1d4", "#f3e1eb", "#bb7784","#7d87b9"};
 
 	public String makePath(String p){
 		return p.substring(0, p.length()-4);
@@ -89,12 +90,13 @@ public class Writter {
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
+			System.out.println("RowSplit: Couln't close the BufferedWriter"+ioe);
 		} finally {
 			try {
 				if (writer != null)
 					writer.close();
 			} catch (Exception ex) {
-				System.out.println("Error in closing the BufferedWriter" + ex);
+				System.out.println("RowSplit:Error in closing the BufferedWriter" + ex);
 			}
 		}
 
@@ -151,14 +153,16 @@ public class Writter {
 			writer.newLine();
 			
 			/// Writing leafs on the tree:
-			///System.out.println("Total number of colors"+nodeColors.length);
 			for(int i = 0; i<rowCopies.size();i++){
 				int t = rowCopies.elementAt(i).elementAt(0);
-				if(rows[i] < nodeColors.length){
-					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[rows[i]]+"\"];");
+				if(rows[t] < nodeColors.length){
+					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[rows[t]]+"\"];");
+					//System.out.print("rowN.elementAt("+t+")"+rowN.elementAt(t) +"----");
+					//System.out.print(rows[t]);
 				}else{
-					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[i%nodeColors.length]+"\"];");
+					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[t%nodeColors.length]+"\"];");
 				}
+				System.out.println();
 				writer.newLine();
 			}
 			
