@@ -53,8 +53,8 @@ public class ReaderVAF {
 			rowNames[i-tmp] = t[i];
 		}
 		
-		colName = new String[rows-1];
-		for(int i = 0; i < rows-2; i++){
+		colName = new String[rows];
+		for(int i = 0; i < rows-1; i++){
 			input = in.readLine();
 			String [] line = input.split("\t");
 			colName[i+1] = line[0].concat(":"+line[1]);
@@ -74,6 +74,7 @@ public class ReaderVAF {
 		for(int k = 2; k<colName.length; k++){
 			colNames = colNames.concat(";"+colName[k]);
 		}
+		
 	}
 
 }

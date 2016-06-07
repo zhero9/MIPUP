@@ -13,23 +13,17 @@ public class Main {
 		double minVAFPresent = -1;
 		String alg = "ipd";
 
-		if (args.length == 2) {
-			pathToMatrix = args[0];
-			alg = args[1];
-		} else if (args.length == 4) {
-			pathToMatrix = args[0];
-			alg = args[1];
-			formatOfInput = "VAF";
-			minVAFPresent = Double.parseDouble(args[3]);
-		} else {
-			System.out.println("Wrong number of arguments");
-			return;
-		}/**/
+		/*
+		 * if (args.length == 2) { pathToMatrix = args[0]; alg = args[1]; } else
+		 * if (args.length == 4) { pathToMatrix = args[0]; alg = args[1];
+		 * formatOfInput = "VAF"; minVAFPresent = Double.parseDouble(args[3]); }
+		 * else { System.out.println("Wrong number of arguments"); return; }
+		 */
 
-		/*pathToMatrix = "/home/edin/ConflictFreeExamples/case5.txt";
-		 formatOfInput = "VAF";
-		 minVAFPresent = 0.04;
-		 alg = "ipd"; */
+		pathToMatrix = "/home/edin/ConflictFreeExamples/mat1/matrix1.vaf";
+		formatOfInput = "VAF";
+		minVAFPresent = 0.04;
+		alg = "ipd";/* */
 
 		boolean[][] matrix; // first given matrix
 		boolean[][] matrixF = null; // no duplicated columns row split
@@ -64,12 +58,14 @@ public class Main {
 				rd.readFile();
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
-				System.out.println("RowSplit: Couldn't read file. Check if it is .csv file.");
+				System.out
+						.println("RowSplit: Couldn't read file. Check if it is .csv file.");
 				e.printStackTrace();
 				return;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				System.out.println("RowSplit: Couldn't read file. Check if it is .csv file.");
+				System.out
+						.println("RowSplit: Couldn't read file. Check if it is .csv file.");
 				e.printStackTrace();
 				return;
 			}
@@ -77,9 +73,8 @@ public class Main {
 			matrix = rd.matrix;
 			colName = rd.colNames;
 			rowName = rd.rowNames;
-
 		}
-
+		
 		try {
 			RowSplit x = new RowSplit(matrix, alg);
 			matrix = x.solution;
@@ -87,13 +82,15 @@ public class Main {
 			rows = x.rows;
 			cc = x.getCC();
 		} catch (Exception e) {
-			System.out.println("RowSplit: Something went wrong at row splting matrix. Perhaps you  didn't choose a good algorithm.");
+			System.out
+					.println("RowSplit: Something went wrong at row splting matrix. Perhaps you  didn't choose a good algorithm.");
 			return;
 		}
-		
-		Writter w = new Writter(matrix, matrixF, rows, colName, rowName,pathToMatrix, alg, cc);
+
+		Writter w = new Writter(matrix, matrixF, rows, colName, rowName,
+				pathToMatrix, alg, cc);
 		w.writeFile();
 		w.writePhylogenyTreeFile();
-		
+
 	}
 }

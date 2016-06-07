@@ -178,7 +178,7 @@ public class Writter {
 			writer.write("\",shape=box,fontsize=18];");
 			writer.newLine();
 			}else{
-				writer.write("legend[label=\" Matrix without conflicts.\",shape = box,fontsize=18];");
+				writer.write("legend[label=\" Matrix without equal rows.\",shape = box,fontsize=18];");
 				writer.newLine();
 			}
 			
@@ -210,6 +210,7 @@ public class Writter {
 							max = sizeOfSet(intersection(setL.elementAt(i),setL.elementAt(j)));
 							maxIntersection = intersection(setL.elementAt(i),setL.elementAt(j));
 							a = i; b =j;
+							//System.out.println("a,b="+i+","+j);
 						}
 					}
 				}
@@ -234,18 +235,13 @@ public class Writter {
 				setL.add(maxIntersection);
 				writer.write("Int"+numOfInV+"[shape=point,style=filled,fillcolor=black,label=\"\"];");
 				writer.newLine();
-				
-
-				
+								
 				String edgeLabel_a="";
 				String edgeLabel_b="";
 				for(int k =0; k< matrixF[0].length; k++){
-					if(dif_a[k]) edgeLabel_a = edgeLabel_a.concat(columns[k+1]);
-					if(dif_b[k]) edgeLabel_b = edgeLabel_b.concat(columns[k+1]);
+					if(dif_a[k]) edgeLabel_a = edgeLabel_a.concat(columns[columnsCopies.elementAt(k).elementAt(0)+1]);
+					if(dif_b[k]) edgeLabel_b = edgeLabel_b.concat(columns[columnsCopies.elementAt(k).elementAt(0)+1]);
 				}
-				
-				
-
 				
 				writer.write("Int"+numOfInV+" -> "+labels.elementAt(a)+"[arrowhead=none, label=\""+edgeLabel_a+"\"];");
 				writer.newLine();
@@ -298,7 +294,4 @@ public class Writter {
 		}
 		return size;
 	}
-	
-	
-	
 }
