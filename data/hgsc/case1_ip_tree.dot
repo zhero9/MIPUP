@@ -1,0 +1,20 @@
+digraph {
+a_1[label="a_1",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+a_2[label="a_2",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+b[label="b",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+c[label="c",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+d[label="d",shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+legend[label=" Matrix without conflicts.",shape = box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> a_1[arrowhead=none, label="chr1:112100092"];
+Int1 -> d[arrowhead=none, label="chr1:13806323"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> b[arrowhead=none, label=""];
+Int2 -> Int1[arrowhead=none, label="chr1:165363067"];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> a_2[arrowhead=none, label=""];
+Int3 -> c[arrowhead=none, label="chr1:152585526"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> Int2[arrowhead=none, label="chr1:220962389"];
+Int4 -> Int3[arrowhead=none, label="chr10:1043055"];
+}

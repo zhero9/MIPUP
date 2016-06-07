@@ -1,0 +1,24 @@
+digraph {
+R1[label="R1",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+R6[label="R6",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+R3_1[label="R3_1",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+R3_2[label="R3_2",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+R7_1[label="R7_1",shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+R7_2[label="R7_2",shape=box,style=filled,fontsize=28,fillcolor="#F2A253"];
+legend[label=" Matrix without conflicts.",shape = box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> R3_2[arrowhead=none, label="Chr3:134268978"];
+Int1 -> R7_2[arrowhead=none, label="chr3:45000715"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> R1[arrowhead=none, label="chr6:117841041"];
+Int2 -> R7_1[arrowhead=none, label=""];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> R3_1[arrowhead=none, label=""];
+Int3 -> Int2[arrowhead=none, label="chr1:214816224"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> R6[arrowhead=none, label="chr10:88451726"];
+Int4 -> Int1[arrowhead=none, label="chr4:44709934"];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> Int3[arrowhead=none, label="chr2:119751996"];
+Int5 -> Int4[arrowhead=none, label="chr2:128466334"];
+}

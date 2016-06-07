@@ -1,0 +1,47 @@
+digraph {
+R3_1[label="R3_1",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+R3_2[label="R3_2",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+VT_2[label="VT_2",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+R10_2[label="R10_2",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+R10_3[label="R10_3",shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+R4_1[label="R4_1",shape=box,style=filled,fontsize=28,fillcolor="#F2A253"];
+R4_2[label="R4_2",shape=box,style=filled,fontsize=28,fillcolor="#A37242"];
+R2_1[label="R2_1",shape=box,style=filled,fontsize=28,fillcolor="#3D73A3"];
+R2_2[label="R2_2",shape=box,style=filled,fontsize=28,fillcolor="#43A373"];
+R8_2[label="R8_2",shape=box,style=filled,fontsize=28,fillcolor="#724AA4"];
+R8_3[label="R8_3",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+legend[label="Equalities among split rows:
+R3_1=VT_1=R10_1
+R2_1=R8_1
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> R4_2[arrowhead=none, label="chr11:120827623"];
+Int1 -> R8_2[arrowhead=none, label=""];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> R2_2[arrowhead=none, label="chr5:139494232"];
+Int2 -> Int1[arrowhead=none, label="chr4:70455148"];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> R3_1[arrowhead=none, label=""];
+Int3 -> R8_3[arrowhead=none, label="chr4:74284020"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> R4_1[arrowhead=none, label=""];
+Int4 -> Int3[arrowhead=none, label="chr1:183091353"];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> R10_3[arrowhead=none, label="chr11:107300158"];
+Int5 -> R2_1[arrowhead=none, label="chr2:86348641"];
+Int6[shape=point,style=filled,fillcolor=black,label=""];
+Int6 -> R10_2[arrowhead=none, label=""];
+Int6 -> Int2[arrowhead=none, label="chr3:52643360"];
+Int7[shape=point,style=filled,fillcolor=black,label=""];
+Int7 -> VT_2[arrowhead=none, label="chr11:75508233"];
+Int7 -> Int5[arrowhead=none, label=""];
+Int8[shape=point,style=filled,fillcolor=black,label=""];
+Int8 -> R3_2[arrowhead=none, label="chr9:37441083"];
+Int8 -> Int7[arrowhead=none, label=""];
+Int9[shape=point,style=filled,fillcolor=black,label=""];
+Int9 -> Int6[arrowhead=none, label="chr2:26502887"];
+Int9 -> Int8[arrowhead=none, label="chr1:244217624"];
+Int10[shape=point,style=filled,fillcolor=black,label=""];
+Int10 -> Int4[arrowhead=none, label="chr1:185183732"];
+Int10 -> Int9[arrowhead=none, label=""];
+}
