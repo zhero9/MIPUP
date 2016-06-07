@@ -138,7 +138,12 @@ public class RowSplit {
 			}
 
 		}
-		return Arrays.stream(uncovered).sum();
+		int sum = 0;
+		for (int i = 0; i < n; i++){
+			sum += uncovered[i];
+		}
+		return sum;
+		//return Arrays.stream(uncovered).sum();
 	}
 	
 	public static boolean[] disjunctionOfInEdges (int s, Digraph b){
