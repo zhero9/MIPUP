@@ -20,15 +20,18 @@ public class Main {
 			pathToMatrix = args[0]; alg = args[1];
 			formatOfInput = "VAF"; 
 			minVAFPresent = Double.parseDouble(args[3]);
-		} else { System.out.println("Wrong number of arguments"); return; }
+		} else {
+			System.out.println("Wrong number of arguments"); 
+			return; }
 		  
 
-		  /* pathToMatrix = "/home/edin/ConflictFreeExamples/mat1/matrix1.vaf";
+		/*pathToMatrix = "/home/edin/ConflictFreeExamples/case1.txt";
 		formatOfInput = "VAF";
 		minVAFPresent = 0.04;
 		alg = "ipd";/* */
 
 		boolean[][] matrix; // first given matrix
+		boolean[][] splitMatrix;
 		boolean[][] matrixF = null; // no duplicated columns row split
 		String colName;
 		String[] rowName;
@@ -80,7 +83,7 @@ public class Main {
 		
 		try {
 			RowSplit x = new RowSplit(matrix, alg);
-			matrix = x.solution;
+			splitMatrix = x.solution;
 			matrixF = x.rowSplitM;
 			rows = x.rows;
 			cc = x.getCC();
@@ -90,8 +93,7 @@ public class Main {
 			return;
 		}
 
-		Writter w = new Writter(matrix, matrixF, rows, colName, rowName,
-				pathToMatrix, alg, cc);
+		Writter w = new Writter(matrix,splitMatrix, matrixF, rows, colName, rowName, pathToMatrix, alg, cc);
 		w.writeFile();
 		w.writePhylogenyTreeFile();
 

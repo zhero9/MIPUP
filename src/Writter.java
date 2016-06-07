@@ -17,8 +17,9 @@ public class Writter {
 		//this.alg = alg;
 	}*/
 	
-	public Writter(boolean[][] matrix,boolean[][] filteredMatrix ,int[] rows, String colNames,
+	public Writter(boolean[][] orgMatrix,boolean[][] matrix,boolean[][] filteredMatrix ,int[] rows, String colNames,
 			String[] rowNames, String path, String alg,Vector<Vector<Integer>> columnsCopies ) {
+		this.originalMatrix = orgMatrix;
 		this.matrix = matrix;
 		this.matrixF = filteredMatrix;
 		this.rows = rows;
@@ -29,7 +30,7 @@ public class Writter {
 		this.columnsCopies = columnsCopies;
 	}
 	
-
+	private boolean[][] originalMatrix;
 	private boolean[][] matrix;
 	private boolean[][] matrixF; // no duplicated columns matrix
 	private int[] rows;
@@ -152,6 +153,12 @@ public class Writter {
 			writer.write("digraph {");
 			writer.newLine();
 			
+			//// adding additonal leafs=rows of original matrix
+			for (int i =  0; i < rowNames.length; i++){
+				writer.write("row"+rowNames[i]+"[label=\""+rowNames[i]+"\",shape=box,style=filled];");
+				//writer.newLine();
+			}
+			
 			/// Writing leafs on the tree:
 			for(int i = 0; i<rowCopies.size();i++){
 				int t = rowCopies.elementAt(i).elementAt(0);
@@ -162,13 +169,20 @@ public class Writter {
 				}
 				//System.out.println();
 				writer.newLine();
-				writer.write("row"+rowN.elementAt(t)+"[label=\""+rowLabel(t)+"\",shape=box,style=filled];");
-				writer.newLine();
-				writer.write(rowN.elementAt(t)+" -> "+"row"+rowN.elementAt(t)+"[arrowhead=\"normal\"];");
-				writer.newLine();
+				//writer.write("row"+rowN.elementAt(t)+"[label=\""+rowLabel(t)+"\",shape=box,style=filled];");
+				//writer.newLine();
+				//writer.write(rowN.elementAt(t)+" -> "+"row"+rowN.elementAt(t)+"[arrowhead=\"normal\"];");
+				//writer.newLine();
+				for(int p=0; p< rowNames.length; p++){
+					if(isSubset(t, p)){
+						writer.write(rowN.elementAt(t)+" -> "+"row"+rowNames[p]+"[arrowhead=\"normal\"];");
+						writer.newLine();
+					}
+				}
 			}
 			
-			
+
+						
 			/// Writing legend:
 			if(legend.size() > 0){
 			writer.write("legend[label=\"Equalities among split rows:");
@@ -271,6 +285,16 @@ public class Writter {
 				System.out.println("Error in closing the BufferedWriter" + ex);
 			}
 		}
+	}
+	
+	private boolean isSubset(int k, int t){
+		boolean tmp = true;
+		for(int i = 0; i< matrix[0].length;i++){
+			if(!originalMatrix[t][i] && matrix[k][i]){
+				tmp =false;
+			}
+		}
+		return tmp;
 	}
 	
 	private String rowLabel(int r){
