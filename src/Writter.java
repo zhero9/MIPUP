@@ -157,12 +157,14 @@ public class Writter {
 				int t = rowCopies.elementAt(i).elementAt(0);
 				if(rows[t] < nodeColors.length){
 					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[rows[t]]+"\"];");
-					//System.out.print("rowN.elementAt("+t+")"+rowN.elementAt(t) +"----");
-					//System.out.print(rows[t]);
 				}else{
 					writer.write(rowN.elementAt(t)+"[label=\""+rowN.elementAt(t)+"\",shape=box,style=filled,fontsize=28,fillcolor=\""+nodeColors[t%nodeColors.length]+"\"];");
 				}
-				System.out.println();
+				//System.out.println();
+				writer.newLine();
+				writer.write("row"+rowN.elementAt(t)+"[label=\""+rowLabel(t)+"\",shape=box,style=filled];");
+				writer.newLine();
+				writer.write(rowN.elementAt(t)+" -> "+"row"+rowN.elementAt(t)+"[arrowhead=\"normal\"];");
 				writer.newLine();
 			}
 			
@@ -269,6 +271,14 @@ public class Writter {
 				System.out.println("Error in closing the BufferedWriter" + ex);
 			}
 		}
+	}
+	
+	private String rowLabel(int r){
+		String label =""+ (matrix[r][0] ? 1 : 0);
+		for(int i = 1; i < matrix[0].length; i++){
+			label = label.concat(","+(matrix[r][i] ? 1 : 0));
+		}
+		return label;
 	}
 	
 	public int sizeOfIntersection (int i, int j){

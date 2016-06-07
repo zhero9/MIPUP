@@ -14,16 +14,19 @@ public class Main {
 		String alg = "ipd";
 
 		
-		  if (args.length == 2) { pathToMatrix = args[0]; alg = args[1]; } else
-		  if (args.length == 4) { pathToMatrix = args[0]; alg = args[1];
-		  formatOfInput = "VAF"; minVAFPresent = Double.parseDouble(args[3]); }
-		  else { System.out.println("Wrong number of arguments"); return; }
-		 /* */
+		if (args.length == 2) { 
+			pathToMatrix = args[0]; alg = args[1];
+		} else if (args.length == 4) { 
+			pathToMatrix = args[0]; alg = args[1];
+			formatOfInput = "VAF"; 
+			minVAFPresent = Double.parseDouble(args[3]);
+		} else { System.out.println("Wrong number of arguments"); return; }
+		  
 
-		 /*pathToMatrix = "/home/edin/ConflictFreeExamples/mat1/matrix1.vaf";
+		  /* pathToMatrix = "/home/edin/ConflictFreeExamples/mat1/matrix1.vaf";
 		formatOfInput = "VAF";
 		minVAFPresent = 0.04;
-		alg = "ipd"; */
+		alg = "ipd";/* */
 
 		boolean[][] matrix; // first given matrix
 		boolean[][] matrixF = null; // no duplicated columns row split
