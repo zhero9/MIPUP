@@ -1,12 +1,12 @@
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.Vector;
 
 
 public class RowSplit {
 	
 	private static boolean[][] matrix;
-	public boolean[][] rowSplitM;
-	public boolean[][] solution;
+	public boolean[][] rowSplitM; // row split of matrix without duplicated columns
+	public boolean[][] solution; // final solution
 	private static int m;
 	private int n,t;
 	public  int[] rows;
@@ -136,7 +136,6 @@ public class RowSplit {
 				uncovered[i] = sizeOfSet(i) - sizeOfSet(disjunctionOfInEdges(i,b));
 				//System.out.println(" "+sizeOfSet(disjunctionOfInEdges(i,b)));
 			}
-
 		}
 		int sum = 0;
 		for (int i = 0; i < n; i++){

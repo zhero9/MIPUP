@@ -1,5 +1,3 @@
-import java.io.IOException;
-import java.util.Vector;
 
 public class Main {
 
@@ -13,8 +11,8 @@ public class Main {
 		double minVAFPresent = -1;
 		String alg = "ipd";
 
-		
-		if (args.length == 2) { 
+
+		/**/if (args.length == 2) { 
 			pathToMatrix = args[0]; alg = args[1];
 		} else if (args.length == 4) { 
 			pathToMatrix = args[0]; alg = args[1];
@@ -23,79 +21,26 @@ public class Main {
 		} else {
 			System.out.println("Wrong number of arguments"); 
 			return; }
-		  
 
-		/*pathToMatrix = "/home/edin/ConflictFreeExamples/case1.txt";
+
+		/*
+		pathToMatrix = "/home/edin/ConflictFreeExamples/test.txt";
 		formatOfInput = "VAF";
 		minVAFPresent = 0.04;
-		alg = "ipd";/* */
+		alg = "ipd"; */
 
-		boolean[][] matrix; // first given matrix
-		boolean[][] splitMatrix;
-		boolean[][] matrixF = null; // no duplicated columns row split
-		String colName;
-		String[] rowName;
-		int[] rows = null; // holds info about which row splits in what
-		Vector<Vector<Integer>> cc = null;
-
-		if (formatOfInput.equals("VAF")) { // reads VAF files, \t separated
-			ReaderVAF rVAF = new ReaderVAF(pathToMatrix, minVAFPresent);
-			try {
-				rVAF.readFile();
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out
-						.println("RowSplit: Couldn't read file. Check if it is tab separated.");
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out
-						.println("RowSplit: Couldn't read file. Check if it is tab separated.");
-				e.printStackTrace();
+		try{
+			if(formatOfInput.equals("VAF")){
+				Solver s = new Solver(pathToMatrix, minVAFPresent, alg);
+				s.solveAndWrite();
+			}else{
+				Solver s = new Solver(pathToMatrix, alg);
+				s.solveAndWrite();
 			}
-
-			matrix = rVAF.matrix;
-			colName = rVAF.colNames;
-			rowName = rVAF.rowNames;
-
-		} else { // default reader, reads .csv
-			Reader rd = new Reader(pathToMatrix);
-			try {
-				rd.readFile();
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				System.out
-						.println("RowSplit: Couldn't read file. Check if it is .csv file.");
-				e.printStackTrace();
-				return;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out
-						.println("RowSplit: Couldn't read file. Check if it is .csv file.");
-				e.printStackTrace();
-				return;
-			}
-
-			matrix = rd.matrix;
-			colName = rd.colNames;
-			rowName = rd.rowNames;
-		}
-		
-		try {
-			RowSplit x = new RowSplit(matrix, alg);
-			splitMatrix = x.solution;
-			matrixF = x.rowSplitM;
-			rows = x.rows;
-			cc = x.getCC();
-		} catch (Exception e) {
-			System.out
-					.println("RowSplit: Something went wrong at row splting matrix. Perhaps you  didn't choose a good algorithm.");
+		}catch(Exception e){
+			System.out.println("Program failed.");
 			return;
 		}
-
-		Writter w = new Writter(matrix,splitMatrix, matrixF, rows, colName, rowName, pathToMatrix, alg, cc);
-		w.writeFile();
-		w.writePhylogenyTreeFile();
-
+		System.out.println("Program finished successfully.");
 	}
 }
