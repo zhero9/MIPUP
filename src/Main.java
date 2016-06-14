@@ -21,13 +21,12 @@ public class Main {
 		} else {
 			System.out.println("Wrong number of arguments"); 
 			return; }
+	
 
-
-		/*
-		pathToMatrix = "/home/edin/ConflictFreeExamples/test.txt";
-		formatOfInput = "VAF";
-		minVAFPresent = 0.04;
-		alg = "ipd"; */
+		/*pathToMatrix = "/home/edin/ConflictFreeExamples/ex.csv";
+		formatOfInput = "VAF+not";
+		minVAFPresent = 0.07;
+		alg = "ip"; */
 
 		try{
 			if(formatOfInput.equals("VAF")){

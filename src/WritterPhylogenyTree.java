@@ -94,6 +94,7 @@ public class WritterPhylogenyTree {
 			/// adding additonal leafs=rows of original matrix
 			for (int i =  0; i < rowNames.length; i++){
 				writer.write("row"+rowNames[i]+"[label=\""+rowNames[i]+"\",shape=box,style=filled];");
+				writer.newLine();
 			}
 
 			/// Writing leafs on the tree:
@@ -174,8 +175,8 @@ public class WritterPhylogenyTree {
 				for(int k =0; k< matrixF[0].length; k++){
 					//l = columnsCopies.elementAt(k).elementAt(0);
 					num = columnsCopies.elementAt(k).size();
-					if(dif_a[k]) edgeLabel_a = edgeLabel_a.concat("c("+k+")*"+num+"^"+stats[k]);
-					if(dif_b[k]) edgeLabel_b = edgeLabel_b.concat("c("+k+")*"+num+"^"+stats[k]);
+					if(dif_a[k]) edgeLabel_a = edgeLabel_a.concat(str(k)+" | "+num+" | "+stats[k]);
+					if(dif_b[k]) edgeLabel_b = edgeLabel_b.concat(str(k)+" | "+num+" | "+stats[k]);
 				}
 
 				writer.write("Int"+numOfInV+" -> "+labels.elementAt(a)+"[arrowhead=none, label=\""+edgeLabel_a+"\"];");
@@ -194,7 +195,7 @@ public class WritterPhylogenyTree {
 			boolean[] dif = setL.elementAt(0).clone();
 			String edgeLabelGL = "";
 			for(int k =0; k< matrixF[0].length; k++){
-				if(dif[k]) edgeLabelGL = edgeLabelGL.concat("c("+k+")*"+columnsCopies.elementAt(k).size()+"^"+stats[k]);
+				if(dif[k]) edgeLabelGL = edgeLabelGL.concat(str(k)+" | "+columnsCopies.elementAt(k).size()+" | "+stats[k]);
 			}
 			writer.write("GL -> "+labels.elementAt(0)+"[arrowhead=none, label=\""+edgeLabelGL+"\"];");
 			writer.newLine();
@@ -312,8 +313,8 @@ public class WritterPhylogenyTree {
 				int num;
 				for(int k =0; k< matrixF[0].length; k++){
 					num = columnsCopies.elementAt(k).size();
-					if(dif_a[k]) edgeLabel_a = edgeLabel_a.concat("c("+k+")*"+num);
-					if(dif_b[k]) edgeLabel_b = edgeLabel_b.concat("c("+k+")*"+num);
+					if(dif_a[k]) edgeLabel_a = edgeLabel_a.concat(str(k)+"|"+num);
+					if(dif_b[k]) edgeLabel_b = edgeLabel_b.concat(str(k)+"|"+num);
 				}
 
 				writer.write("Int"+numOfInV+" -> "+labels.elementAt(a)+"[arrowhead=none, label=\""+edgeLabel_a+"\"];");
@@ -332,7 +333,7 @@ public class WritterPhylogenyTree {
 			boolean[] dif = setL.elementAt(0).clone();
 			String edgeLabelGL = "";
 			for(int k =0; k< matrixF[0].length; k++){
-				if(dif[k]) edgeLabelGL = edgeLabelGL.concat("c("+k+")*"+columnsCopies.elementAt(k).size());
+				if(dif[k]) edgeLabelGL = edgeLabelGL.concat(str(k)+"|"+columnsCopies.elementAt(k).size());
 			}
 			writer.write("GL -> "+labels.elementAt(0)+"[arrowhead=none, label=\""+edgeLabelGL+"\"];");
 			writer.newLine();
@@ -371,5 +372,13 @@ public class WritterPhylogenyTree {
 		for(int i = 0; i< a.length; i++)
 			if(a[i]) size++;
 		return size;
+	}
+	
+	private String str(int k){
+		if(k/60 <= 1){
+			return Character.toString((char) (65+k%60));
+		}else{
+			return Character.toString((char) (65+k%60)).concat(""+((int) k/60));
+		}
 	}
 }
