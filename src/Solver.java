@@ -6,10 +6,12 @@ public class Solver {
 	String pathToMatrix;
 	String alg;
 	boolean isVaf = false;
+	private double minVAFPresent;
 
 	public Solver(String pathToMatrix, double minVAFPresent, String alg) {
 		this.pathToMatrix = pathToMatrix;
 		this.alg = alg;
+		this.minVAFPresent = minVAFPresent;
 		readVAF(minVAFPresent);
 		isVaf = true;
 	}
@@ -101,7 +103,7 @@ public class Solver {
 		try {
 			WritterPhylogenyTree p = new WritterPhylogenyTree(originalMatrix,
 					splitMatrix, matrixFiltered, rows, colName, rowName, pathTo, cc, rowN);
-			if(isVaf) p.writePhylogenyTreeFile(pathToMatrix,tmp);
+			if(isVaf) p.writePhylogenyTreeFile(pathToMatrix,tmp, minVAFPresent);
 			else  p.writePhylogenyTreeFile();
 		} catch (Exception e){
 			e.printStackTrace();

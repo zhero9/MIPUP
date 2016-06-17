@@ -23,10 +23,10 @@ public class Main {
 			return; }
 	
 
-		/*pathToMatrix = "/home/edin/ConflictFreeExamples/ex.csv";
-		formatOfInput = "VAF+not";
-		minVAFPresent = 0.07;
-		alg = "ip"; */
+		/* pathToMatrix = "/home/edin/ConflictFreeExamples/MY18.txt";
+		formatOfInput = "VAF";
+		minVAFPresent = 0.50;
+		alg = "ipd"; */
 
 		try{
 			if(formatOfInput.equals("VAF")){

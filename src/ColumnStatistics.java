@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class ColumnStatistics {
 
-	public static String[] calculate(String path, int m, int n, int t, Vector<Vector<Integer>> columnsCopies) throws FileNotFoundException{
+	public static String[] calculate(String path, int m, int n, int t, Vector<Vector<Integer>> columnsCopies, double trashHold) throws FileNotFoundException{
 		double[][] matrix = new double[m][n];
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
@@ -29,32 +29,30 @@ public class ColumnStatistics {
 			String[] stats = new String[columnsCopies.size()];
 
 			DecimalFormat df = new DecimalFormat("#.0#"); 
-
+			
 			for(int i = 0; i< columnsCopies.size(); i++){
+				int num = 0;
 				avrg = 0;
 				for(Integer j : columnsCopies.elementAt(i)){
 					for(int k = 0; k< m; k++){
-						avrg += matrix[k][j];
+						if (matrix[k][j] >= trashHold){
+							avrg += matrix[k][j]; 
+							num++;
+						}
 					}
 				}
-				avrg = avrg/(m*columnsCopies.elementAt(i).size());
+				avrg = avrg/num;
 				stdDev = 0;
 				for(Integer j : columnsCopies.elementAt(i)){
 					for(int k = 0; k< m; k++){
-						stdDev += (avrg - matrix[k][j])*(avrg - matrix[k][j]);
+						if (matrix[k][j] >= trashHold){
+							stdDev += (avrg - matrix[k][j])*(avrg - matrix[k][j]);
+						}
 					}
 				}
-				stdDev = Math.sqrt(stdDev/(m*columnsCopies.elementAt(i).size()));
-				//stats[i]= String.format( "%.2f", avrg)+"-+"+String.format( "%.2f",stdDev);
+				stdDev = Math.sqrt(stdDev/num);
 				stats[i]= df.format(avrg)+"-+"+df.format(stdDev);
 			}
-
-			/*for(int i = 0; i<matrix[0].length; i++){
-			for(int j = 0; j< matrix.length; j++){
-				System.out.print(" "+matrix[j][i]);
-			}
-			System.out.println();
-		}*/
 
 			return stats;
 		} catch (IOException e) {

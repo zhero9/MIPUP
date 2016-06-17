@@ -75,7 +75,7 @@ public class WritterPhylogenyTree {
 		}
 	}
 
-	public void writePhylogenyTreeFile(String pathToMatrix, int tmp){/// for VAF files
+	public void writePhylogenyTreeFile(String pathToMatrix, int tmp, double trashHold){/// for VAF files
 
 		BufferedWriter writer = null;
 		try{
@@ -130,7 +130,7 @@ public class WritterPhylogenyTree {
 			}
 
 			/// adding inner points and edges to the tree:
-			String[] stats = ColumnStatistics.calculate(pathToMatrix, originalMatrix.length, originalMatrix[0].length,tmp, columnsCopies);
+			String[] stats = ColumnStatistics.calculate(pathToMatrix, originalMatrix.length, originalMatrix[0].length,tmp, columnsCopies, trashHold);
 
 			int numOfInV = 0;
 			while(setL.size() > 1){
