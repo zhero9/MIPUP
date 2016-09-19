@@ -4,21 +4,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class ReaderVAF {
+public class ReaderExt {
 
-	public ReaderVAF(String readFrom, double minVAFP){
+	public ReaderExt(String readFrom, double maxVAFnP, double minVAFP){
 
 		path = readFrom;
 		this.minVAFP = minVAFP;
+		this.maxVAFnP = maxVAFnP;
 	}
 
 	private String path;
-	private double minVAFP; // min VAF present 
+	private double minVAFP;
+	private double maxVAFnP;
 	private String[] colName;
 
 	public String colNames;
 	public String[] rowNames;
-	public boolean[][] matrix;
+	public int[][] matrix;
 
 	public int tmp; // number of rows of data before matrix
 
@@ -43,7 +45,7 @@ public class ReaderVAF {
 			}
 			tmp++;
 			//System.out.println(rows+"x"+columns);
-			matrix = new boolean[columns-tmp][rows-1];
+			matrix = new int[columns-tmp][rows-1];
 			//
 			in.close();
 			in = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
@@ -62,9 +64,11 @@ public class ReaderVAF {
 				colName[i+1] = line[0].concat(":"+line[1]);
 				for(int j = tmp; j< columns; j++){
 					if( (Double.parseDouble(line[j])) >= minVAFP ){
-						matrix[j-tmp][i] = true;
+						matrix[j-tmp][i] = 1;
+					}else if((Double.parseDouble(line[j])) <= maxVAFnP){
+						matrix[j-tmp][i] = 0;
 					}else{
-						matrix[j-tmp][i] = false;
+						matrix[j-tmp][i] = 2;
 					}
 				}
 			}

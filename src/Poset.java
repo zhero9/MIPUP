@@ -2,7 +2,6 @@ import java.util.Arrays;
 
 //import java.util.Vector;
 
-
 public class Poset  {
 	public Digraph d;
 	private int n;

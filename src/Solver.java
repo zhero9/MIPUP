@@ -1,3 +1,5 @@
+import ilog.concert.IloException;
+
 import java.io.File;
 import java.util.Vector;
 
@@ -7,6 +9,7 @@ public class Solver {
 	String alg;
 	boolean isVaf = false;
 	private double minVAFPresent;
+	private double maxVAFnPresent;
 
 	public Solver(String pathToMatrix, double minVAFPresent, String alg) {
 		this.pathToMatrix = pathToMatrix;
@@ -20,6 +23,31 @@ public class Solver {
 		this.pathToMatrix = pathToMatrix;
 		this.alg = alg;
 		readCSV();
+	}
+	
+	public Solver(String pathToMatrix, double maxVAFNonPresent, double minVAFPresent, String alg) {
+		this.pathToMatrix = pathToMatrix;
+		this.alg = alg;
+		this.minVAFPresent = minVAFPresent;
+		this.maxVAFnPresent = maxVAFNonPresent;
+		isVaf = true;
+		int[][] m;
+		m = readExt(maxVAFNonPresent,minVAFPresent);
+		try {
+			RowSplit rs =  new RowSplit(m, alg);
+			this.originalMatrix = rs.originalMatrix;
+			this.splitMatrix = rs.solution;
+			this.matrixFiltered = rs.rowSplitM;
+			this.rows = rs.rows;
+			this.cc = rs.getCC();
+		} catch (IloException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		makePath(pathToMatrix);
+		writeFile();
+		writeTree();
+		writeColumnsLegend();
 	}
 
 	public void solveAndWrite() {
@@ -43,8 +71,19 @@ public class Solver {
 	int[] rows; // holds info about which row splits in what
 	Vector<String> rowN;
 	Vector<Vector<Integer>> cc; // columns copies
-	int tmp;
+	int tmp; /// number of rows that do not contain data (rows before matrix)
 
+	private int[][] readExt(double down, double up){
+		int[][] m;
+		ReaderExt r = new ReaderExt(pathToMatrix, maxVAFnPresent, minVAFPresent);
+		r.readFile();
+		m = r.matrix;
+		colName = r.colNames;
+		rowName = r.rowNames;
+		tmp = r.tmp;
+		return m;
+	}
+	
 	private void readVAF(double minVAFPresent) {
 		ReaderVAF rVAF = new ReaderVAF(pathToMatrix, minVAFPresent);
 		try{
@@ -90,7 +129,7 @@ public class Solver {
 
 	private void writeFile() {
 		try {
-			Writter w = new Writter(splitMatrix, rows, colName, rowName, pathTo);
+			WritterMatrix w = new WritterMatrix(splitMatrix, rows, colName, rowName, pathTo);
 			w.writeFile();
 			rowN = w.rowN;
 		} catch (Exception e) {
@@ -103,7 +142,7 @@ public class Solver {
 		try {
 			WritterPhylogenyTree p = new WritterPhylogenyTree(originalMatrix,
 					splitMatrix, matrixFiltered, rows, colName, rowName, pathTo, cc, rowN);
-			if(isVaf) p.writePhylogenyTreeFile(pathToMatrix,tmp, minVAFPresent);
+			if(isVaf) p.writePhylogenyTreeFile(pathToMatrix,tmp);
 			else  p.writePhylogenyTreeFile();
 		} catch (Exception e){
 			e.printStackTrace();

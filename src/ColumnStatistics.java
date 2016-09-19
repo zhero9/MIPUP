@@ -9,7 +9,10 @@ import java.util.Vector;
 
 public class ColumnStatistics {
 
-	public static String[] calculate(String path, int m, int n, int t, Vector<Vector<Integer>> columnsCopies, double trashHold) throws FileNotFoundException{
+	public static String[] calculate(String path,boolean[][] orgM,int t, Vector<Vector<Integer>> columnsCopies) throws FileNotFoundException{
+		int m = orgM.length;
+		int n = orgM[0].length;
+		
 		double[][] matrix = new double[m][n];
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
@@ -35,7 +38,7 @@ public class ColumnStatistics {
 				avrg = 0;
 				for(Integer j : columnsCopies.elementAt(i)){
 					for(int k = 0; k< m; k++){
-						if (matrix[k][j] >= trashHold){
+						if (orgM[k][j]){
 							avrg += matrix[k][j]; 
 							num++;
 						}
@@ -45,7 +48,7 @@ public class ColumnStatistics {
 				stdDev = 0;
 				for(Integer j : columnsCopies.elementAt(i)){
 					for(int k = 0; k< m; k++){
-						if (matrix[k][j] >= trashHold){
+						if (orgM[k][j]){
 							stdDev += (avrg - matrix[k][j])*(avrg - matrix[k][j]);
 						}
 					}

@@ -4,9 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
 
-public class Writter {
+public class WritterMatrix {
 
-	public Writter(boolean[][] matrix,int[] rows, String colNames, String[] rowNames, String path ) {
+	public WritterMatrix(boolean[][] matrix,int[] rows, String colNames, String[] rowNames, String path ) {
 		this.matrix = matrix;
 		this.rows = rows;
 		this.colNames = colNames;

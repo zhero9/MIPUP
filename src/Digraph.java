@@ -17,6 +17,17 @@ public class Digraph {
 			}
 		}
 	}
+	
+	public Digraph(int n, String a){
+		//adjMatrix = new short[n][n];
+		for (int i = 0; i< n; i++){
+			inEdges.add(new Vector<Integer>());
+			outEdges.add(new Vector<Integer>());
+			//for(int j = 0; j < n; j++){
+				//adjMatrix[i][j] = -1;
+			//}
+		}
+	}
 
 	public void addEdge (int u, int v){
 		if (u == v) return;
