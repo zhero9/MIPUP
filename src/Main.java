@@ -8,7 +8,7 @@ public class Main {
 		double maxVAFnotPresent = 0;
 		String alg = "ip";
 
-		/*
+		
 		if (args.length == 2) {
 			pathToMatrix = args[0];
 			alg = args[1];
@@ -27,15 +27,13 @@ public class Main {
 			System.out.println("Wrong number of arguments");
 			return;
 		}
-		*/
+		/**/
 
-		pathToMatrix = "/home/edin/ConflictFreeExamples/example.txt";
+		/*pathToMatrix = "/home/edin/ConflictFreeExamples/example.txt";
 		formatOfInput = "VAF2";
 		maxVAFnotPresent = 0.1;
 		minVAFPresent = 0.2;
-		alg = "ext";/* */
-
-		//Solver kk = new Solver(pathToMatrix, 0.2, 0.2, alg);
+		alg = "ext"; */
 
 		try {
 			if (formatOfInput.equals("VAF2")) {
