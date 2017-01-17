@@ -69,7 +69,7 @@ public class MinDistinctILP {
 				}
 			}
 			
-			cplex.setOut(null);
+			//cplex.setOut(null);
 			
 			Digraph branching = new Digraph(n);
 			if(cplex.solve()){

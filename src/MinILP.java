@@ -4,14 +4,14 @@ import ilog.cplex.*;
 import ilog.concert.*;
 
 
-public class ILP {
+public class MinILP {
 
 	static boolean[][] matrix;
 	static Poset D;
 	static int m,n;
 	int value;
 
-	public ILP(boolean [][] M){
+	public MinILP(boolean [][] M){
 		matrix = M;
 		D = new Poset(M);
 		m = M.length; 	// # of rows
@@ -76,7 +76,7 @@ public class ILP {
 				}
 			}
 
-			cplex.setOut(null);
+			//cplex.setOut(null);
 
 			Digraph branching = new Digraph(n);
 			if(cplex.solve()){	 

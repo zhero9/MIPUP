@@ -1,0 +1,57 @@
+digraph {
+a_1[label="a_1",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_2[label="a_2",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_3[label="a_3",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_4[label="a_4",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_5[label="a_5",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+b_1[label="b_1",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
+b_2[label="b_2",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
+b_5[label="b_5",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
+b_6[label="b_6",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
+c_1[label="c_1",shape=box,style=filled,fontsize=28,fillcolor="#7fffd4"];
+c_2[label="c_2",shape=box,style=filled,fontsize=28,fillcolor="#7fffd4"];
+f_4[label="f_4",shape=box,style=filled,fontsize=28,fillcolor="#ffe135"];
+legend[label="Equalities among split rows:
+a_1=b_3=d_1=e_1=f_2
+a_2=b_4
+a_4=c_3=e_3
+a_5=c_4=d_3
+b_1=f_1
+b_5=e_2=f_3
+b_6=c_5
+c_2=d_2
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> a_3[arrowhead=none, label="chr1:175118682"];
+Int1 -> f_4[arrowhead=none, label="chr1:202773188"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> c_1[arrowhead=none, label="chr1:64417075"];
+Int2 -> Int1[arrowhead=none, label="chr1:221223048"];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> b_5[arrowhead=none, label="chr1:169567444"];
+Int3 -> b_6[arrowhead=none, label="chr10:50636502"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> a_2[arrowhead=none, label="chr1:165193768"];
+Int4 -> c_2[arrowhead=none, label=""];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> Int2[arrowhead=none, label="chr10:5478760"];
+Int5 -> Int3[arrowhead=none, label="chr1:209015437"];
+Int6[shape=point,style=filled,fillcolor=black,label=""];
+Int6 -> b_2[arrowhead=none, label="chr1:85203896"];
+Int6 -> Int4[arrowhead=none, label="chr1:175118682"];
+Int7[shape=point,style=filled,fillcolor=black,label=""];
+Int7 -> a_5[arrowhead=none, label="chr10:7658974"];
+Int7 -> b_1[arrowhead=none, label="chr1:10636860"];
+Int8[shape=point,style=filled,fillcolor=black,label=""];
+Int8 -> a_4[arrowhead=none, label="chr1:234712431"];
+Int8 -> Int6[arrowhead=none, label=""];
+Int9[shape=point,style=filled,fillcolor=black,label=""];
+Int9 -> Int7[arrowhead=none, label="chr1:77756910"];
+Int9 -> Int8[arrowhead=none, label="chr10:45276701"];
+Int10[shape=point,style=filled,fillcolor=black,label=""];
+Int10 -> Int5[arrowhead=none, label="chr1:78201955"];
+Int10 -> Int9[arrowhead=none, label=""];
+Int11[shape=point,style=filled,fillcolor=black,label=""];
+Int11 -> a_1[arrowhead=none, label="chr1:155141246"];
+Int11 -> Int10[arrowhead=none, label=""];
+}
