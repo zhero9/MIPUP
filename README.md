@@ -29,11 +29,12 @@ We gave new formulations of the two problems, showing that the problems are equi
 two optimization problems on branchings in a derived directed acyclic graph. 
 Building on these formulations, we can model the two problems with simple polynomially-sized integer
 linear programs. This git repository contains implementation of the results. 
-As an input we take a matrix, construct corresponding digraph and consequently ILP formulations. 
+As an input we take a matrix, construct corresponding digraph, and consequently the ILP formulations. 
 ILP are solved using [IBM CPLEX](https://www-01.ibm.com/software/commerce/optimization/cplex-optimizer/).
 
 ## 3. Input formats
-We give two different ways of input. The first type is the classical binary matrix as described in problem and the other one is a transpose of a matrix containing the measured value of mutations and a threshold.
+We allow for two types of input. The first type is the classical binary matrix as described in the problem formulation. The other one is a transpose of a matrix containing the variant allele frequency of every SSNV in every sample and a threshold for transforming these into binary values. This format is the same used by tool [LICHeE](https://github.com/viq854/lichee).
+
 ### 3.1 {0,1} matrices
 The input for the problem is a **m**x**n** binary matrix in .csv format separeted by ";". 
 The first column must contain the row (i.e., sample) names,
