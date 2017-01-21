@@ -46,7 +46,7 @@ We give two different ways of input. The first type is the classical binary matr
 The input for the problem is a **m**x**n** binary matrix in .csv format separeted by ";". 
 The first column must contain the row (i.e., sample) names,
 and the first row must contain the column (i.e., mutation location) names. 
-For example, the following table *test1.csv*
+For example, the following table *matrix.csv*
 
 |   | c1| c2| c3| c4| c5| c3'|
 |---|---|---|---|---|---|----|
@@ -76,7 +76,6 @@ For example, the following table
 |-------|---------------|-------|-------|---------------|---------------|---------------|-----|
 |chr1	|13806323	|PDPN	|0	|0.00274	|0.000209	|0.000238	|0.213|
 |chr1	|33336351	|ADC	|0	|0.0000209	|0.0000778	|0.00014	|0.172|
-|chr1	|112100092	|DDX20	|0	|0.36		|0.417		|0.263		|0.714|
 |chr1	|152585526	|ATP8B2	|0	|0.412		|0.324		|0.475		|0.328|
 |chr1	|165363067	|DUSP27	|0	|0.262		|0.342		|0.359		|0.256|
 |chr1	|220962389	|C1orf58|0	|0.242		|0.164		|0.308		|0.104|
@@ -86,23 +85,22 @@ is encoded as
 
 
 	#chrom	pos	DESC	normal	a	b	c	d
-	chr1	13806323	PDPN	0	0.00274	0.000209	0.000238	0.213
+	chr1	13806323	PDPN	0	0.00274	0.000209	0.000238	0.000213
 	chr1	33336351	ADC	0	0.0000209	0.0000778	0.00014	0.172
-	chr1	112100092	DDX20	0	0.36	0.417	0.263	0.714
-	chr1	152585526	ATP8B2	0	0.412	0.324	0.475	0.328
-	chr1	165363067	DUSP27	0	0.262	0.342	0.359	0.256
-	chr1	220962389	C1orf58	0	0.242	0.164	0.308	0.104
-	chr10	1043055	GTPBP4	0	0.251	0.263	0.246	0.277
+	chr1	152585526	ATP8B2	0	0.412	0.324	0.475	0.000328
+	chr1	165363067	DUSP27	0	0.262	0.342	0.000359	0.256
+	chr1	220962389	C1orf58	0	0.000242	0.164	0.308	0.104
+	chr10	1043055	GTPBP4		0	0.00251	0.000263	0.246	0.277
 
-Observe that row containing **normal** is necessary and is used as indicatior of how many first rows correspond to the names and description of mutations. The columns after **normal** contain just measurements. Thogether with above matrix you need to provide a *threshold* which will be used to construct binary matrix with associating value one if a measurment is bigger than threshold and zero otherwise. For a threshold equal to ..., after transposing we obtain a matrix
+Observe that row containing **normal** is necessary and is used as indicatior of how many first rows correspond to the names and description of mutations. The columns after **normal** contain just measurements. Thogether with above matrix you need to provide a *threshold* which will be used to construct binary matrix with associating value one if a measurment is bigger than threshold and zero otherwise. For a threshold equal to **0.001**, after transposing we obtain a matrix
 
 
-|	|chr1_13806323  |chr1_33336351  |chr1_112100092|chr1_152585526|chr1_165363067|chr1_220962389|chr10_1043055|
-|-------|---------------|---------------|--------------|--------------|--------------|--------------|-------------|
-|a	|		|		|	       |	      |	             |		    |		  |
-|b	|		|		|	       |	      |	             |		    |		  |
-|c	|		|		|	       |	      |	             |		    |		  |
-|d	|		|		|	       |	      |	             |		    |		  |
+|	|chr1_13..  |chr1_33..  |chr1_15..|chr1_16..|chr1_22..|chr10_10..|
+|-------|---------------|---------------|--------------|--------------|--------------|-------------|
+|a	|1		|0		|1	       |1	      |0	     |	1	   |
+|b	|0		|0		|1	       |	1     |	1	     |		0  |
+|c	|0		|1		|1	       |	0     |		1    |		 1 |
+|d	|1		|1		| 0	       |	1     |	 	1    |	1	   |
 
 and this is the matrix for which we want to preform row split. This is done inside the program.
 
@@ -120,18 +118,53 @@ The term *algorithm* in the name of the files correspond to either:
 - **ipd** stands for an optimail solution of MCDRS.
 
 For the above {0,1} matrix an optimal solution for MCRS produces the following:
-#### test1_ip_RS.csv
+#### matrix_ip_RS.csv
+	;c1;c2;c3;c4;c5;c3'
+	r1;1;0;0;0;0;0
+	r2_1;1;0;0;0;0;0
+	r2_2;0;1;1;0;0;1
+	r2_3;0;1;0;1;0;0
+	r3;0;1;0;1;0;0
+	r4;0;1;1;0;1;1
+	r5;0;1;0;0;0;0
 
-#### test1_ip_tree.dot visualised by Grapzhiv
+#### matrix_ip_tree.dot visualised by Grapzhiv
 
-#### test1_ip_columns.csv 
+<img src="https://github.com/zhero9/MIPUP/blob/master/ExamplesReadMe/matrix_RS/matrix_ip_tree.png" width="500px" height="600px" />
 
-For the above real valued matrix with threshold **!!!** an optimal solution for MCRS produces the following:
-#### test2_ip_RS.csv
+#### matrix_ip_columns.csv 
 
-#### test2_ip_tree.dot visualised by Grapzhiv
+	Folowing mutations-columns are equal.
+	A;c1
+	B;c2
+	C;c3;c3'
+	D;c4
+	E;c5
 
-#### test2_ip_columns.csv
+For the above real valued matrix with threshold **0.001** an optimal solution for MCRS produces the following:
+#### matrixVAF_ip_RS.csv
+	;chr1:13806323;chr1:33336351;chr1:152585526;chr1:165363067;chr1:220962389;chr10:1043055
+	a_1;0;0;1;0;0;0
+	a_2;0;0;0;1;0;0
+	b_1;0;0;1;0;0;0
+	b_2;0;0;0;1;0;0
+	b_3;0;0;0;0;1;0
+	c_1;0;0;1;0;0;0
+	c_2;0;0;0;0;1;1
+	d_1;0;1;0;1;0;0
+	d_2;0;0;0;0;1;1
+
+#### matrixVAF_ip_tree.dot visualised by Grapzhiv
+<img src="https://github.com/zhero9/MIPUP/blob/master/ExamplesReadMe/matrixVAF_RS/matrixVAF_ipd_tree-1.png"  width="600px" height="600px" />
+#### matrixVAF_ip_columns.csv
+
+	Folowing mutations-columns are equal.
+	A;chr1:13806323
+	B;chr1:33336351
+	C;chr1:152585526
+	D;chr1:165363067
+	E;chr1:220962389
+	F;chr10:1043055
 
 ## 5 Running
 
