@@ -21,11 +21,12 @@ public class RowSplit {
 		n = matrix[0].length; // number of columns
 
 		if (alg.equals("ip")) {
-			System.out.println("RowSplit: Started ILP...");
+			System.out.println("RowSplit: Started ILP for min num of rows...");
 			MinILP lp = new MinILP(matrix);
 			optB = lp.solveOpt();
 			t = lp.value;
-			System.out.println("RowSplit: ILP finished succesfully.");
+			System.out.println("Optimal value for |U(B)| = "+t);
+			System.out.println("RowSplit: ILP for MCRS finished succesfully.");
 
 		} else if (alg.equals("greedy")) {
 			System.out.println("RowSplit: Greedy started...");
@@ -43,11 +44,16 @@ public class RowSplit {
 			System.out.println("RowSplit: Local Search finished.");
 
 		} else if (alg.equals("ipd")) {
-			System.out.println("RowSplit: Started ILP (min distinct rows)...");
+			System.out.println("RowSplit: Started ILP (min num of DISTINCT rows)...");
 			MinDistinctILP distinct = new MinDistinctILP(matrix);
 			optB = distinct.solveOpt();
+			int optI = distinct.objValue;
 			t = evaluateBranching(optB);
-			System.out.println("RowSplit: ILP finished succesfully.");
+			System.out.println("Optimal value for |I(B)| = " + optI);
+			System.out.println("with total number of rows |U(B)| = " + t);
+			System.out.println("RowSplit: ILP for MCDRS finished succesfully.");
+		} else {
+			System.out.println("Algotihm "+alg+" does NOT exists!");
 		}
 
 		rows = new int[t];
@@ -60,16 +66,21 @@ public class RowSplit {
 	boolean[][] originalMatrix;
 
 	public RowSplit(int[][] mat, String alg) throws IloException {
+		System.out.println("Starting ILP for extended MCRS ...");
 		ExtensionILP ext = new ExtensionILP(mat, alg);
 		originalMatrix = ext.originalMatrix;
 		matrix = ext.getMatrix();
 		m = matrix.length;
 		n = matrix[0].length;
 		optB = ext.branching;
+		int tmp = ext.objValue;
 		if(alg == "ext"){
-			t = ext.objValue;
+			t = tmp;
+			System.out.println("Minimum number of rows, |U(B)| = "+t);
 		}else{
 			t = evaluateBranching(optB);
+			System.out.println("Optimal value, |I(B)| = " + tmp );
+			System.out.println("Number of rows, |U(B)| = "+t);
 		}
 		
 		columnsCopies = ext.getCC();

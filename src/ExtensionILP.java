@@ -35,9 +35,11 @@ public class ExtensionILP {
 
 	public void solve(int[][] matrix, String alg) throws IloException {
 		// try {
+		System.out.println("Finding set A of all potential arcs ...");
 		Digraph A = findA(matrix);
 		// A.printAdjList();
 
+		System.out.println("Setting up ILP.");
 		IloCplex cplex = new IloCplex();
 
 		/* Variables.! */
@@ -298,7 +300,7 @@ public class ExtensionILP {
 		}
 
 		// cplex.setOut(null);
-
+		System.out.println("Sloving ILP. ");
 		if (cplex.solve()) {
 			// objective value
 			System.out.println("Ob. value: " + cplex.getBestObjValue());

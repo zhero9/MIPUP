@@ -9,7 +9,7 @@ public class MinDistinctILP {
 	static boolean[][] matrix;
 	static Poset D;
 	static int m,n;
-	int objValue;
+	int objValue = 0;
 
 	public MinDistinctILP(boolean [][] M){
 		matrix = M;

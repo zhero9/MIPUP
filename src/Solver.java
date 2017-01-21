@@ -6,12 +6,13 @@ import java.util.Vector;
 public class Solver {
 
 	String pathToMatrix;
-	String alg;
+	String alg = "";
 	boolean isVaf = false;
 	private double minVAFPresent;
 	private double maxVAFnPresent;
 
 	public Solver(String pathToMatrix, double minVAFPresent, String alg) {
+		/// VAF1 
 		this.pathToMatrix = pathToMatrix;
 		this.alg = alg;
 		this.minVAFPresent = minVAFPresent;
@@ -20,18 +21,21 @@ public class Solver {
 	}
 
 	public Solver(String pathToMatrix, String alg) {
+		/// .csv
 		this.pathToMatrix = pathToMatrix;
 		this.alg = alg;
 		readCSV();
 	}
 	
 	public Solver(String pathToMatrix, double maxVAFNonPresent, double minVAFPresent, String alg) {
+		/// VAF2
 		this.pathToMatrix = pathToMatrix;
 		this.alg = alg;
 		this.minVAFPresent = minVAFPresent;
 		this.maxVAFnPresent = maxVAFNonPresent;
 		isVaf = true;
 		int[][] m;
+		System.out.println("Reading file");
 		m = readExt(maxVAFNonPresent,minVAFPresent);
 		try {
 			RowSplit rs =  new RowSplit(m, alg);
@@ -69,8 +73,8 @@ public class Solver {
 	String colName;
 	String[] rowName;
 	int[] rows; // holds info about which row splits in what
-	Vector<String> rowN;
-	Vector<Vector<Integer>> cc; // columns copies
+	Vector<String> rowN =new Vector<String>();
+	Vector<Vector<Integer>> cc = new Vector<Vector<Integer>>(); // columns copies
 	int tmp; /// number of rows that do not contain data (rows before matrix)
 
 	private int[][] readExt(double down, double up){

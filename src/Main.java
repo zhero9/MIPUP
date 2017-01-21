@@ -3,7 +3,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		String pathToMatrix = null;
-		String formatOfInput = null;
+		String formatOfInput = "csv";
 		double minVAFPresent = 0;
 		double maxVAFnotPresent = 0;
 		String alg = "ip";
@@ -24,32 +24,30 @@ public class Main {
 			minVAFPresent = Double.parseDouble(args[3]);
 			maxVAFnotPresent = Double.parseDouble(args[4]);
 		} else {
-			System.out.println("Wrong number of arguments");
+			System.out.println("Wrong number of arguments!");
 			return;
 		}
 		/**/
-
-		/*pathToMatrix = "/home/edin/ConflictFreeExamples/example.txt";
+		/*
+		pathToMatrix = "/home/edin/ExamplesDebug/MY21_filtered.txt";
 		formatOfInput = "VAF2";
-		maxVAFnotPresent = 0.1;
-		minVAFPresent = 0.2;
-		alg = "ext"; */
+		maxVAFnotPresent = 0.05;
+		minVAFPresent = 0.05;
+		alg = "extd"; */
 
-		try {
-			if (formatOfInput.equals("VAF2")) {
-				Solver s = new Solver(pathToMatrix, maxVAFnotPresent, minVAFPresent, alg);
-				//a ds.solveAndWrite();
-			} else if (formatOfInput.equals("VAF1")) {
-				Solver s = new Solver(pathToMatrix, minVAFPresent, alg);
-				s.solveAndWrite();
-			} else {
-				Solver s = new Solver(pathToMatrix, alg);
-				s.solveAndWrite();
-			}
-		} catch (Exception e) {
-			System.out.println("Program failed.");
-			return;
+		if (formatOfInput.equals("VAF2")) {
+			Solver s = new Solver(pathToMatrix, maxVAFnotPresent, minVAFPresent, alg);
+			//a ds.solveAndWrite();
+		} else if (formatOfInput.equals("VAF1")) {
+			Solver s = new Solver(pathToMatrix, minVAFPresent, alg);
+			s.solveAndWrite();
+		} else if (formatOfInput.equals("csv")){
+			Solver s = new Solver(pathToMatrix, alg);
+			s.solveAndWrite();
+		} else{
+			System.out.println("Unknown type of input format.");
 		}
+		
 		System.out.println("Program finished successfully.");
 		/**/
 	}
