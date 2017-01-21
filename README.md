@@ -57,9 +57,8 @@ is encoded as:
 
 and saved as name_of_input.csv 
  
-### 3.2 Transpose matrix of single nucleotide variants (SNVs) and a threshold
-The input for the problem is a **n**x**m** real valued matrix in .txt format, **tab** separeted. Since this is the transpose of matrix we are really intereseted, the first row in fact will contain rows of matrix we want to split, and the first several columns contain the names and description of  mutations/columns (after transpose). 
-For example, the following table
+### 3.2 Transpose matrix of variant allele frequencies of the SSNVs and a threshold
+The input for the problem is a **n**x**m** real valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table
 
 
 |chrom	|pos		|DESC	|normal	|a		|b		|c		|d    |
@@ -82,7 +81,7 @@ is encoded as
 	chr1	220962389	C1orf58	0	0.000242	0.164	0.308	0.104
 	chr10	1043055	GTPBP4		0	0.00251	0.000263	0.246	0.277
 
-Observe that row containing **normal** is necessary and is used as indicatior of how many first rows correspond to the names and description of mutations. The columns after **normal** contain just measurements. Thogether with above matrix you need to provide a *threshold* which will be used to construct binary matrix with associating value one if a measurment is bigger than threshold and zero otherwise. For a threshold equal to **0.001**, after transposing we obtain a matrix
+Observe that row containing **normal** is necessary and is used as indicatior of how many first rows correspond to the names and description of mutations. The columns after **normal** contain VAF values. Thogether with the above matrix you need to provide a *threshold* which will be used to transform this into a binary matrix: if the VAF value is bigger or equal to threshold, then we have a **1**, otherwise we have a **0**. For a threshold equal to **0.001**, after transposing we obtain this matrix
 
 
 |	|chr1_13..  |chr1_33..  |chr1_15..|chr1_16..|chr1_22..|chr10_10..|
@@ -92,7 +91,7 @@ Observe that row containing **normal** is necessary and is used as indicatior of
 |c	|0		|1		|1	       |	0     |		1    |		 1 |
 |d	|1		|1		| 0	       |	1     |	 	1    |	1	   |
 
-and this is the matrix for which we want to preform row split. This is done inside the program.
+and this is the matrix for which we want to preform the optimal row split. This is done inside the program.
 
 
 ## 4 Output
