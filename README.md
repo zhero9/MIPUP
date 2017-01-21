@@ -1,6 +1,6 @@
-# MInimum Perfect Unmixed Phylogeny v0.1 
+# Minimum Perfect Unmixed Phylogeny v0.1 
 **For questions or problems with this code, contact [edinehusic@gmail.com](mailto:edinehusic@gmail.com),
-or open an ISSUE on github.**
+or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
 This repository contains implementations of the two Integer Linear Programs from a paper to **appear** 
 and implementations of one greedy and one local search heuristics which are not mentioned in the paper and have no constant
