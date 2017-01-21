@@ -81,7 +81,10 @@ is encoded as
 	chr1	220962389	C1orf58	0	0.000242	0.164	0.308	0.104
 	chr10	1043055	GTPBP4		0	0.00251	0.000263	0.246	0.277
 
-Observe that row containing **normal** is necessary and is used as indicatior of how many first rows correspond to the names and description of mutations. The columns after **normal** contain VAF values. Thogether with the above matrix you need to provide a *threshold* which will be used to transform this into a binary matrix: if the VAF value is bigger or equal to threshold, then we have a **1**, otherwise we have a **0**. For a threshold equal to **0.001**, after transposing we obtain this matrix
+Observe that the column **normal** filled only with **0** is necessary. The columns after **normal** contain the VAF values in each sample. You also need to provide a *threshold* which will be used to transform this matrix into a binary one, according to the rule:
+- if VAF value >= threshold, then we get a **1**, 
+- otherwise, we get a **0**. 
+For a threshold equal to **0.001**, after transposing, we obtain the following matrix
 
 
 |	|chr1_13..  |chr1_33..  |chr1_15..|chr1_16..|chr1_22..|chr10_10..|
