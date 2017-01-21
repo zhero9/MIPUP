@@ -117,6 +117,7 @@ The term *algorithm* in the name of the files correspond to either:
 - **ip** stands for an optimal solution of MCRS,
 - **ipd** stands for an optimail solution of MCDRS.
 
+The label **S|n** denotes the mutations occuring on a given edge of phlylogeny tree and number of such mutations. The mutations corresponding to **S** can be found in *nameOfData_alg_columns.csv*. For VAF format the label is of the form **S|n|mean -+ std**, where **mean** is the mean of mutation measurements -+ standard deviation. 
 For the above {0,1} matrix an optimal solution for MCRS produces the following:
 #### matrix_ip_RS.csv
 	;c1;c2;c3;c4;c5;c3'
@@ -130,7 +131,7 @@ For the above {0,1} matrix an optimal solution for MCRS produces the following:
 
 #### matrix_ip_tree.dot visualised by Grapzhiv
 
-<img src="https://github.com/zhero9/MIPUP/blob/master/ExamplesReadMe/matrix_RS/matrix_ip_tree.png" width="500px" height="600px" />
+<img src="https://github.com/zhero9/MIPUP/blob/master/ExamplesReadMe/matrix_RS/matrix_ip_tree.png" width="400px" height="450px" />
 
 #### matrix_ip_columns.csv 
 
@@ -141,8 +142,8 @@ For the above {0,1} matrix an optimal solution for MCRS produces the following:
 	D;c4
 	E;c5
 
-For the above real valued matrix with threshold **0.001** an optimal solution for MCRS produces the following:
-#### matrixVAF_ip_RS.csv
+For the above real valued matrix with threshold **0.001** an optimal solution for MCDRS produces the following:
+#### matrixVAF_ipd_RS.csv
 	;chr1:13806323;chr1:33336351;chr1:152585526;chr1:165363067;chr1:220962389;chr10:1043055
 	a_1;0;0;1;0;0;0
 	a_2;0;0;0;1;0;0
@@ -154,9 +155,9 @@ For the above real valued matrix with threshold **0.001** an optimal solution fo
 	d_1;0;1;0;1;0;0
 	d_2;0;0;0;0;1;1
 
-#### matrixVAF_ip_tree.dot visualised by Grapzhiv
-<img src="https://github.com/zhero9/MIPUP/blob/master/ExamplesReadMe/matrixVAF_RS/matrixVAF_ipd_tree-1.png"  width="600px" height="600px" />
-#### matrixVAF_ip_columns.csv
+#### matrixVAF_ipd_tree.dot visualised by Grapzhiv
+<img src="https://github.com/zhero9/MIPUP/blob/master/ExamplesReadMe/matrixVAF_RS/matrixVAF_ipd_tree-1.png"  width="450px" height="450px" />
+#### matrixVAF_ipd_columns.csv
 
 	Folowing mutations-columns are equal.
 	A;chr1:13806323
