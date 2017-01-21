@@ -2,9 +2,11 @@
 **For questions or problems with this code, contact [edinehusic@gmail.com](mailto:edinehusic@gmail.com),
 or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
-This repository contains implementations of the two Integer Linear Programs from a paper to **appear** 
-and implementations of one greedy and one local search heuristics which are not mentioned in the paper and have no constant
-approximation guaranties.
+This repository contains implementations of the two Integer Linear Programs from 
+
+*Hujdurovic, A., Husic E., Kacar, U., Milanic, Rizzi R. and Tomescu, A. I. (2017). MIPUP: Minimum perfect unmixed phylogenies via branchings in graphs and ILP, Submitted*
+
+It also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
 
 ## 1. Background and previous results
 The problems addresed are **Minimum Conflict-Free Row Split problems**. They were originaly proposed
@@ -12,21 +14,11 @@ by *I. Hajirasouliha, B. Raphael, Reconstructing Mutational
 History in Multiply Sampled Tumors Using Perfect Phylogeny Mixtures. 
 WABI 2014: 354-367 doi:[10.1007/978-3-662-44753-6_27](http://dx.doi.org/10.1007/978-3-662-44753-6_27)*.
 Later, NP-hardness of the problems was confirmed by
-Hujdurovic, A., Kacar, U., Milanic, M., Ries, B., and Tomescu, A. I. (2016).
+*Hujdurovic, A., Kacar, U., Milanic, M., Ries, B., and Tomescu, A. I. (2016).
 Complexity and algorithms for finding a perfect phylogeny from mixed tumor
-samples. IEEE/ACM Transactions on Computational Biology and Bioinformatics.
-Available online, DOI: [10.1109/TCBB.2016.2606620](http://ieeexplore.ieee.org/document/7589999/).
-
-A shorter version of the last paper appeared in the Proceedings of WABI 2015:
-
-*Ademir Hujdurović, Urša Kačar, Martin Milanič, Bernard Ries, and Alexandru I. Tomescu, Finding a Perfect
-Phylogeny from Mixed Tumor Samples. WABI 2015, LNCS 9289, pp. 80-92, extended version available at 
-[http://arxiv.org/abs/1506.07675](http://arxiv.org/abs/1506.07675).*
-
-The above papers also proposed heuristics and gave an exact algorithm for a particular class of inputs. 
-The implementation is available at https://github.com/alexandrutomescu/MixedPerfectPhylogeny.
-Slides and a visual description of the these results are available 
-[**here**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf).
+samples. IEEE/ACM Transactions on Computational Biology and Bioinformatics,
+DOI: [10.1109/TCBB.2016.2606620](http://ieeexplore.ieee.org/document/7589999/).* This paper also proposed heuristics and gave an exact algorithm for a particular class of inputs. The implementation is available at https://github.com/alexandrutomescu/MixedPerfectPhylogeny.
+Slides and a visual description of the these results are available [**here**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf).
 
 ## 2. Our approach
 We consider two problems:
