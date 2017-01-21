@@ -117,7 +117,8 @@ The term *algorithm* in the name of the files correspond to either:
 - **ip** stands for an optimal solution of MCRS,
 - **ipd** stands for an optimail solution of MCDRS.
 
-The label **S|n** denotes the mutations occuring on a given edge of phlylogeny tree and number of such mutations. The mutations corresponding to **S** can be found in *nameOfData_alg_columns.csv*. For VAF format the label is of the form **S|n|mean -+ std**, where **mean** is the mean of mutation measurements -+ standard deviation. 
+Regarding obtained phylogenetic tree, the label **S|n** denotes the mutations occuring on a given edge of phlylogeny tree and number of such mutations. The mutations corresponding to **S** can be found in *nameOfData_alg_columns.csv*. For VAF format the label is of the form **S|n|mean -+ std**, where **mean** is the mean of mutation measurements -+ standard deviation. 
+
 For the above {0,1} matrix an optimal solution for MCRS produces the following:
 #### matrix_ip_RS.csv
 	;c1;c2;c3;c4;c5;c3'
@@ -172,14 +173,14 @@ For the above real valued matrix with threshold **0.001** an optimal solution fo
 ### 5.1 {0,1} matrices
 Navigae to your *rowsplit.jar* executable and call the following code:
 
-	java -jar -Djava.library.path=/path to cplex.jar file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip
+	java -jar -Djava.library.path=/path_to_cplex.jar_file_(found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip
 
 Write **ip** for an optimal solution of MCRS problem or **ipd** for an optimal solution of MCDRS problem.
 
 ### 5.2 Transpose matrix of single nucleotide variants (SNVs) and a threshold
 Navigae to your *rowsplit.jar* executable and call the following code:
 
-	java -jar -Djava.library.path=/path to cplex.jar file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip VAF1 t
+	java -jar -Djava.library.path=/path_to_cplex.jar_file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip VAF1 t
 
 Write **ip** for an optimal solution of MCRS problem or **ipd** for an optimal solution of MCDRS problem. Indicate **t** as value of threshold.
 
