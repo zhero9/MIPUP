@@ -101,10 +101,9 @@ and this is the matrix for which we want to preform the optimal row split. This 
 ## 4 Output
 The output of the program for an instance matrix.csv is contained in folder *matrix_RS*.
 For each of the two diferent versions of problem, the folder contains three files.
-- *matrix_algorithm_RS.csv* (Contains optimal conflict-free row split. This matrix has the same .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.)
-- *matrix_algorithm_tree.dot* (Contains perfect phylogenetic tree of the above matrix that can be vizualized with 
-	[Graphviz](http://www.graphviz.org/) for example.)
-- *matrix_algorithm_columns.csv* (Contains the equalities among mutations and their representation, i.e. sets of mutations that appear on an edge in the phylogenetic tree.)
+- *matrix_algorithm_RS.csv*: Contains the optimal conflict-free row split matrix, in the binary .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.
+- *matrix_algorithm_tree.dot*: Contains the perfect phylogenetic tree of the above conflict-free matrix, in dot format. In can be vizualized with [Graphviz](http://www.graphviz.org/) for example.
+- *matrix_algorithm_columns.csv*: Contains the equalities among mutations and their representation, i.e. sets of mutations that appear on an edge in the phylogenetic tree.
 	
 The term *algorithm* in the name of the files corresponds to either:
 - **ip**: an optimal solution of the MCRS problem,
