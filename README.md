@@ -99,17 +99,18 @@ and this is the matrix for which we want to preform the optimal row split. This 
 
 
 ## 4 Output
-The output of the program for an instance matrix.csv is contained in folder *matrix_RS*.
-For each of the two diferent versions of problem, the folder contains three files.
+The output for an instance **matrix.csv** or **matrix.txt** is contained in the folder **matrix_RS**, and consists of:
 - *matrix_algorithm_RS.csv*: Contains the optimal conflict-free row split matrix, in the binary .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.
 - *matrix_algorithm_tree.dot*: Contains the perfect phylogenetic tree of the above conflict-free matrix, in dot format. In can be vizualized with [Graphviz](http://www.graphviz.org/) for example.
-- *matrix_algorithm_columns.csv*: Contains the equalities among mutations and their representation, i.e. sets of mutations that appear on an edge in the phylogenetic tree.
+- *matrix_algorithm_columns.csv*: Contains the SSNV names having the same binary profile in all the samples.
 	
 The term *algorithm* in the name of the files corresponds to either:
 - **ip**: an optimal solution of the MCRS problem,
 - **ipd**: an optimail solution of the MCDRS problem.
 
-In the phylogenetic tree from the .dot file, the label **S|n** denotes the mutations occuring on a given edge of phlylogeny tree and number of such mutations. The mutations corresponding to **S** can be found in *nameOfData_alg_columns.csv*. For VAF format the label is of the form **S|n|mean -+ std**, where **mean** is the mean of the VAFs of the mutations -+ their standard deviation. 
+In the phylogenetic tree from the .dot file, the edges of the tree are labeled with:
+- for binary inputs: **S|n**, where **S** (a letter **A,B,C,...***) is the name given by MIPUP to the group of mutations having the same binary profile in all the samples, and **n** the number of mutations in this group. The mutations corresponding to **S** can be found in *matrix_algorithm_columns.csv*. 
+- for VAF format: **S|n|mean -+ std**, where **S|n** are as above, and **mean** is the mean of the VAFs in group **S** -+ their standard deviation. 
 
 For the above {0,1} matrix an optimal solution for MCRS produces the following:
 #### matrix_ip_RS.csv
