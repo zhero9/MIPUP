@@ -108,7 +108,7 @@ The term *algorithm* in the name of the files corresponds to either:
 - **ip**: an optimal solution of the MCRS problem,
 - **ipd**: an optimail solution of the MCDRS problem.
 
-In the phylogenetic tree from the .dot file, the edges of the tree are labeled with:
+The edges of the phylogenetic tree from the .dot file are labeled with:
 - for binary inputs: **S|n**, where **S** (a letter **A,B,C,...***) is the name given by MIPUP to the group of mutations having the same binary profile in all the samples, and **n** the number of mutations in this group. The mutations corresponding to **S** can be found in *matrix_algorithm_columns.csv*. 
 - for VAF format: **S|n|mean -+ std**, where **S|n** are as above, and **mean** is the mean of the VAFs in group **S** -+ their standard deviation. 
 
