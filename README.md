@@ -57,7 +57,7 @@ is encoded as:
 
 and saved as name_of_input.csv 
  
-### 3.2 Transpose matrix of variant allele frequencies of the SSNVs and a threshold
+### 3.2 Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
 The input for the problem is a **n**x**m** real valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table
 
 
@@ -169,7 +169,7 @@ Navigate to your *rowsplit.jar* executable and call the following code from the 
 
 **path_to_data_file.csv** is the input file. Argument **-Djava.library.path** can be something like **/Users/tomescu/Applications/IBM/ILOG/CPLEX_Studio1263/cplex/bin/x86-64_osx/**. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem.
 
-### 5.2 Transpose matrix of variant allele frequencies of the SSNVs and a threshold
+### 5.2 Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
 Navigate to your *rowsplit.jar* executable and call the following code from the command line:
 
 	java -jar -Djava.library.path=/path_to_cplex.jar_file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip VAF1 t
