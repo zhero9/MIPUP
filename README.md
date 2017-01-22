@@ -33,7 +33,7 @@ ILP are solved using [IBM CPLEX](https://www-01.ibm.com/software/commerce/optimi
 We allow for two types of input. The first type is the classical binary matrix as described in the problem formulation. The other one is a transpose of a matrix containing the variant allele frequency of every SSNV in every sample and a threshold for transforming these into binary values. This format is the same used by tool [LICHeE](https://github.com/viq854/lichee).
 
 ### 3.1 {0,1} matrices
-The input for the problem is a **m**x**n** binary matrix in .csv format separeted by ";". 
+This input is an **m** x **n** binary matrix in .csv format separeted by ";". 
 The first column must contain the row (i.e., sample) names,
 and the first row must contain the column (i.e., mutation location) names. 
 For example, the following table *matrix.csv*
@@ -54,11 +54,9 @@ is encoded as:
 	r3;0;1;0;1;0;0
 	r4;0;1;1;0;1;1
 	r5;0;1;0;0;0;0
-
-and saved as name_of_input.csv 
  
 ### 3.2 Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
-The input for the problem is a **n**x**m** real valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table
+This input is an **n** x **m** real-valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table
 
 
 |chrom	|pos		|DESC	|normal	|a		|b		|c		|d    |
