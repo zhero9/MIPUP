@@ -4,7 +4,7 @@ or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
 This repository contains implementations of the two Integer Linear Programs from 
 
-*Hujdurovic, A., Husic E., Kacar, U., Milanic, Rizzi R. and Tomescu, A. I. (2017). MIPUP: Minimum perfect unmixed phylogenies via branchings in graphs and ILP, Submitted*
+*A. Hujdurović, E. Husić, M. Mehine, M. Milanič, R. Rizzi and A.I. Tomescu (2017). MIPUP: Minimum perfect unmixed phylogenies via branchings in graphs and ILP, Submitted*
 
 It also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
 
@@ -13,7 +13,7 @@ The problems addresed are **Minimum Conflict-Free Row Split problems**. They wer
 by *I. Hajirasouliha, B. Raphael, [Reconstructing Mutational 
 History in Multiply Sampled Tumors Using Perfect Phylogeny Mixtures](http://dx.doi.org/10.1007/978-3-662-44753-6_27). 
 WABI 2014: 354-367*. Later, NP-hardness of the problems was confirmed by
-*Hujdurovic, A., Kacar, U., Milanic, M., Ries, B., and Tomescu, A. I. (2016).
+*A. Hujdurović, U. Kačar, M. Milanič, B. Ries and A.I. Tomescu (2016).
 [Complexity and algorithms for finding a perfect phylogeny from mixed tumor
 samples](http://ieeexplore.ieee.org/document/7589999/). IEEE/ACM Transactions on Computational Biology and Bioinformatics.* This paper also proposed [a heuristic and an exact algorithm for a particular class of inputs](https://github.com/alexandrutomescu/MixedPerfectPhylogeny). Slides and a visual description of the these results are available [**here**](https://www.cs.helsinki.fi/u/tomescu/perfect-phylogeny-tumors.pdf).
 
