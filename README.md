@@ -32,7 +32,7 @@ ILP are solved using [IBM CPLEX](https://www-01.ibm.com/software/commerce/optimi
 ## 3. Input formats
 We allow for two types of input. The first type is the classical binary matrix as described in the problem formulation. The other one is a transpose of a matrix containing the variant allele frequency of every SSNV in every sample and a threshold for transforming these into binary values. This format is the same used by tool [LICHeE](https://github.com/viq854/lichee).
 
-### 3.1 {0,1} matrices
+### 3.1. {0,1} matrices
 This input is an **m** x **n** binary matrix in .csv format separeted by ";". 
 The first column must contain the row (i.e., sample) names,
 and the first row must contain the column (i.e., mutation location) names. 
@@ -55,7 +55,7 @@ is encoded as:
 	r4;0;1;1;0;1;1
 	r5;0;1;0;0;0;0
  
-### 3.2 Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
+### 3.2. Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
 This input is an **n** x **m** real-valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table *matrix.txt*
 
 
@@ -96,7 +96,7 @@ For a threshold equal to **0.001**, after transposing, we obtain the following m
 and this is the matrix for which we want to preform the optimal row split. This is done inside the program.
 
 
-## 4 Output
+## 4. Output
 The output for an instance **matrix.csv** or **matrix.txt** is contained in the folder **matrix_RS**, and consists of:
 - *matrix_algorithm_RS.csv*: Contains the optimal conflict-free row split matrix, in the binary .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.
 - *matrix_algorithm_tree.dot*: Contains the perfect phylogenetic tree of the above conflict-free matrix, in dot format. In can be vizualized with [Graphviz](http://www.graphviz.org/) for example.
@@ -134,7 +134,7 @@ For the above {0,1} matrix an optimal solution for MCRS produces the following:
 	D;c4
 	E;c5
 
-For the above real valued matrix with threshold **0.001** an optimal solution for MCDRS produces the following:
+For the above real-valued matrix with threshold **0.001** an optimal solution for MCDRS produces the following:
 #### matrixVAF_ipd_RS.csv
 	;chr1:13806323;chr1:33336351;chr1:152585526;chr1:165363067;chr1:220962389;chr10:1043055
 	a_1;0;0;1;0;0;0
@@ -159,24 +159,24 @@ For the above real valued matrix with threshold **0.001** an optimal solution fo
 	E;chr1:220962389
 	F;chr10:1043055
 
-## 5 Running
+## 5. Running
 
-### 5.1 {0,1} matrices
+### 5.1. {0,1} matrices
 Navigate to your *rowsplit.jar* executable and call the following code from the command line:
 
 	java -jar -Djava.library.path=/path_to_cplex.jar_file_(found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.csv ip
 
 **path_to_data_file.csv** is the input file. Argument **-Djava.library.path** can be something like **/Users/tomescu/Applications/IBM/ILOG/CPLEX_Studio1263/cplex/bin/x86-64_osx/**. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem.
 
-### 5.2 Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
+### 5.2. Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
 Navigate to your *rowsplit.jar* executable and call the following code from the command line:
 
 	java -jar -Djava.library.path=/path_to_cplex.jar_file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip VAF1 t
 
 **path_to_data_file.txt** is the input file and value **t** is the threshold. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem. 
 
-## 6 Instalation
-MIPUP requires the full version of the IBM CPLEX Optimizer. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week). 
+## 6. Instalation
+MIPUP requires the full version of the IBM CPLEX Optimizer and Java. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week). 
 
-## 7 Results
+## 7. Results
 To appear.
