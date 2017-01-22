@@ -84,6 +84,7 @@ is encoded as
 Observe that the column **normal** filled only with **0** is necessary. The columns after **normal** contain the VAF values in each sample. You also need to provide a *threshold* which will be used to transform this matrix into a binary one, according to the rule:
 - if VAF value >= threshold, then we get a **1**, 
 - otherwise, we get a **0**. 
+
 For a threshold equal to **0.001**, after transposing, we obtain the following matrix
 
 
@@ -98,18 +99,18 @@ and this is the matrix for which we want to preform the optimal row split. This 
 
 
 ## 4 Output
-The output of the program for an instance matrix.csv is contained in folder *matrix_rs*.
-For each of the two diferent version of problem, the folder contains three files.
+The output of the program for an instance matrix.csv is contained in folder *matrix_RS*.
+For each of the two diferent versions of problem, the folder contains three files.
 - *matrix_algorithm_RS.csv* (Contains optimal conflict-free row split. This matrix has the same .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.)
 - *matrix_algorithm_tree.dot* (Contains perfect phylogenetic tree of the above matrix that can be vizualized with 
 	[Graphviz](http://www.graphviz.org/) for example.)
-- *matrix_algorithm_columns.csv* (Contains the equalities among mutations and their representation, i.e. sets of mutations 	that appear at same nodes in phylogenetic tree.)
+- *matrix_algorithm_columns.csv* (Contains the equalities among mutations and their representation, i.e. sets of mutations that appear on an edge in the phylogenetic tree.)
 	
-The term *algorithm* in the name of the files correspond to either:
-- **ip** stands for an optimal solution of MCRS,
-- **ipd** stands for an optimail solution of MCDRS.
+The term *algorithm* in the name of the files corresponds to either:
+- **ip**: an optimal solution of the MCRS problem,
+- **ipd**: an optimail solution of the MCDRS problem.
 
-Regarding obtained phylogenetic tree, the label **S|n** denotes the mutations occuring on a given edge of phlylogeny tree and number of such mutations. The mutations corresponding to **S** can be found in *nameOfData_alg_columns.csv*. For VAF format the label is of the form **S|n|mean -+ std**, where **mean** is the mean of mutation measurements -+ standard deviation. 
+In the phylogenetic tree from the .dot file, the label **S|n** denotes the mutations occuring on a given edge of phlylogeny tree and number of such mutations. The mutations corresponding to **S** can be found in *nameOfData_alg_columns.csv*. For VAF format the label is of the form **S|n|mean -+ std**, where **mean** is the mean of the VAFs of the mutations -+ their standard deviation. 
 
 For the above {0,1} matrix an optimal solution for MCRS produces the following:
 #### matrix_ip_RS.csv
@@ -163,21 +164,21 @@ For the above real valued matrix with threshold **0.001** an optimal solution fo
 ## 5 Running
 
 ### 5.1 {0,1} matrices
-Navigae to your *rowsplit.jar* executable and call the following code:
+Navigate to your *rowsplit.jar* executable and call the following code from the command line:
 
-	java -jar -Djava.library.path=/path_to_cplex.jar_file_(found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip
+	java -jar -Djava.library.path=/path_to_cplex.jar_file_(found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.csv ip
 
-Write **ip** for an optimal solution of MCRS problem or **ipd** for an optimal solution of MCDRS problem.
+**path_to_data_file.csv** is the input file. Argument **-Djava.library.path** can be something like **/Users/tomescu/Applications/IBM/ILOG/CPLEX_Studio1263/cplex/bin/x86-64_osx/**. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem.
 
-### 5.2 Transpose matrix of single nucleotide variants (SNVs) and a threshold
-Navigae to your *rowsplit.jar* executable and call the following code:
+### 5.2 Transpose matrix of variant allele frequencies of the SSNVs and a threshold
+Navigate to your *rowsplit.jar* executable and call the following code from the command line:
 
 	java -jar -Djava.library.path=/path_to_cplex.jar_file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip VAF1 t
 
-Write **ip** for an optimal solution of MCRS problem or **ipd** for an optimal solution of MCDRS problem. Indicate **t** as value of threshold.
+**path_to_data_file.txt** is the input file and value **t** is the threshold. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem. 
 
 ## 6 Instalation
-The program requires full version of IBM CPLEX Optimizer. The free version is bounded for linear programs containing up to 1000 variables and constraints, but it is possible to obtain academic version. The process of obtaning academic version can take more than a week. 
+MIPUP requires the full version of the IBM CPLEX Optimizer. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week). 
 
 ## 7 Results
 To appear.
