@@ -56,7 +56,7 @@ is encoded as:
 	r5;0;1;0;0;0;0
  
 ### 3.2 Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
-This input is an **n** x **m** real-valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table
+This input is an **n** x **m** real-valued matrix in .txt format, **tab** separeted. Since this is the transpose of the matrix we are really interested, the first row will in fact contain the names of the samples, and the first several columns contain the names and description of  mutations. For example, the following table *matrix.txt*
 
 
 |chrom	|pos		|DESC	|normal	|a		|b		|c		|d    |
