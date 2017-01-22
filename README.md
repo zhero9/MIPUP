@@ -1,4 +1,4 @@
-# Minimum Perfect Unmixed Phylogeny v1.0 
+# MIPUP: Minimum Perfect Unmixed Phylogeny v1.0 
 **For questions or problems with this code, contact [edinehusic@gmail.com](mailto:edinehusic@gmail.com),
 or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
