@@ -1,25 +1,23 @@
 digraph {
-rowa[label="a",shape=box,style=filled];
-rowb[label="b",shape=box,style=filled];
-rowc[label="c",shape=box,style=filled];
-rowd[label="d",shape=box,style=filled];
-a_1[label="a_1",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+rowa[label="a",shape=box,style=filled,fontsize=40];
+rowb[label="b",shape=box,style=filled,fontsize=40];
+rowc[label="c",shape=box,style=filled,fontsize=40];
+rowd[label="d",shape=box,style=filled,fontsize=40];
+a_1[label="a_1",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_2[label="a_2",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+b_3[label="b_3",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+c_2[label="c_2",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+d_1[label="d_1",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
 a_1 -> rowa[arrowhead="normal"];
-a_1 -> rowb[arrowhead="normal"];
-a_1 -> rowc[arrowhead="normal"];
-a_2[label="a_2",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
 a_2 -> rowa[arrowhead="normal"];
+a_1 -> rowb[arrowhead="normal"];
 a_2 -> rowb[arrowhead="normal"];
-a_2 -> rowd[arrowhead="normal"];
-b_3[label="b_3",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
 b_3 -> rowb[arrowhead="normal"];
-b_3 -> rowc[arrowhead="normal"];
-b_3 -> rowd[arrowhead="normal"];
-c_2[label="c_2",shape=box,style=filled,fontsize=28,fillcolor="#7fffd4"];
+a_1 -> rowc[arrowhead="normal"];
 c_2 -> rowc[arrowhead="normal"];
-c_2 -> rowd[arrowhead="normal"];
-d_1[label="d_1",shape=box,style=filled,fontsize=28,fillcolor="#e9d66b"];
 d_1 -> rowd[arrowhead="normal"];
+c_2 -> rowd[arrowhead="normal"];
+{rank = same;a_1;a_2;b_3;c_2;d_1;}
 legend[label="Equalities among split rows:
 a_1=b_1=c_1
 a_2=b_2

@@ -1,20 +1,17 @@
 digraph {
-rowr1[label="r1",shape=box,style=filled];rowr2[label="r2",shape=box,style=filled];rowr3[label="r3",shape=box,style=filled];rowr4[label="r4",shape=box,style=filled];rowr5[label="r5",shape=box,style=filled];r1[label="r1",shape=box,style=filled,fontsize=28,fillcolor="#a4c639"];
+rowr1[label="r1",shape=box,style=filled,fontsize=40];rowr2[label="r2",shape=box,style=filled,fontsize=40];rowr3[label="r3",shape=box,style=filled,fontsize=40];rowr4[label="r4",shape=box,style=filled,fontsize=40];rowr5[label="r5",shape=box,style=filled,fontsize=40];r1[label="r1",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+r2_2[label="r2_2",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+r2_3[label="r2_3",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+r4[label="r4",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+r5[label="r5",shape=oval,style=filled,fontsize=28,fillcolor="#ff9966"];
 r1 -> rowr1[arrowhead="normal"];
 r1 -> rowr2[arrowhead="normal"];
-r2_2[label="r2_2",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
 r2_2 -> rowr2[arrowhead="normal"];
-r2_2 -> rowr4[arrowhead="normal"];
-r2_3[label="r2_3",shape=box,style=filled,fontsize=28,fillcolor="#cd9575"];
 r2_3 -> rowr2[arrowhead="normal"];
 r2_3 -> rowr3[arrowhead="normal"];
-r4[label="r4",shape=box,style=filled,fontsize=28,fillcolor="#e9d66b"];
 r4 -> rowr4[arrowhead="normal"];
-r5[label="r5",shape=box,style=filled,fontsize=28,fillcolor="#ff9966"];
-r5 -> rowr2[arrowhead="normal"];
-r5 -> rowr3[arrowhead="normal"];
-r5 -> rowr4[arrowhead="normal"];
 r5 -> rowr5[arrowhead="normal"];
+{rank = same;r1;r2_2;r2_3;r4;r5;}
 legend[label="Equalities among split rows:
 r1=r2_1
 r2_3=r3
