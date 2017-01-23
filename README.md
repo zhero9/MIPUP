@@ -83,7 +83,7 @@ Observe that the column **normal** filled only with **0** is necessary. The colu
 - if VAF value >= threshold, then we get a **1**, 
 - otherwise, we get a **0**. 
 
-For a threshold equal to **0.001**, after transposing, we obtain the following matrix
+For a threshold equal to **0.003**, after transposing, we obtain the following matrix
 
 
 |	|chr1_13..  |chr1_33..  |chr1_15..|chr1_16..|chr1_22..|chr10_10..|
@@ -134,7 +134,7 @@ For the above {0,1} matrix an optimal solution for MCRS produces the following:
 	D;c4
 	E;c5
 
-For the above real-valued matrix with threshold **0.001** an optimal solution for MCDRS produces the following:
+For the above real-valued matrix with threshold **0.003** an optimal solution for MCDRS produces the following:
 #### matrixVAF_ipd_RS.csv
 	;chr1:13806323;chr1:33336351;chr1:152585526;chr1:165363067;chr1:220962389;chr10:1043055
 	a_1;0;0;1;0;0;0
