@@ -12,7 +12,7 @@ public class WritterPhylogenyTree {
 			Vector<Vector<Integer>> columnsCopies, Vector<String> rowN) {
 		
 		this.originalMatrix = orgMatrix;
-		this.matrix = matrix; // only used to determin isSubset
+		this.matrix = matrix; // only used to determine isSubset
 		this.matrixF = filteredMatrix;
 		this.rows = rows;
 		this.rowNames = rowNames;
@@ -31,6 +31,7 @@ public class WritterPhylogenyTree {
 	public Vector<String> rowN;
 
 	Vector<Vector<Integer>> rowCopies = new Vector<Vector<Integer>>();
+	private int[] toWhichRowCopy;
 	Vector<String> legend = new Vector<String>();
 	Vector<boolean[]> setL = new Vector<boolean[]>();
 	Vector<String> labels = new Vector<String>();
@@ -52,9 +53,17 @@ public class WritterPhylogenyTree {
 
 	private void calculateDataForPhylogenyTree() {
 		boolean[] tmp = new boolean[rowN.size()];
+		toWhichRowCopy = new int[rowN.size()];
 
+//		System.out.println("Row names:");
+//		for (int i = 0; i < rowN.size(); i++)
+//		{
+//			System.out.println(rowN.elementAt(i));
+//		}
+		
 		for (int i = 0; i < tmp.length; i++) {
 			if (!tmp[i]) {
+				toWhichRowCopy[i] = i;
 				Vector<Integer> copies = new Vector<Integer>();
 				copies.add(i);
 				setL.add(matrixF[i]);
@@ -71,6 +80,7 @@ public class WritterPhylogenyTree {
 					}
 					if (tmp1 && !tmp[j]) {
 						copies.add(j);
+						toWhichRowCopy[j] = i;
 						tmp[j] = true;
 					}
 				}
@@ -89,7 +99,7 @@ public class WritterPhylogenyTree {
 	}
 
 	public void writePhylogenyTreeFile(String pathToMatrix, int tmp) {
-		// VAF files writer of phylogeniy trees
+		// VAF files writer of phylogeny trees
 
 		BufferedWriter writer = null;
 		try {
@@ -105,13 +115,23 @@ public class WritterPhylogenyTree {
 			writer.write("digraph {");
 			writer.newLine();
 
-			// / adding additonal leafs=rows of original matrix
+			// / adding additional leafs=rows of original matrix
 			for (int i = 0; i < rowNames.length; i++) {
 				writer.write("row" + rowNames[i] + "[label=\"" + rowNames[i]
-						+ "\",shape=box,style=filled];");
+						+ "\",shape=box,style=filled,fontsize=40];");
 				writer.newLine();
 			}
 
+//			System.out.println("rowCopies:");
+//			for (int i = 0; i < rowCopies.size(); i++) {
+//				for (int ii = 0; ii < rowCopies.elementAt(i).size(); ii++)
+//				{
+//					System.out.print(Integer.toString(rowCopies.elementAt(i).elementAt(ii) + 2) + ";");
+//				}
+//				System.out.println();
+//			}
+
+			
 			// / Writing leafs on the tree:
 			for (int i = 0; i < rowCopies.size(); i++) {
 				int t = rowCopies.elementAt(i).elementAt(0);
@@ -119,24 +139,45 @@ public class WritterPhylogenyTree {
 					writer.write(rowN.elementAt(t)
 							+ "[label=\""
 							+ rowN.elementAt(t)
-							+ "\",shape=box,style=filled,fontsize=28,fillcolor=\""
+							+ "\",shape=oval,style=filled,fontsize=28,fillcolor=\""
 							+ nodeColors[rows[t]] + "\"];");
 				} else {
 					writer.write(rowN.elementAt(t)
 							+ "[label=\""
 							+ rowN.elementAt(t)
-							+ "\",shape=box,style=filled,fontsize=28,fillcolor=\""
+							+ "\",shape=oval,style=filled,fontsize=28,fillcolor=\""
 							+ nodeColors[t % nodeColors.length] + "\"];");
 				}
 				writer.newLine();
+//				for (int p = 0; p < rowNames.length; p++) {
+//					if (isSubset(t, p)) {
+//						writer.write(rowN.elementAt(t) + " -> " + "row"
+//								+ rowNames[p] + "[arrowhead=\"normal\"];");
+//						writer.newLine();
+//					}
+//				}				
+			}
+			
+			for (int i = 0; i < rowN.size(); i++)
+			{
 				for (int p = 0; p < rowNames.length; p++) {
-					if (isSubset(t, p)) {
-						writer.write(rowN.elementAt(t) + " -> " + "row"
+					if (rowN.elementAt(i).contains(rowNames[p])) {
+						writer.write(rowN.elementAt(toWhichRowCopy[i]) + " -> " + "row"
 								+ rowNames[p] + "[arrowhead=\"normal\"];");
 						writer.newLine();
 					}
 				}
 			}
+
+			
+			// telling DOT to put all leaves on the same level
+			writer.write("{rank = same;");
+			for (int i = 0; i < rowCopies.size(); i++) {
+				int t = rowCopies.elementAt(i).elementAt(0);
+				writer.write(rowN.elementAt(t) + ";");
+			}
+			writer.write("}");
+			writer.newLine();
 
 			// / Writing legend:
 			if (legend.size() > 0) {
@@ -277,12 +318,13 @@ public class WritterPhylogenyTree {
 
 			writer.write("digraph {");
 			writer.newLine();
-
-			// / adding additonal leafs=rows of original matrix
+			
+			// / adding additional leafs=rows of original matrix
 			for (int i = 0; i < rowNames.length; i++) {
 				writer.write("row" + rowNames[i] + "[label=\"" + rowNames[i]
-						+ "\",shape=box,style=filled];");
+						+ "\",shape=box,style=filled,fontsize=40];");
 			}
+			
 
 			// / Writing leafs on the tree:
 			for (int i = 0; i < rowCopies.size(); i++) {
@@ -291,24 +333,45 @@ public class WritterPhylogenyTree {
 					writer.write(rowN.elementAt(t)
 							+ "[label=\""
 							+ rowN.elementAt(t)
-							+ "\",shape=box,style=filled,fontsize=28,fillcolor=\""
+							+ "\",shape=oval,style=filled,fontsize=28,fillcolor=\""
 							+ nodeColors[rows[t]] + "\"];");
 				} else {
 					writer.write(rowN.elementAt(t)
 							+ "[label=\""
 							+ rowN.elementAt(t)
-							+ "\",shape=box,style=filled,fontsize=28,fillcolor=\""
+							+ "\",shape=oval,style=filled,fontsize=28,fillcolor=\""
 							+ nodeColors[t % nodeColors.length] + "\"];");
 				}
 				writer.newLine();
+//				for (int p = 0; p < rowNames.length; p++) {
+//					if (isSubset(t, p)) {
+//						writer.write(rowN.elementAt(t) + " -> " + "row"
+//								+ rowNames[p] + "[arrowhead=\"normal\"];");
+//						writer.newLine();
+//					}
+//				}
+			}
+			for (int i = 0; i < rowN.size(); i++)
+			{
 				for (int p = 0; p < rowNames.length; p++) {
-					if (isSubset(t, p)) {
-						writer.write(rowN.elementAt(t) + " -> " + "row"
+					if (rowN.elementAt(i).contains(rowNames[p])) {
+						writer.write(rowN.elementAt(toWhichRowCopy[i]) + " -> " + "row"
 								+ rowNames[p] + "[arrowhead=\"normal\"];");
 						writer.newLine();
 					}
 				}
 			}
+
+			
+			// telling DOT to put all leaves on the same level
+			writer.write("{rank = same;");
+			for (int i = 0; i < rowCopies.size(); i++) {
+				int t = rowCopies.elementAt(i).elementAt(0);
+				writer.write(rowN.elementAt(t) + ";");
+			}
+			writer.write("}");
+			writer.newLine();
+
 
 			// / Writing legend:
 			if (legend.size() > 0) {

@@ -30,10 +30,10 @@ public class Main {
 		/**/
 		/*
 		pathToMatrix = "/home/edin/ExamplesDebug/MY21_filtered.txt";
-		formatOfInput = "VAF2";
+		formatOfInput = "VAF1";
 		maxVAFnotPresent = 0.05;
 		minVAFPresent = 0.05;
-		alg = "extd"; */
+		alg = "ip"; */
 
 		if (formatOfInput.equals("VAF2")) {
 			Solver s = new Solver(pathToMatrix, maxVAFnotPresent, minVAFPresent, alg);
