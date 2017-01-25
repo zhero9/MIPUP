@@ -179,4 +179,4 @@ Navigate to your *mipup.jar* executable and call the following code from the com
 MIPUP requires the full version of the IBM CPLEX Optimizer and Java. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week). 
 
 ## 7. Results
-To appear.
+The public datasets that were used in the experiments are in the directory [data](https://github.com/zhero9/MIPUP/tree/master/data). The scripts used for the experiments (containing all parameter values) are in [scripts](https://github.com/zhero9/MIPUP/tree/master/scripts). The experiment results are in the directory [data/results](https://github.com/zhero9/MIPUP/tree/master/data).
