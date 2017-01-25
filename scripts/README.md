@@ -1,7 +1,7 @@
-This folder contains the scripts used for running the experiments.
+This directory contains the scripts used for running the experiments.
 
 ## experiments.sh
-Contains all commands and parameters. Before running, update the DIR variables with the paths where your data and programs are located. The MY21 dataset is not public, but one can see the running parameters from the **experiments-MY21.sh** script.
+Contains all commands and parameters used in the experiments. Refer to the [data](https://github.com/zhero9/MIPUP/tree/master/data) direcotry for the data. Before running, update the DIR variables with the paths where your data and programs are located. The MY21 dataset is not public, but you can see the running parameters from the **experiments-MY21.sh** script.
 
 ## remove_weak_SSNVs.py
 
@@ -12,7 +12,7 @@ This Python script removes those SSNVs whose binary presence/absence pattern in 
 where **filename** is the input file, **vafThreshold** is the threshold for converting VAF values into binary ones (e.g., 0.05) and **minSupport** (variable *k*) is the number of times the binary pattern of the SSNV must appear in the matrix to be kept.
 
 ## convert_input_for_heuristic.py
-This is a Python script converint the input matrices into transposed binary ones, accepted by the heuristic algorithm from [here](https://github.com/alexandrutomescu/MixedPerfectPhylogeny). You probably don't need to bother with this, unless wanting to reproduce the results presented in the paper. Run as: 
+You probably don't need to bother with this, unless wanting to reproduce the results presented in the paper. This is a Python script converting the input matrices into transposed binary ones, accepted by the heuristic algorithm from [here](https://github.com/alexandrutomescu/MixedPerfectPhylogeny). Run as: 
 
 	python convert_input_for_heuristic.py filename vafThreshold
   
