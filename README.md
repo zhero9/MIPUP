@@ -4,7 +4,7 @@ or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
 This repository contains implementations of the two Integer Linear Programs from 
 
-*A. Hujdurović, E. Husić, M. Mehine, M. Milanič, R. Rizzi and A.I. Tomescu (2017). MIPUP: Minimum perfect unmixed phylogenies via branchings in graphs and ILP, Submitted*
+*A. Hujdurović, E. Husić, M. Mehine, M. Milanič, R. Rizzi and A.I. Tomescu (2017). MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings in graphs and ILP, Submitted*
 
 It also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
 
