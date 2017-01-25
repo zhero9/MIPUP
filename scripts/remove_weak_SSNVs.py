@@ -33,7 +33,7 @@ with open(filename) as f:
 
 support_of_column = dict()
 
-# going through the rows of he matrix (i.e. SNVs), and 
+# going through the rows of he matrix (i.e. SSNVs), and 
 # seeing how many times each binary pattern has been observed)
 
 read_first_line = False
