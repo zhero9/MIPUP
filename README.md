@@ -162,16 +162,16 @@ For the above real-valued matrix with threshold **0.003** an optimal solution fo
 ## 5. Running
 
 ### 5.1. {0,1} matrices
-Navigate to your *rowsplit.jar* executable and call the following code from the command line:
+Navigate to your *mipup.jar* executable and call the following code from the command line:
 
-	java -jar -Djava.library.path=/path_to_cplex.jar_file_(found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.csv ip
+	java -jar -Djava.library.path=/path_to_cplex.jar_file_(found under the <CPLEX>/lib directory)/ mipup.jar path_to_data_file.csv ip
 
 **path_to_data_file.csv** is the input file. Argument **-Djava.library.path** can be something like **/Users/tomescu/Applications/IBM/ILOG/CPLEX_Studio1263/cplex/bin/x86-64_osx/**. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem.
 
 ### 5.2. Transpose matrix of variant allele frequencies (VAFs) of the mutations (SSNVs) and a threshold
-Navigate to your *rowsplit.jar* executable and call the following code from the command line:
+Navigate to your *mipup.jar* executable and call the following code from the command line:
 
-	java -jar -Djava.library.path=/path_to_cplex.jar_file (found under the <CPLEX>/lib directory)/ rowsplit.jar path_to_data_file.txt ip VAF1 t
+	java -jar -Djava.library.path=/path_to_cplex.jar_file (found under the <CPLEX>/lib directory)/ mipup.jar path_to_data_file.txt ip VAF1 t
 
 **path_to_data_file.txt** is the input file and value **t** is the threshold. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem. 
 
