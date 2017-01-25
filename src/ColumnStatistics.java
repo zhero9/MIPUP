@@ -54,7 +54,7 @@ public class ColumnStatistics {
 					}
 				}
 				stdDev = Math.sqrt(stdDev/num);
-				stats[i]= df.format(avrg)+"-+"+df.format(stdDev);
+				stats[i]= df.format(avrg)+"±"+df.format(stdDev);
 			}
 
 			return stats;
