@@ -1,7 +1,7 @@
 This directory contains the scripts used for running the experiments.
 
 ## experiments.sh
-Contains all commands and parameters used in the experiments. Refer to the [data](https://github.com/zhero9/MIPUP/tree/master/data) direcotry for the data. Before running, update the DIR variables with the paths where your data and programs are located. The MY21 dataset is not public, but you can see the running parameters from the **experiments-MY21.sh** script.
+Contains all commands and parameters used in the experiments presented in the paper. Refer to the [data](https://github.com/zhero9/MIPUP/tree/master/data) direcotry for the data. Before running, update the DIR variables with the paths where your data and programs are located. The MY21 dataset is not public, but you can see the running parameters from the **experiments-MY21.sh** script.
 
 ## remove_weak_SSNVs.py
 
