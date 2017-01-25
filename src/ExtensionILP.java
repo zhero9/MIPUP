@@ -7,20 +7,105 @@ import ilog.cplex.IloCplex;
 
 public class ExtensionILP {
 
-	private int m, n;
+	private int m, n, nf;
 
-	private boolean[][] mat; // starting matrix i.e. M', * realized, but with no
-								// column copies
-	boolean[][] originalMatrix;
-	Digraph branching; // opt branching of D_M'
-	Vector<Vector<Integer>> colCopies;
+	private boolean[][] mat; 	// starting matrix i.e. M', * realized, 
+								// but with no column copies
+	Digraph branching; 			// opt branching of D_M'
+	Vector<Vector<Integer>> sameColumns; 	// columns that become same after realizing *
+	Vector<Vector<Integer>> columnsCopies;	// columns that are the same as vectors in {0,1,*}^m
 	int objValue = 0;
 
 	public ExtensionILP(int[][] matrix, String alg) throws IloException {
-		// print(matrix);
-		m = matrix.length; // number of rows
-		n = matrix[0].length; // number of columns
-		solve(matrix, alg);
+		m = matrix.length; 			// number of rows
+		nf = matrix[0].length; 		// number of all columns
+		int[][] filteredM = findEqualColumns(matrix);
+		n = filteredM[0].length; 	// number of DIFFERENT columns
+		solve(filteredM, alg);
+	}
+	
+	private int[][] findEqualColumns(int[][] matrix) {
+		/* Return matrix with one representative of each set of equal columns.
+		 * */
+		boolean[] tmp = new boolean[nf];
+		columnsCopies = new Vector<Vector<Integer>>();
+		for (int s1 = 0; s1 < nf; s1++) {
+			if (!tmp[s1]) {
+				// s1 is not added in some set of equal columns.
+				Vector<Integer> copies = new Vector<Integer>();
+				copies.add(s1);
+				tmp[s1] = true;
+				for (int s2 = s1 + 1; s2 < nf; s2++) {
+					boolean tmp1 = true;
+					int i = 0;
+					while (tmp1 && i < m && !tmp[s2]) { // is s1 == s2
+						if (matrix[i][s1] != matrix[i][s2])
+							tmp1 = false;
+						i++;
+					}
+					if (tmp1 && !tmp[s2]) {
+						copies.add(s2);
+						tmp[s2] = true;
+					}
+				}
+				columnsCopies.add(copies);
+			}
+		}
+
+		int[][] filteredM = new int[m][columnsCopies.size()];
+		for (int i = 0; i < filteredM[0].length; i++) {
+			for (int k = 0; k < m; k++) {
+				filteredM[k][i] = matrix[k][columnsCopies.elementAt(i).elementAt(0)];
+			}
+		}
+		return filteredM;
+	}
+	
+	private void appendNewEqualColumns(){
+		/* Some columns become equal after realizing *. 
+		 * The sets of equal columns are found by ILP. 
+		 * This function merges these new sets with sets of same columns
+		 * that were the same before realizing *'s. 
+		 */
+		boolean[] tmp = new boolean[nf];
+
+		for (int i = sameColumns.size() -1;  i >= 0; i--){
+			for(int j = sameColumns.elementAt(i).size()-1; j >= 1; j--){
+				for(int k : columnsCopies.elementAt(sameColumns.elementAt(i).elementAt(j)))
+					columnsCopies.elementAt(sameColumns.elementAt(i).elementAt(0)).add(k);
+			tmp[sameColumns.elementAt(i).elementAt(j)] = true;
+			}
+		}
+		
+		for(int i = nf-1; i>0; i-- ){
+			if(tmp[i])	columnsCopies.remove(i);
+		}
+		//printVV(columnsCopies);
+	}
+	
+	public boolean[][] getOriginalMatrix(){
+		/* Return matrix starting data matrix, where each of * (missing data)
+		 * is realized into 0 or 1. This is used later to find statistics.
+		 */
+		boolean[][] originalMatrix = new boolean[m][nf];
+		appendNewEqualColumns();
+		for(int i = 0; i< columnsCopies.size(); i++){
+			for(int u:columnsCopies.elementAt(i)){
+				for(int r = 0; r < m ; r++){
+					originalMatrix[r][u] = mat[r][i];
+				}
+			}
+		}
+		return originalMatrix;
+	}
+	
+	public void printVV(Vector<Vector<Integer>> vec){
+		for(int i = 0; i< vec.size(); i++){
+			for(int j : vec.elementAt(i)){
+				System.out.print(" "+j);
+			}
+			System.out.println();
+		}
 	}
 
 	public void print(int[][] m) {
@@ -34,15 +119,13 @@ public class ExtensionILP {
 	}
 
 	public void solve(int[][] matrix, String alg) throws IloException {
-		// try {
 		System.out.println("Finding set A of all potential arcs ...");
 		Digraph A = findA(matrix);
-		// A.printAdjList();
 
-		System.out.println("Setting up ILP.");
+		System.out.println("Setting up extended ILP.");
 		IloCplex cplex = new IloCplex();
 
-		/* Variables.! */
+		/* Variables */
 		IloNumVar[][] t = new IloNumVar[m][];
 		for (int i = 0; i < m; i++) {
 			t[i] = cplex.boolVarArray(n);
@@ -60,7 +143,7 @@ public class ExtensionILP {
 			x[i] = cplex.boolVarArray(A.outEdges.elementAt(i).size());
 		}
 
-		// Additional variables used to linearize program
+		// Additional variables used to linearize program:
 		// tt[r][u][v] = t[r][u]*t[r][v]
 		IloNumVar[][][] tt = new IloNumVar[m][][];
 		for (int r = 0; r < m; r++) {
@@ -91,13 +174,13 @@ public class ExtensionILP {
 			}
 		}
 
-		// expresion for constraints
+		// expression for constraints
 		IloLinearNumExpr num_expr = cplex.linearNumExpr();
 
 		// /////////////////////////////////////////
-		// block of thigs that differ two models //
+		// block of things that differ two models //
 		// /////////////////////////////////////////
-		if (alg == "ext") {
+		if (alg == "ext") { // MCRS
 			IloNumVar[][] y = new IloNumVar[m][];
 			for (int i = 0; i < m; i++) {
 				y[i] = cplex.boolVarArray(n);
@@ -128,10 +211,7 @@ public class ExtensionILP {
 					}
 				}
 			}
-
-			// tmp, try to delete them
-
-		} else if (alg == "extd") {
+		} else if (alg == "extd") { // MCDRS
 			IloNumVar[] z = cplex.boolVarArray(n);
 
 			// Objective function
@@ -141,7 +221,7 @@ public class ExtensionILP {
 			}
 			cplex.addMinimize(objective);
 
-			// / 8
+			// 8
 			for (int r = 0; r < m; r++) {
 				for (int v = 0; v < n; v++) {
 					if (matrix[r][v] > 0) {
@@ -157,10 +237,10 @@ public class ExtensionILP {
 				}
 			}
 		}
-		// ////////////////////////////end
+		///////////// end of block!
 
-		// / all constraints except 8
-		// / 1 //////////////// checked
+		// Constraints  that are same in both models.(All except 8)
+		// 1 
 		for (int r = 0; r < m; r++) {
 			for (int v = 0; v < n; v++) {
 				if (matrix[r][v] < 2) {
@@ -169,7 +249,7 @@ public class ExtensionILP {
 			}
 		}
 
-		// // 2 ///// c
+		// 2
 		for (int u = 0; u < n; u++) {
 			for (int v = 0; v < n; v++) {
 				num_expr = cplex.linearNumExpr();
@@ -183,7 +263,7 @@ public class ExtensionILP {
 			}
 		}
 
-		// // 3
+		// 3
 		for (int u = 0; u < n; u++) {
 			for (int v = 0; v < n; v++) {
 				num_expr = cplex.linearNumExpr();
@@ -197,7 +277,7 @@ public class ExtensionILP {
 			}
 		}
 
-		// / tt[r][u][v] = t[r][u]*t[r][v]
+		// tt[r][u][v] = t[r][u]*t[r][v]
 		for (int u = 0; u < n; u++) {
 			for (int v = 0; v < n; v++) {
 				for (int r = 0; r < m; r++) {
@@ -212,7 +292,7 @@ public class ExtensionILP {
 			}
 		}
 
-		// // 4 /////////////
+		// 4
 		for (int u = 0; u < n; u++) {
 			num_expr = cplex.linearNumExpr();
 			for (int v = 0; v < n; v++) {
@@ -221,7 +301,7 @@ public class ExtensionILP {
 			cplex.addEq(num_expr, 1);
 		}
 
-		// / qp[u][v] = q[u][v]*p[v]
+		// qp[u][v] = q[u][v]*p[v]
 		for (int u = 0; u < n; u++) {
 			for (int v = 0; v < n; v++) {
 				cplex.addLe(qp[u][v], q[u][v]);
@@ -234,14 +314,14 @@ public class ExtensionILP {
 			}
 		}
 
-		// 5 &&& 6 &&& 7 maybe we should split this, we will see how it
-		// affects performance
+		// 5 & 6 & 7 maybe we should split this,
+		// we will see how it affects performance
 		IloLinearNumExpr expr = cplex.linearNumExpr();
 		for (int u = 0; u < n; u++) {
 			expr = cplex.linearNumExpr();
 			for (int index_v = 0; index_v < A.outEdges.elementAt(u).size(); index_v++) {
 
-				// / 5 //// c
+				// 5
 				num_expr = cplex.linearNumExpr();
 				num_expr.addTerm(2, x[u][index_v]);
 				num_expr.addTerm(-1, p[u]);
@@ -249,7 +329,7 @@ public class ExtensionILP {
 						p[A.outEdges.elementAt(u).elementAt(index_v)]);
 				cplex.addLe(num_expr, 0);
 
-				// / 6 //// c
+				// 6
 				for (int r = 0; r < m; r++) {
 					if (matrix[r][u] == 2
 							|| matrix[r][A.outEdges.elementAt(u).elementAt(
@@ -262,15 +342,15 @@ public class ExtensionILP {
 						cplex.addLe(num_expr, 1);
 					}
 				}
-				// //*6
+				//*6
 
-				// / 7 ////c
+				// 7
 				expr.addTerm(1, x[u][index_v]);
 			}
 			cplex.addLe(expr, 1);
 		}
 
-		// / linearization for 8
+		// Linearization for 8
 		// pt[r][v] = p[v] * t[r][v]
 		for (int r = 0; r < m; r++) {
 			for (int v = 0; v < n; v++) {
@@ -300,17 +380,17 @@ public class ExtensionILP {
 		}
 
 		// cplex.setOut(null);
-		System.out.println("Sloving ILP. ");
+		System.out.println("Sloving ILP (Cplex output): ");
 		if (cplex.solve()) {
 			// objective value
-			System.out.println("Ob. value: " + cplex.getBestObjValue());
+			//System.out.println("Objective value: " + cplex.getBestObjValue());
 			objValue = (int) cplex.getBestObjValue();
 
 			double[] pvalues = new double[n];
 			pvalues = cplex.getValues(p);
 
-			// col copies
-			colCopies = new Vector<Vector<Integer>>();
+			// Set of equal columns after realization of *.
+			sameColumns = new Vector<Vector<Integer>>();
 			boolean[] isAdded = new boolean[n];
 			for (int u = 0; u < n; u++) {
 				if (!isAdded[u]) {
@@ -322,7 +402,7 @@ public class ExtensionILP {
 							isAdded[v] = true;
 						}
 					}
-					colCopies.add(copies);
+					sameColumns.add(copies);
 				}
 			}
 
@@ -333,17 +413,11 @@ public class ExtensionILP {
 					nn++;
 			}
 			mat = new boolean[m][nn];
-			originalMatrix = new boolean[m][n];
 			for (int r = 0; r < m; r++) {
 				int k = 0;
 				double[] tVal = cplex.getValues(t[r]);
-				for (int u = 0; u < colCopies.size(); u++) {
-					for (int v : colCopies.elementAt(u)) {
-						if (tVal[v] > 0.5) {
-							originalMatrix[r][v] = true;
-						} else {
-							originalMatrix[r][v] = false;
-						}
+				for (int u = 0; u < sameColumns.size(); u++) {
+					for (int v : sameColumns.elementAt(u)) {
 						if (pvalues[v] > 0.5) {
 							if (tVal[v] > 0.5) {
 								mat[r][k] = true;
@@ -357,13 +431,13 @@ public class ExtensionILP {
 			}
 
 			int[] hash = new int[n];
-			for (int u = 0; u < colCopies.size(); u++) {
-				for (int v : colCopies.elementAt(u)) {
+			for (int u = 0; u < sameColumns.size(); u++) {
+				for (int v : sameColumns.elementAt(u)) {
 					hash[v] = u;
 				}
 			}
 
-			// branching
+			// Recovering branching from ILP solution.
 			branching = new Digraph(nn, "second constructor");
 			for (int u = 0; u < n; u++) {
 				double[] xu = cplex.getValues(x[u]);
@@ -404,21 +478,19 @@ public class ExtensionILP {
 		 * exc + "' caught in ExtensionILP"); return; }
 		 */
 	}
-
+	
 	public Digraph findA(int[][] matrix) {
 		Digraph d = new Digraph(n, "Second constructor");
 		for (int u = 0; u < n; u++) {
 			for (int v = 0; v < n; v++) {
-				boolean isUsubsetV = true; // u is a subset of v
+				boolean isUsubsetV = true; 		// u is a subset of v
 				int i = 0;
-				while (isUsubsetV && i < m) { // while true u is subset of v
-					if (matrix[i][u] == 1 && matrix[i][v] == 0)
+				while (isUsubsetV && i < m) {	// while true u is subset of v
+					if (matrix[i][u] == 1 && matrix[i][v] == 0)// 2>m[i][v]>=m[i][u]
 						isUsubsetV = false;
-					// 2>m[i][v]>=m[i][u]
 					i++;
 				}
-				if (isUsubsetV)
-					d.addEdge(u, v);
+				if (isUsubsetV) 	d.addEdge(u, v);
 			}
 		}
 		return d;
@@ -429,7 +501,7 @@ public class ExtensionILP {
 	}
 
 	public Vector<Vector<Integer>> getCC() {
-		return colCopies;
+		return columnsCopies;
 	}
 
 }

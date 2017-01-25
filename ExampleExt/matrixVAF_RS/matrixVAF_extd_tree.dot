@@ -1,0 +1,44 @@
+digraph {
+rowa[label="a",shape=box,style=filled,fontsize=40];
+rowb[label="b",shape=box,style=filled,fontsize=40];
+rowc[label="c",shape=box,style=filled,fontsize=40];
+rowd[label="d",shape=box,style=filled,fontsize=40];
+a_1[label="a_1",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_2[label="a_2",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+b_3[label="b_3",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+c_3[label="c_3",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+d_1[label="d_1",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+a_1 -> rowa[arrowhead="normal"];
+a_2 -> rowa[arrowhead="normal"];
+a_1 -> rowb[arrowhead="normal"];
+a_2 -> rowb[arrowhead="normal"];
+b_3 -> rowb[arrowhead="normal"];
+a_1 -> rowc[arrowhead="normal"];
+b_3 -> rowc[arrowhead="normal"];
+c_3 -> rowc[arrowhead="normal"];
+d_1 -> rowd[arrowhead="normal"];
+a_2 -> rowd[arrowhead="normal"];
+b_3 -> rowd[arrowhead="normal"];
+c_3 -> rowd[arrowhead="normal"];
+{rank = same;a_1;a_2;b_3;c_3;d_1;}
+legend[label="Equalities among split rows:
+a_1=b_1=c_1
+a_2=b_2=d_2
+b_3=c_2=d_3
+c_3=d_4
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> c_3[arrowhead=none, label="F | 2 | .26±.02"];
+Int1 -> d_1[arrowhead=none, label="B | 3 | .15±.03"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> b_3[arrowhead=none, label="E | 1 | .19±.09"];
+Int2 -> Int1[arrowhead=none, label=""];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> a_2[arrowhead=none, label="D | 1 | .29±.04"];
+Int3 -> Int2[arrowhead=none, label=""];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> a_1[arrowhead=none, label="C | 1 | .4±.06"];
+Int4 -> Int3[arrowhead=none, label=""];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int4[arrowhead=none, label=""];
+}
