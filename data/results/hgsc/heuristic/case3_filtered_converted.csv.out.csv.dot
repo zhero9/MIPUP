@@ -1,0 +1,10 @@
+digraph {
+a[label="a",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+b[label="b",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+legend[label="Equalities among split rows:
+b = c
+",shape=box,fontsize=18];
+Int0[shape=point,style=filled,fillcolor=black,label=""];
+Int0 -> a[arrowhead=none];
+Int0 -> b[arrowhead=none];
+}

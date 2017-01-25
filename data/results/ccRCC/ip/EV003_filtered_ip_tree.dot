@@ -1,0 +1,43 @@
+digraph {
+rowR9[label="R9",shape=box,style=filled,fontsize=40];
+rowR6[label="R6",shape=box,style=filled,fontsize=40];
+rowR5[label="R5",shape=box,style=filled,fontsize=40];
+rowR2[label="R2",shape=box,style=filled,fontsize=40];
+rowR4[label="R4",shape=box,style=filled,fontsize=40];
+rowR3[label="R3",shape=box,style=filled,fontsize=40];
+rowR1[label="R1",shape=box,style=filled,fontsize=40];
+rowR7[label="R7",shape=box,style=filled,fontsize=40];
+R9[label="R9",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+R5[label="R5",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+R4[label="R4",shape=oval,style=filled,fontsize=28,fillcolor="#ff9966"];
+R3[label="R3",shape=oval,style=filled,fontsize=28,fillcolor="#ffe135"];
+R7[label="R7",shape=oval,style=filled,fontsize=28,fillcolor="#efdecd"];
+R9 -> rowR9[arrowhead="normal"];
+R9 -> rowR6[arrowhead="normal"];
+R5 -> rowR5[arrowhead="normal"];
+R5 -> rowR2[arrowhead="normal"];
+R4 -> rowR4[arrowhead="normal"];
+R3 -> rowR3[arrowhead="normal"];
+R3 -> rowR1[arrowhead="normal"];
+R7 -> rowR7[arrowhead="normal"];
+{rank = same;R9;R5;R4;R3;R7;}
+legend[label="Equalities among split rows:
+R9=R6
+R5=R2
+R3=R1
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> R5[arrowhead=none, label="D | 2 | .18±.02"];
+Int1 -> R4[arrowhead=none, label=""];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> R7[arrowhead=none, label="E | 2 | .23±.01"];
+Int2 -> Int1[arrowhead=none, label="C | 2 | .13±.08"];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> R3[arrowhead=none, label=""];
+Int3 -> Int2[arrowhead=none, label=""];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> R9[arrowhead=none, label="B | 8 | .24±.14"];
+Int4 -> Int3[arrowhead=none, label=""];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int4[arrowhead=none, label="A | 28 | .23±.07"];
+}

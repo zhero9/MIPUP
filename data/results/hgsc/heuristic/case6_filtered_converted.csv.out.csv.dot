@@ -1,0 +1,6 @@
+digraph {
+a[label="a",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+legend[label="Equalities among split rows:
+a = b
+",shape=box,fontsize=18];
+}

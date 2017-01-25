@@ -1,0 +1,23 @@
+digraph {
+R3[label="R3",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+VT[label="VT",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+R10[label="R10",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+R4[label="R4",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+R2[label="R2",shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+R8[label="R8",shape=box,style=filled,fontsize=28,fillcolor="#F2A253"];
+Int0[shape=point,style=filled,fillcolor=black,label=""];
+Int0 -> R4[arrowhead=none];
+Int0 -> R2[arrowhead=none];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> R8[arrowhead=none];
+Int1 -> Int0[arrowhead=none];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> R10[arrowhead=none];
+Int2 -> Int1[arrowhead=none];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> VT[arrowhead=none];
+Int3 -> Int2[arrowhead=none];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> R3[arrowhead=none];
+Int4 -> Int3[arrowhead=none];
+}

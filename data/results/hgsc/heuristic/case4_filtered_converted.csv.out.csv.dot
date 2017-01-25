@@ -1,0 +1,20 @@
+digraph {
+a[label="a",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+b_1[label="b_1",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+b_2[label="b_2",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+f_2[label="f_2",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+legend[label="Equalities among split rows:
+b_1 = c_1 = d_1 = e_1 = f_1 = g_1 = h_1 = i_1 = j_1
+b_2 = c_2 = d_2 = e_2
+f_2 = g_2 = h_2 = i_2 = j_2
+",shape=box,fontsize=18];
+Int0[shape=point,style=filled,fillcolor=black,label=""];
+Int0 -> a[arrowhead=none];
+Int0 -> b_2[arrowhead=none];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> f_2[arrowhead=none];
+Int1 -> Int0[arrowhead=none];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> b_1[arrowhead=none];
+Int2 -> Int1[arrowhead=none];
+}

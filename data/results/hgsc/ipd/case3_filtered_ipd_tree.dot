@@ -1,0 +1,19 @@
+digraph {
+rowa[label="a",shape=box,style=filled,fontsize=40];
+rowb[label="b",shape=box,style=filled,fontsize=40];
+rowc[label="c",shape=box,style=filled,fontsize=40];
+a[label="a",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+b[label="b",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+a -> rowa[arrowhead="normal"];
+b -> rowb[arrowhead="normal"];
+b -> rowc[arrowhead="normal"];
+{rank = same;a;b;}
+legend[label="Equalities among split rows:
+b=c
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> a[arrowhead=none, label="B | 9 | .45±.17"];
+Int1 -> b[arrowhead=none, label=""];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int1[arrowhead=none, label="A | 20 | .32±.16"];
+}

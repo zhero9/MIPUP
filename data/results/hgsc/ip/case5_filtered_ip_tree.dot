@@ -1,0 +1,53 @@
+digraph {
+rowa[label="a",shape=box,style=filled,fontsize=40];
+rowb[label="b",shape=box,style=filled,fontsize=40];
+rowc[label="c",shape=box,style=filled,fontsize=40];
+rowd[label="d",shape=box,style=filled,fontsize=40];
+rowe[label="e",shape=box,style=filled,fontsize=40];
+rowf[label="f",shape=box,style=filled,fontsize=40];
+a_1[label="a_1",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+a_2[label="a_2",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+b_1[label="b_1",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+b_2[label="b_2",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+c[label="c",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+d[label="d",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+e_2[label="e_2",shape=oval,style=filled,fontsize=28,fillcolor="#ff9966"];
+f_2[label="f_2",shape=oval,style=filled,fontsize=28,fillcolor="#ffe135"];
+a_1 -> rowa[arrowhead="normal"];
+a_2 -> rowa[arrowhead="normal"];
+b_1 -> rowb[arrowhead="normal"];
+b_2 -> rowb[arrowhead="normal"];
+c -> rowc[arrowhead="normal"];
+d -> rowd[arrowhead="normal"];
+d -> rowe[arrowhead="normal"];
+e_2 -> rowe[arrowhead="normal"];
+d -> rowf[arrowhead="normal"];
+f_2 -> rowf[arrowhead="normal"];
+{rank = same;a_1;a_2;b_1;b_2;c;d;e_2;f_2;}
+legend[label="Equalities among split rows:
+d=e_1=f_1
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> b_1[arrowhead=none, label=""];
+Int1 -> f_2[arrowhead=none, label="J | 2 | .07±.02"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> e_2[arrowhead=none, label=""];
+Int2 -> Int1[arrowhead=none, label="A | 17 | .15±.08"];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> a_2[arrowhead=none, label="I | 5 | .12±.03"];
+Int3 -> b_2[arrowhead=none, label="E | 6 | .11±.04"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> d[arrowhead=none, label=""];
+Int4 -> Int3[arrowhead=none, label="G | 2 | .08±.04"];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> c[arrowhead=none, label="C | 63 | .12±.06"];
+Int5 -> Int2[arrowhead=none, label="H | 3 | .21±.11"];
+Int6[shape=point,style=filled,fillcolor=black,label=""];
+Int6 -> a_1[arrowhead=none, label=""];
+Int6 -> Int5[arrowhead=none, label=""];
+Int7[shape=point,style=filled,fillcolor=black,label=""];
+Int7 -> Int4[arrowhead=none, label="F | 2 | .19±.07"];
+Int7 -> Int6[arrowhead=none, label="D | 10 | .23±.1"];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int7[arrowhead=none, label="B | 14 | .31±.15"];
+}

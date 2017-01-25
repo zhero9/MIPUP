@@ -1,0 +1,39 @@
+digraph {
+rowR3[label="R3",shape=box,style=filled,fontsize=40];
+rowVT[label="VT",shape=box,style=filled,fontsize=40];
+rowR10[label="R10",shape=box,style=filled,fontsize=40];
+rowR4[label="R4",shape=box,style=filled,fontsize=40];
+rowR2[label="R2",shape=box,style=filled,fontsize=40];
+rowR8[label="R8",shape=box,style=filled,fontsize=40];
+R3[label="R3",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+VT[label="VT",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+R10[label="R10",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+R4[label="R4",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+R2[label="R2",shape=oval,style=filled,fontsize=28,fillcolor="#ff9966"];
+R8[label="R8",shape=oval,style=filled,fontsize=28,fillcolor="#ffe135"];
+R3 -> rowR3[arrowhead="normal"];
+VT -> rowVT[arrowhead="normal"];
+R10 -> rowR10[arrowhead="normal"];
+R4 -> rowR4[arrowhead="normal"];
+R2 -> rowR2[arrowhead="normal"];
+R8 -> rowR8[arrowhead="normal"];
+{rank = same;R3;VT;R10;R4;R2;R8;}
+legend[label=" Matrix without equal rows.",shape = box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> R4[arrowhead=none, label="H | 17 | .16±.1"];
+Int1 -> R2[arrowhead=none, label="I | 29 | .14±.05"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> R8[arrowhead=none, label="J | 12 | .17±.06"];
+Int2 -> Int1[arrowhead=none, label="D | 2 | .15±.09"];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> R10[arrowhead=none, label="G | 6 | .27±.03"];
+Int3 -> Int2[arrowhead=none, label="C | 10 | .22±.09"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> VT[arrowhead=none, label="F | 14 | .31±.05"];
+Int4 -> Int3[arrowhead=none, label="B | 3 | .19±.09"];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> R3[arrowhead=none, label="E | 13 | .27±.06"];
+Int5 -> Int4[arrowhead=none, label=""];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int5[arrowhead=none, label="A | 18 | .28±.1"];
+}

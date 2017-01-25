@@ -1,0 +1,42 @@
+digraph {
+rowa[label="a",shape=box,style=filled,fontsize=40];
+rowb[label="b",shape=box,style=filled,fontsize=40];
+rowc[label="c",shape=box,style=filled,fontsize=40];
+rowd[label="d",shape=box,style=filled,fontsize=40];
+rowe[label="e",shape=box,style=filled,fontsize=40];
+rowf[label="f",shape=box,style=filled,fontsize=40];
+rowg[label="g",shape=box,style=filled,fontsize=40];
+rowh[label="h",shape=box,style=filled,fontsize=40];
+rowi[label="i",shape=box,style=filled,fontsize=40];
+rowj[label="j",shape=box,style=filled,fontsize=40];
+a[label="a",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+b_1[label="b_1",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+b_2[label="b_2",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+a -> rowa[arrowhead="normal"];
+b_1 -> rowb[arrowhead="normal"];
+b_2 -> rowb[arrowhead="normal"];
+b_1 -> rowc[arrowhead="normal"];
+b_2 -> rowc[arrowhead="normal"];
+b_1 -> rowd[arrowhead="normal"];
+b_2 -> rowd[arrowhead="normal"];
+b_1 -> rowe[arrowhead="normal"];
+b_2 -> rowe[arrowhead="normal"];
+b_2 -> rowf[arrowhead="normal"];
+b_2 -> rowg[arrowhead="normal"];
+b_2 -> rowh[arrowhead="normal"];
+b_2 -> rowi[arrowhead="normal"];
+b_2 -> rowj[arrowhead="normal"];
+{rank = same;a;b_1;b_2;}
+legend[label="Equalities among split rows:
+b_1=c_1=d_1=e_1
+b_2=c_2=d_2=e_2=f=g=h=i=j
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> a[arrowhead=none, label=""];
+Int1 -> b_1[arrowhead=none, label="A | 5 | .25±.05"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> b_2[arrowhead=none, label="D | 2 | .29±.09"];
+Int2 -> Int1[arrowhead=none, label="C | 37 | .26±.09"];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int2[arrowhead=none, label="B | 13 | .3±.18"];
+}

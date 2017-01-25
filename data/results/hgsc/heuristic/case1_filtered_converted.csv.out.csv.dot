@@ -1,0 +1,15 @@
+digraph {
+a[label="a",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+b[label="b",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+c[label="c",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+d[label="d",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+Int0[shape=point,style=filled,fillcolor=black,label=""];
+Int0 -> a[arrowhead=none];
+Int0 -> d[arrowhead=none];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> b[arrowhead=none];
+Int1 -> Int0[arrowhead=none];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> c[arrowhead=none];
+Int2 -> Int1[arrowhead=none];
+}

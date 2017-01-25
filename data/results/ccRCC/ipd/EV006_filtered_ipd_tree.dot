@@ -1,0 +1,44 @@
+digraph {
+rowR2[label="R2",shape=box,style=filled,fontsize=40];
+rowLN1a[label="LN1a",shape=box,style=filled,fontsize=40];
+rowLN1b[label="LN1b",shape=box,style=filled,fontsize=40];
+rowR1[label="R1",shape=box,style=filled,fontsize=40];
+rowR3[label="R3",shape=box,style=filled,fontsize=40];
+rowR7[label="R7",shape=box,style=filled,fontsize=40];
+rowR4[label="R4",shape=box,style=filled,fontsize=40];
+rowR15[label="R15",shape=box,style=filled,fontsize=40];
+rowR6[label="R6",shape=box,style=filled,fontsize=40];
+R2[label="R2",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+LN1a[label="LN1a",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+R7[label="R7",shape=oval,style=filled,fontsize=28,fillcolor="#ffe135"];
+R15[label="R15",shape=oval,style=filled,fontsize=28,fillcolor="#efdecd"];
+R6[label="R6",shape=oval,style=filled,fontsize=28,fillcolor="#98777b"];
+R2 -> rowR2[arrowhead="normal"];
+LN1a -> rowLN1a[arrowhead="normal"];
+LN1a -> rowLN1b[arrowhead="normal"];
+LN1a -> rowR1[arrowhead="normal"];
+LN1a -> rowR3[arrowhead="normal"];
+R7 -> rowR7[arrowhead="normal"];
+LN1a -> rowR4[arrowhead="normal"];
+R15 -> rowR1[arrowhead="normal"];
+R15 -> rowR15[arrowhead="normal"];
+R6 -> rowR6[arrowhead="normal"];
+{rank = same;R2;LN1a;R7;R15;R6;}
+legend[label="Equalities among split rows:
+LN1a=LN1b=R1=R3=R4
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> R15[arrowhead=none, label="D | 3 | .12±.03"];
+Int1 -> R6[arrowhead=none, label="E | 2 | .15±.02"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> R7[arrowhead=none, label="C | 6 | .21±.07"];
+Int2 -> Int1[arrowhead=none, label=""];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> LN1a[arrowhead=none, label=""];
+Int3 -> Int2[arrowhead=none, label=""];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> R2[arrowhead=none, label="B | 4 | .24±.09"];
+Int4 -> Int3[arrowhead=none, label=""];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int4[arrowhead=none, label="A | 51 | .21±.09"];
+}

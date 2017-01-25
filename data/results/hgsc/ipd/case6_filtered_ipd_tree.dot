@@ -1,0 +1,13 @@
+digraph {
+rowa[label="a",shape=box,style=filled,fontsize=40];
+rowb[label="b",shape=box,style=filled,fontsize=40];
+a[label="a",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+a -> rowa[arrowhead="normal"];
+a -> rowb[arrowhead="normal"];
+{rank = same;a;}
+legend[label="Equalities among split rows:
+a=b
+",shape=box,fontsize=18];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> a[arrowhead=none, label="A | 35 | .22±.1"];
+}

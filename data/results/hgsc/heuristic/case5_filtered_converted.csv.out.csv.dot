@@ -1,0 +1,44 @@
+digraph {
+a_1[label="a_1",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+a_2[label="a_2",shape=box,style=filled,fontsize=28,fillcolor="#73B2F9"];
+b_1[label="b_1",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+b_2[label="b_2",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+b_3[label="b_3",shape=box,style=filled,fontsize=28,fillcolor="#EC7877"];
+c_2[label="c_2",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+c_3[label="c_3",shape=box,style=filled,fontsize=28,fillcolor="#8ACB69"];
+d[label="d",shape=box,style=filled,fontsize=28,fillcolor="#F5DB5D"];
+f_1[label="f_1",shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+f_3[label="f_3",shape=box,style=filled,fontsize=28,fillcolor="#BD80E5"];
+legend[label="Equalities among split rows:
+a_1 = c_1 = e_2
+b_1 = e_1
+d = e_3 = f_2
+",shape=box,fontsize=18];
+Int0[shape=point,style=filled,fillcolor=black,label=""];
+Int0 -> a_2[arrowhead=none];
+Int0 -> b_2[arrowhead=none];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> d[arrowhead=none];
+Int1 -> Int0[arrowhead=none];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> b_3[arrowhead=none];
+Int2 -> f_3[arrowhead=none];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> c_3[arrowhead=none];
+Int3 -> Int1[arrowhead=none];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> b_1[arrowhead=none];
+Int4 -> f_1[arrowhead=none];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> a_1[arrowhead=none];
+Int5 -> Int2[arrowhead=none];
+Int6[shape=point,style=filled,fillcolor=black,label=""];
+Int6 -> Int4[arrowhead=none];
+Int6 -> Int5[arrowhead=none];
+Int7[shape=point,style=filled,fillcolor=black,label=""];
+Int7 -> Int3[arrowhead=none];
+Int7 -> Int6[arrowhead=none];
+Int8[shape=point,style=filled,fillcolor=black,label=""];
+Int8 -> c_2[arrowhead=none];
+Int8 -> Int7[arrowhead=none];
+}
