@@ -9,14 +9,14 @@ This Python script removes those SSNVs whose binary presence/absence pattern in 
 
 	python remove_weak_SSNVs.py filename vafThreshold minSupport
   
-where **filename** is the input file, **vafThreshold** is the threshold for convering VAF values into binary ones (e.g., 0.05) and **minSupport** (variable *k*) is the number of times the binary pattern of the SSNV must appear in the matrix to be kept.
+where **filename** is the input file, **vafThreshold** is the threshold for converting VAF values into binary ones (e.g., 0.05) and **minSupport** (variable *k*) is the number of times the binary pattern of the SSNV must appear in the matrix to be kept.
 
 ## convert_input_for_heuristic.py
 This is a Python script converint the input matrices into transposed binary ones, accepted by the heuristic algorithm from [here](https://github.com/alexandrutomescu/MixedPerfectPhylogeny). You probably don't need to bother with this, unless wanting to reproduce the results presented in the paper. Run as: 
 
 	python convert_input_for_heuristic.py filename vafThreshold
   
-where **filename** is the file you are converting and **vafThreshold** is the threshold for convering VAF values into binary ones (e.g., 0.05).
+where **filename** is the file you are converting and **vafThreshold** is the threshold for converting VAF values into binary ones (e.g., 0.05).
 
 
 
