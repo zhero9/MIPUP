@@ -1,0 +1,49 @@
+Nodes:
+1	0111	[ 0.4 0.24 0.18]	snv1	snv2	snv9	snv16	snv18	snv22	snv5	snv7	snv10	snv11	snv19	snv20	snv25	snv26	snv28
+2	0100	[ 0.31]	snv4	snv6	snv23	snv24	snv27
+
+****Tree 0****
+0 -> 1
+1 -> 2
+Error score: 0.0
+
+Sample decomposition: 
+	Sample lineage decomposition: normal
+GL
+
+	Sample lineage decomposition: a
+GL
+.....0111: 0.403 [0.06]
+..........0100: 0.314 [0.077]
+
+	Sample lineage decomposition: b
+GL
+.....0111: 0.241 [0.064]
+
+	Sample lineage decomposition: c
+GL
+.....0111: 0.179 [0.046]
+
+
+SNV info:
+snv1: 1 57184214 C8B
+snv2: 1 67496790 IL23R
+snv9: 13 97835077 FARP1
+snv16: 17 44476396 IGF2BP1
+snv18: 19 63416204 ZNF274
+snv22: 3 38623305 SCN5A
+snv5: 11 65500748 SART1
+snv7: 12 49388592 DIP2B
+snv10: 14 50417011 C14orf29
+snv11: 16 56254926 GPR56
+snv19: 2 162858418 IFIH1
+snv20: 2 224171103 SCG2
+snv25: 6 88103602 C6orf162
+snv26: 7 121730501 FEZF1
+snv28: 9 139278596 COBRA1
+snv4: 11 60850924 DDB1
+snv6: 11 123626115 OR8G1
+snv23: 3 50287758 SEMA3B
+snv24: 5 89989844 GPR98
+snv27: 7 141377021 MGAM
+

@@ -1,0 +1,87 @@
+Nodes:
+3	01111	[ 0.4 0.42 0.4 0.44]	snv2	snv4	snv6	snv7	snv9	snv11	snv13	snv16	snv17	snv19	snv20	snv21	snv22	snv26	snv27	snv31	snv34	snv36	snv37	snv43	snv46
+1	01010	[ 0.17 0.19]	snv5	snv32	snv35	snv42
+2	00010	[ 0.12]	snv8	snv10	snv12	snv39	snv44
+4	00001	[ 0.2]	snv3	snv28	snv29	snv33	snv38	snv41	snv45	snv48	snv18
+5	00100	[ 0.3]	snv14	snv23	snv25	snv30	snv49
+
+****Tree 0****
+0 -> 3
+1 -> 2
+3 -> 5
+3 -> 4
+3 -> 1
+Error score: 0.0
+
+Sample decomposition: 
+	Sample lineage decomposition: normal
+GL
+
+	Sample lineage decomposition: a
+GL
+.....01111: 0.404 [0.065]
+..........01010: 0.172 [0.156]
+
+	Sample lineage decomposition: b
+GL
+.....01111: 0.424 [0.071]
+..........00100: 0.302 [0.168]
+
+	Sample lineage decomposition: c
+GL
+.....01111: 0.397 [0.071]
+..........01010: 0.187 [0.222]
+...............00010: 0.122 [0.069]
+
+	Sample lineage decomposition: d
+GL
+.....01111: 0.436 [0.071]
+..........00001: 0.198 [0.134]
+
+
+SNV info:
+snv2: 1 110456920 UBL4B
+snv4: 1 224141824 LEFTY1
+snv6: 11 43879734 ALKBH3
+snv7: 11 46717392 F2
+snv9: 12 48654851 AQP6
+snv11: 13 25002226 ATP8A2
+snv13: 16 29583430 SPN
+snv16: 17 7603535 DNAH2
+snv17: 17 9389301 STX8
+snv19: 19 11430293 ELAVL3
+snv20: 19 41576387 ZFP82
+snv21: 2 31443353 XDH
+snv22: 2 172356316 SLC25A12
+snv26: 3 37793999 ITGA9
+snv27: 3 50366115 CYB561D2
+snv31: 4 154050816 ARFIP1
+snv34: 6 31649423 LTA
+snv36: 7 44246838 CAMK2B
+snv37: 7 44763528 ZMIZ2
+snv43: 23 105167085 SERPINA7
+snv46: 23 129100318 AIFM1
+snv5: 10 26503064 MYO3A
+snv32: 5 149494514 PDGFRB
+snv35: 7 28825297 CREB5
+snv42: 23 63496049 MTMR8
+snv8: 11 66115232 CCDC87
+snv10: 12 115642609 C12orf49
+snv12: 14 63626132 SYNE2
+snv39: 8 95255397 CDH17
+snv44: 23 108518406 GUCY2F
+snv3: 1 184306474 HMCN1
+snv28: 3 69175635 TMF1
+snv29: 3 122787969 ARGFX
+snv33: 5 178980864 HNRNPH1
+snv38: 7 98346669 TRRAP
+snv41: 9 32622795 TAF1L
+snv45: 23 109582333 RGAG1
+snv48: 23 152825177 AVPR2
+snv18: 19 4312778 SH3GL1
+snv14: 16 60247085 CDH8
+snv23: 2 196599795 DNAH7
+snv25: 22 37771021 APOBEC3F
+snv30: 4 38969845 RFC1
+snv49: 23 153812322 F8
+

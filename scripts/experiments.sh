@@ -54,8 +54,8 @@ Run() {
 	dot -Tpdf $DATASET_DIR/$DATASET.dot -O
 	rm -r $DATASET_DIR/lichee_dot_img_temp
 	rm $DATASET_DIR/$DATASET.dot
-	rm $DATASET_DIR/$DATASET.trees.txt
 	mv $DATASET_DIR/$DATASET.dot.pdf $DATASET_DIR/lichee/
+	mv $DATASET_DIR/$DATASET.trees.txt $DATASET_DIR/lichee/
 
 	# filtering the matrix
 	python $BIN_DIR/remove_weak_SNVs.py $DATASET_DIR/$DATASET $VAF $minSupport

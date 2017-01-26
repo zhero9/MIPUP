@@ -1,0 +1,135 @@
+Nodes:
+3	0111111111	[ 0.19 0.28 0.15 0.16 0.15 0.32 0.23 0.22 0.14]	snv1	snv2	snv3	snv4	snv5	snv6	snv7	snv8	snv9	snv10	snv11	snv12	snv13	snv14	snv15	snv16	snv17	snv18	snv19	snv20	snv21	snv22	snv23	snv24	snv25	snv26	snv27	snv28	snv29	snv30	snv31	snv32	snv33	snv34	snv35	snv36	snv37	snv38	snv39	snv40	snv41	snv42	snv43	snv44	snv45	snv46	snv47	snv48	snv49	snv50
+1	0000000001	[ 0.15]	snv71	snv72
+2	0000000100	[ 0.13]	snv67
+4	0100000000	[ 0.24]	snv55	snv56	snv57	snv58
+5	0000100000	[ 0.03]	snv60
+6	0000001000	[ 0.21]	snv61	snv62	snv63	snv64	snv65	snv66
+7	0000000010	[ 0.12]	snv68	snv69	snv70
+
+****Tree 0****
+0 -> 3
+3 -> 7
+3 -> 6
+3 -> 5
+3 -> 4
+3 -> 2
+3 -> 1
+Error score: 0.050635613008915815
+
+Sample decomposition: 
+	Sample lineage decomposition: Normal
+GL
+
+	Sample lineage decomposition: R2
+GL
+.....0111111111: 0.193 [0.054]
+..........0100000000: 0.244 [0.091]
+
+	Sample lineage decomposition: LN1a
+GL
+.....0111111111: 0.279 [0.063]
+
+	Sample lineage decomposition: LN1b
+GL
+.....0111111111: 0.15 [0.039]
+
+	Sample lineage decomposition: R1
+GL
+.....0111111111: 0.164 [0.051]
+..........0000100000: 0.028 [0]
+
+	Sample lineage decomposition: R3
+GL
+.....0111111111: 0.145 [0.039]
+
+	Sample lineage decomposition: R7
+GL
+.....0111111111: 0.315 [0.076]
+..........0000001000: 0.209 [0.07]
+
+	Sample lineage decomposition: R4
+GL
+.....0111111111: 0.23 [0.069]
+..........0000000100: 0.127 [0]
+
+	Sample lineage decomposition: R15
+GL
+.....0111111111: 0.216 [0.067]
+..........0000000010: 0.119 [0.029]
+
+	Sample lineage decomposition: R6
+GL
+.....0111111111: 0.145 [0.05]
+..........0000000001: 0.146 [0.021]
+
+
+SNV info:
+snv1: 1 214818616 desc1
+snv2: 1 157556056 desc2
+snv3: 1 117127540 desc3
+snv4: 1 200948756 desc4
+snv5: 2 31483612 desc5
+snv6: 2 159389818 desc6
+snv7: 2 182360634 desc7
+snv8: 2 182850915 desc8
+snv9: 2 219540069 desc9
+snv10: 2 231936900 desc10
+snv11: 3 33194519 desc11
+snv12: 4 104055047 desc12
+snv13: 4 144617633 desc13
+snv14: 5 15937192 desc14
+snv15: 5 78977819 desc15
+snv16: 6 13486942 desc16
+snv17: 6 138611079 desc17
+snv18: 6 155597478 desc18
+snv19: 6 117248638 desc19
+snv20: 7 128040160 desc20
+snv21: 7 128446389 desc21
+snv22: 7 128480187 desc22
+snv23: 7 97821058 desc23
+snv24: 8 41552703 desc24
+snv25: 8 125463574 desc25
+snv26: 8 145736530 desc26
+snv27: 9 77377434 desc27
+snv28: 9 79986065 desc28
+snv29: 9 90252929 desc29
+snv30: 10 14939481 desc30
+snv31: 10 30747025 desc31
+snv32: 10 100179804 desc32
+snv33: 11 1270910 desc33
+snv34: 11 130068907 desc34
+snv35: 11 9182384 desc35
+snv36: 12 5021933 desc36
+snv37: 12 7548771 desc37
+snv38: 12 56525028 desc38
+snv39: 12 102053455 desc39
+snv40: 12 121868214 desc40
+snv41: 13 111293903 desc41
+snv42: 16 28844161 desc42
+snv43: 17 35444324 desc43
+snv44: 17 10297616 desc44
+snv45: 18 14763979 desc45
+snv46: 18 67801756 desc46
+snv47: 20 54972837 desc47
+snv48: 22 26937131 desc48
+snv49: 23 12939540 desc49
+snv50: 23 30873483 desc50
+snv71: 2 113304734 desc71
+snv72: 17 47699335 desc72
+snv67: 14 89084603 desc67
+snv55: 4 119237398 desc55
+snv56: 7 36459912 desc56
+snv57: 19 56369355 desc57
+snv58: 23 69255416 desc58
+snv60: 9 101748174 desc60
+snv61: 5 65058924 desc61
+snv62: 5 96129630 desc62
+snv63: 6 108496124 desc63
+snv64: 11 113076803 desc64
+snv65: 17 1631632 desc65
+snv66: 18 63430081 desc66
+snv68: 1 39905038 desc68
+snv69: 3 136664875 desc69
+snv70: 6 55638940 desc70
+

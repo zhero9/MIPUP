@@ -3,6 +3,8 @@ This folder contains the scripts used for running the experiments.
 ## experiments.sh
 Contains all commands and parameters. Before running, update the DIR variables with the paths where your data and programs are located. The MY21 dataset is not public, but one can see the running parameters from the **experiments-MY21.sh** script.
 
+This script also runs **dot** to convert the trees in .dot format into PDF. The .dot files can also be visualized with [Graphviz](http://www.graphviz.org).
+
 ## remove_weak_SSNVs.py
 
 This Python script removes those SSNVs whose binary presence/absence pattern in the binaary matrix appears stricly less than *k* times. That is, there are strictly less than *k-1* other SSNVs having the same binary presence/absence pattern in the binary matrix. Run as:

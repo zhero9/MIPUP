@@ -1,0 +1,61 @@
+Nodes:
+1	011	[ 0.16 0.21]	snv2	snv3	snv4	snv5	snv6	snv7	snv8	snv9	snv10	snv11	snv12	snv14	snv15	snv16	snv17	snv18	snv19	snv20	snv23	snv24	snv28	snv29	snv31	snv32	snv33	snv34	snv35
+2	011	[ 0.32 0.41]	snv1	snv13	snv21	snv22	snv25	snv26	snv27	snv30
+
+****Tree 0****
+0 -> 2
+2 -> 1
+Error score: 0.0
+
+Sample decomposition: 
+	Sample lineage decomposition: normal
+GL
+
+	Sample lineage decomposition: a
+GL
+.....011: 0.316 [0.057]
+..........011: 0.156 [0.037]
+
+	Sample lineage decomposition: b
+GL
+.....011: 0.413 [0.079]
+..........011: 0.21 [0.061]
+
+
+SNV info:
+snv2: 1 242921850 PPPDE1
+snv3: 10 128670181 DOCK1
+snv4: 11 100880563 TRPC6
+snv5: 12 61035453 USP15
+snv6: 12 119235191 SIRT4
+snv7: 13 50428603 RNASEH2B
+snv8: 14 62517680 KCNH5
+snv9: 16 2288413 ABCA3
+snv10: 16 46778793 ABCC11
+snv11: 16 65962389 LRRC36
+snv12: 17 7519000 TP53
+snv14: 19 14381664 DDX39
+snv15: 2 19977445 WDR35
+snv16: 2 21219211 AC010872.2
+snv17: 2 61392466 USP34
+snv18: 2 179182492 TTN
+snv19: 20 43938788 ZSWIM3
+snv20: 3 49637785 BSN
+snv23: 5 96241472 LRAP
+snv24: 5 122741978 CEP120
+snv28: 7 86254066 GRM3
+snv29: 8 51513663 SNTG1
+snv31: 23 44807639 UTX
+snv32: 23 67976536 EFNB1
+snv33: 23 79877293 BRWD3
+snv34: 23 106779895 PRPS1
+snv35: 23 150641770 FATE1
+snv1: 1 180776029 RGSL1
+snv13: 17 53697236 LPO
+snv21: 3 103670547 ZPLD1
+snv22: 5 38374609 EGFLAM
+snv25: 5 140942099 DIAPH1
+snv26: 6 83902239 DOPEY1
+snv27: 7 27102016 HOXA1
+snv30: 8 73097700 TRPA1
+

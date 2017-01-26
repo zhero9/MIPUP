@@ -1,0 +1,120 @@
+Nodes:
+3	01111111111	[ 0.3 0.23 0.26 0.27 0.27 0.22 0.19 0.23 0.24 0.17]	snv2	snv6	snv7	snv11	snv13	snv26	snv28	snv36	snv47	snv49	snv54
+2	01111100000	[ 0.28 0.22 0.26 0.27 0.26]	snv3	snv10	snv15	snv16	snv18	snv20	snv21	snv25	snv29	snv34	snv35	snv38	snv39	snv40	snv43	snv44	snv45	snv46	snv50	snv52	snv58	snv4	snv9	snv22	snv8	snv14	snv17	snv30	snv32	snv33	snv41	snv42	snv55	snv56	snv57	snv5	snv27
+1	00111100000	[ 0.22 0.25 0.26 0.26]	snv1	snv12	snv37	snv53	snv59
+
+****Tree 0****
+0 -> 3
+2 -> 1
+3 -> 2
+Error score: 0.003465734393849355
+
+Sample decomposition: 
+	Sample lineage decomposition: normal
+GL
+
+	Sample lineage decomposition: a
+GL
+.....01111111111: 0.301 [0.114]
+..........01111100000: 0.284 [0.086]
+
+	Sample lineage decomposition: b
+GL
+.....01111111111: 0.235 [0.079]
+..........01111100000: 0.224 [0.07]
+...............00111100000: 0.225 [0.041]
+
+	Sample lineage decomposition: c
+GL
+.....01111111111: 0.256 [0.104]
+..........01111100000: 0.258 [0.088]
+...............00111100000: 0.251 [0.04]
+
+	Sample lineage decomposition: d
+GL
+.....01111111111: 0.27 [0.108]
+..........01111100000: 0.27 [0.098]
+...............00111100000: 0.264 [0.051]
+
+	Sample lineage decomposition: e
+GL
+.....01111111111: 0.267 [0.096]
+..........01111100000: 0.257 [0.086]
+...............00111100000: 0.26 [0.046]
+
+	Sample lineage decomposition: f
+GL
+.....01111111111: 0.217 [0.082]
+
+	Sample lineage decomposition: g
+GL
+.....01111111111: 0.194 [0.066]
+
+	Sample lineage decomposition: h
+GL
+.....01111111111: 0.233 [0.085]
+
+	Sample lineage decomposition: i
+GL
+.....01111111111: 0.241 [0.076]
+
+	Sample lineage decomposition: j
+GL
+.....01111111111: 0.171 [0.054]
+
+
+SNV info:
+snv2: 1 48974581 AGBL4_BEND5
+snv6: 1 205205733 FCAMR
+snv7: 10 1139722 WDR37
+snv11: 11 111099915 SIK2
+snv13: 12 47516803 DDX23
+snv26: 19 3774291 ZFR2
+snv28: 19 39502658 KIAA0355
+snv36: 2 121841706 CLASP1
+snv47: 3 166220249 SI
+snv49: 4 47548695 NFXL1
+snv54: 8 66798404 PDE7A
+snv3: 1 92874412 EVI5
+snv10: 11 26543869 ANO3_MUC15
+snv15: 13 45550944 CPB2
+snv16: 13 76570105 MYCBP2
+snv18: 15 31893018 RYR3
+snv20: 16 47987964 C16orf78
+snv21: 16 57309691 GOT2
+snv25: 18 19370663 NPC1
+snv29: 19 42001597 ZNF790
+snv34: 2 27452869 SNX17
+snv35: 2 95913840 AC073995.6-2
+snv38: 20 9494947 PAK7
+snv39: 20 33425471 UQCC
+snv40: 20 46701380 PREX1
+snv43: 3 41241105 CTNNB1
+snv44: 3 109556666 HHLA2
+snv45: 3 125719993 KALRN
+snv46: 3 157905432 TIPARP
+snv50: 5 140570086 PCDHB12
+snv52: 7 134929839 NUP205
+snv58: 23 54973532 TRO
+snv4: 1 110685490 RBM15
+snv9: 11 1219791 MUC5B
+snv22: 17 2540667 KIAA0664
+snv8: 10 101411323 ENTPD7
+snv14: 12 55029528 STAT2
+snv17: 14 67263548 RDH12
+snv30: 19 49371622 ZNF226
+snv32: 19 54108230 NUCB1
+snv33: 19 63498199 ZNF8
+snv41: 22 35658831 CSF2RB
+snv42: 22 41328889 POLDIP3
+snv55: 9 6555391 GLDC
+snv56: 9 33024300 DNAJA1
+snv57: 9 89692838 C9orf79
+snv5: 1 149541366 PI4KB
+snv27: 19 4167317 ANKRD24
+snv1: 1 21679222 NBPF3
+snv12: 11 119817694 ARHGEF12
+snv37: 2 125121921 CNTNAP5
+snv53: 8 52483473 PXDNL
+snv59: 23 70237945 FOXO4
+
