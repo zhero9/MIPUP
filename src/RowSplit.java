@@ -68,7 +68,7 @@ public class RowSplit {
 	public RowSplit(int[][] mat, String alg) throws IloException {
 		System.out.println("Starting ILP for extended MCRS ...");
 		ExtensionILP ext = new ExtensionILP(mat, alg);
-		originalMatrix = ext.originalMatrix;
+		originalMatrix = ext.getOriginalMatrix(); ///optimal given matrix for realized *'s.
 		matrix = ext.getMatrix();
 		m = matrix.length;
 		n = matrix[0].length;

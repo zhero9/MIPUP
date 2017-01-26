@@ -12,7 +12,7 @@ public class WritterPhylogenyTree {
 			Vector<Vector<Integer>> columnsCopies, Vector<String> rowN) {
 		
 		this.originalMatrix = orgMatrix;
-		this.matrix = matrix; // only used to determine isSubset
+		//this.matrix = matrix; // only used to determine isSubset
 		this.matrixF = filteredMatrix;
 		this.rows = rows;
 		this.rowNames = rowNames;
@@ -22,7 +22,7 @@ public class WritterPhylogenyTree {
 	}
 
 	private boolean[][] originalMatrix;
-	private boolean[][] matrix;
+	//private boolean[][] matrix;
 	private boolean[][] matrixF; // no duplicated columns matrix
 	private int[] rows;
 	private String[] rowNames;
@@ -72,8 +72,7 @@ public class WritterPhylogenyTree {
 				for (int j = i + 1; j < tmp.length; j++) {
 					boolean tmp1 = true;
 					int k = 0;
-					while (tmp1 && k < matrixF[0].length && !tmp[j]) { // is s1
-																		// = s2
+					while (tmp1 && k < matrixF[0].length && !tmp[j]) { // is s1 = s2
 						if (matrixF[i][k] != matrixF[j][k])
 							tmp1 = false;
 						k++;
@@ -115,7 +114,7 @@ public class WritterPhylogenyTree {
 			writer.write("digraph {");
 			writer.newLine();
 
-			// / adding additional leafs=rows of original matrix
+			/// adding additional leafs=rows of original matrix
 			for (int i = 0; i < rowNames.length; i++) {
 				writer.write("row" + rowNames[i] + "[label=\"" + rowNames[i]
 						+ "\",shape=box,style=filled,fontsize=40];");
@@ -179,7 +178,7 @@ public class WritterPhylogenyTree {
 			writer.write("}");
 			writer.newLine();
 
-			// / Writing legend:
+			//  Writing legend:
 			if (legend.size() > 0) {
 				writer.write("legend[label=\"Equalities among split rows:");
 				writer.newLine();
@@ -194,7 +193,7 @@ public class WritterPhylogenyTree {
 				writer.newLine();
 			}
 
-			// / adding inner points and edges to the tree:
+			/// adding inner points and edges to the tree:
 			String[] stats = ColumnStatistics.calculate(pathToMatrix,
 					originalMatrix, tmp, columnsCopies);
 
@@ -488,6 +487,7 @@ public class WritterPhylogenyTree {
 		}
 	}
 
+	/*
 	private boolean isSubset(int k, int t) {
 		boolean tmp = true;
 		for (int i = 0; i < matrix[0].length; i++) {
@@ -495,7 +495,7 @@ public class WritterPhylogenyTree {
 				tmp = false;
 		}
 		return tmp;
-	}
+	}*/
 
 	private boolean[] intersection(boolean[] a, boolean[] b) {
 		boolean[] intersection = new boolean[a.length];

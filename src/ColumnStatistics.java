@@ -14,7 +14,7 @@ public class ColumnStatistics {
 		int n = orgM[0].length;
 		
 		double[][] matrix = new double[m][n];
-
+		
 		BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
 		String input;
 		try {
@@ -27,6 +27,7 @@ public class ColumnStatistics {
 					matrix[j-t][i] = Double.parseDouble(line[j]);
 				}
 			}
+			in.close();
 
 			double avrg, stdDev;
 			String[] stats = new String[columnsCopies.size()];
@@ -56,16 +57,13 @@ public class ColumnStatistics {
 				stdDev = Math.sqrt(stdDev/num);
 				stats[i]= df.format(avrg)+"±"+df.format(stdDev);
 			}
-
+			
 			return stats;
 		} catch (IOException e) {
 			System.out.println("Couldn't read matrix for calculating statistics for VAF.");
 			e.printStackTrace();
 			return null;
-		} catch (Exception e){
-			System.out.println("Error while calculating statistics for VAF");
-			return null;
-		}
+		} 
 	}
 
 }

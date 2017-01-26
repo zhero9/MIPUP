@@ -28,16 +28,16 @@ public class Main {
 			return;
 		}
 		/**/
+		
 		/*
-		pathToMatrix = "/home/edin/ExamplesDebug/MY21_filtered.txt";
-		formatOfInput = "VAF1";
-		maxVAFnotPresent = 0.05;
-		minVAFPresent = 0.05;
-		alg = "ip"; */
+		pathToMatrix = "/home/edin/workspace/ConflictFreeRowSplit/ExampleExt/MY21_filtered.txt";
+		formatOfInput = "VAF2";
+		maxVAFnotPresent = 0.1;
+		minVAFPresent = 0.105;
+		alg = "ext"; */
 
 		if (formatOfInput.equals("VAF2")) {
 			Solver s = new Solver(pathToMatrix, maxVAFnotPresent, minVAFPresent, alg);
-			//a ds.solveAndWrite();
 		} else if (formatOfInput.equals("VAF1")) {
 			Solver s = new Solver(pathToMatrix, minVAFPresent, alg);
 			s.solveAndWrite();

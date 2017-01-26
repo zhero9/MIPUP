@@ -1,0 +1,8 @@
+digraph {
+rowMY21m1[label="MY21m1",shape=box,style=filled,fontsize=40];
+rowMY21m2[label="MY21m2",shape=box,style=filled,fontsize=40];
+rowMY21m3[label="MY21m3",shape=box,style=filled,fontsize=40];
+rowMY21m4[label="MY21m4",shape=box,style=filled,fontsize=40];
+{rank = same;}
+legend[label=" Matrix without equal rows.",shape = box,fontsize=18];
+GL[label="GL",shape=box,style=filled,fillcolor=white];

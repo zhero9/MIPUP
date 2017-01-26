@@ -34,7 +34,7 @@ public class Solver {
 		this.minVAFPresent = minVAFPresent;
 		this.maxVAFnPresent = maxVAFNonPresent;
 		isVaf = true;
-		int[][] m;
+		int[][] m; /// data matrix converted to {0,1, * = 2} matrix
 		System.out.println("Reading file");
 		m = readExt(maxVAFNonPresent,minVAFPresent);
 		try {
