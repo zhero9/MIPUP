@@ -176,7 +176,7 @@ Navigate to your *mipup.jar* executable and call the following code from the com
 **path_to_data_file.txt** is the input file and value **t** is the threshold. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem. 
 
 ## 6. Instalation
-MIPUP requires the full version of the IBM CPLEX Optimizer and Java. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week). 
+MIPUP requires the full version of the IBM CPLEX Optimizer and Java. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week, but if you have an institutional email recognized by IBM there is no waiting period). 
 
 ## 7. Results
 The public datasets that were used in the experiments are in the directory [data](https://github.com/zhero9/MIPUP/tree/master/data). The scripts used for the experiments (containing all parameter values) are in [scripts](https://github.com/zhero9/MIPUP/tree/master/scripts). The experiment results are in the directory [data/results](https://github.com/zhero9/MIPUP/tree/master/data).
