@@ -4,26 +4,35 @@ import java.util.Vector;
 
 public class RowSplit {
 
-	private boolean[][] matrix; // / given matrix
+	private boolean[][] matrix; // given matrix
 	public boolean[][] rowSplitM; // row split of matrix without duplicated
 									// columns
 	public boolean[][] solution; // final solution
 	private int m;
 	private int n, t;
+	private int N;//// number of columns in the original matrix with copies
 	public int[] rows;
 	private Digraph optB;
 	private Vector<Vector<Integer>> out;
 	public Vector<Vector<Integer>> columnsCopies;
+	
+	/// Variables for multiple optimum ///
+	public int numOfSolutions;
+	public Vector<boolean[][]> rowSplitMSolutions;
+	public Vector<boolean[][]> solutionSolutions;
+	public Vector<int[]> rowsSolutions;
+	private Vector<Digraph> optBSolutions;
+	
 
 	public RowSplit(boolean[][] mat, String alg) {
 		matrix = filterDoubleColumns(mat);
 		m = matrix.length; // number of rows
 		n = matrix[0].length; // number of columns
 
-		if (alg.equals("ip")) {
+		if (alg.equals("ip")) { //// single optimum
 			System.out.println("RowSplit: Started ILP for min num of rows...");
-			MinILP lp = new MinILP(matrix);
-			optB = lp.solveOpt();
+			MinILP lp = new MinILP(matrix, 1);
+			optB = lp.solveOpt().elementAt(0);
 			t = lp.value;
 			System.out.println("Optimal value for |U(B)| = "+t);
 			System.out.println("RowSplit: ILP for MCRS finished succesfully.");
@@ -58,10 +67,37 @@ public class RowSplit {
 
 		rows = new int[t];
 		recoverRowSplit();
+		//recoverRows(optB);
 		solution = new boolean[rowSplitM.length][mat[0].length];
 		solve();
 
 	}
+	
+	public RowSplit(boolean[][] mat, String alg, int numMultipleOptima) {
+		N = mat[0].length;
+		matrix = filterDoubleColumns(mat);
+		m = matrix.length; // number of rows
+		n = matrix[0].length; // number of columns
+		
+		if (alg.equals("ip")) { //// single optimum
+			System.out.println("RowSplit: Started ILP for min num of rows...");
+			MinILP lp = new MinILP(matrix, numMultipleOptima);
+			optBSolutions = lp.solveOpt();
+			numOfSolutions = optBSolutions.size();
+			t = lp.value;
+			System.out.println("Optimal value for |U(B)| = "+t);
+			System.out.println("RowSplit: ILP for MCRS finished succesfully.");
+		} 
+		
+		rowSplitMSolutions = new Vector<boolean[][]>();
+		rowsSolutions = new Vector<int[]>();
+		solutionSolutions = new Vector<boolean[][]>();
+		for(int i = 0; i< numOfSolutions; i++) {
+			recoverRowSplitM(i);
+			solve(i);
+		}
+	}
+
 
 	boolean[][] originalMatrix;
 
@@ -99,6 +135,19 @@ public class RowSplit {
 			}
 		}
 	}
+	
+	// Same as above only for multipleOptima
+	private void solve(int p) {
+		boolean[][] solutionTmp = new boolean[t][N];
+		for (int i = 0; i < rowSplitMSolutions.elementAt(p).length; i++) {
+			for (int j = 0; j < columnsCopies.size(); j++) {
+				for (int k = 0; k < columnsCopies.elementAt(j).size(); k++) {
+					solutionTmp[i][columnsCopies.elementAt(j).elementAt(k)] = rowSplitMSolutions.elementAt(p)[i][j];
+				}
+			}
+		}
+		solutionSolutions.addElement(solutionTmp);
+	}
 
 	private void recoverRowSplit() {
 		out = new Vector<Vector<Integer>>(); // calcualte B^+(v) for all v\in V
@@ -123,10 +172,47 @@ public class RowSplit {
 			}
 		}
 	}
+	
+	private void recoverRowSplitM(int p){
+		out = new Vector<Vector<Integer>>(); // calcualte B^+(v) for all v\in V
+		for (int i = 0; i < optBSolutions.elementAt(p).outEdges.size(); i++) {
+			out.addElement(optBSolutions.elementAt(p).reachable(i));
+		}
+		boolean[][] rowSplitM_p = new boolean[t][matrix[0].length];
+		int[] rows_p = new int[t];
+		int i = 0;
+		
+		for (int r = 0; r < m; r++) {
+			for (int v = 0; v < n; v++) {
+				if (!r_covered_v(r, v, p) && matrix[r][v]) {
+					// System.out.println("r:"+r+" v:"+v);
+					for (int j = 0; j < n; j++) {
+						if (out.elementAt(v).contains(j) || v == j) {
+							// System.out.println("     i:"+i+" j:"+j);
+							rowSplitM_p[i][j] = true;
+						}
+					}
+					rows_p[i] = r;
+					i++;
+				}
+			}
+		}
+		rowsSolutions.addElement(rows_p);
+		rowSplitMSolutions.addElement(rowSplitM_p);
+	}
 
 	private boolean r_covered_v(int r, int v) {
 		for (int i = 0; i < optB.inEdges.elementAt(v).size(); i++) {
 			if (matrix[r][optB.inEdges.elementAt(v).elementAt(i)])
+				return true;
+		}
+		return false;
+	}
+	
+	/// Same function only for multiple optima
+	private boolean r_covered_v(int r, int v, int p) {
+		for (int i = 0; i < optBSolutions.elementAt(p).inEdges.elementAt(v).size(); i++) {
+			if (matrix[r][optBSolutions.elementAt(p).inEdges.elementAt(v).elementAt(i)])
 				return true;
 		}
 		return false;

@@ -1,0 +1,69 @@
+digraph {
+rowMY21m1[label="MY21m1",shape=box,style=filled,fontsize=40];
+rowMY21m2[label="MY21m2",shape=box,style=filled,fontsize=40];
+rowMY21m3[label="MY21m3",shape=box,style=filled,fontsize=40];
+rowMY21m4[label="MY21m4",shape=box,style=filled,fontsize=40];
+MY21m1_1[label="MY21m1_1",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+MY21m1_2[label="MY21m1_2",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+MY21m1_3[label="MY21m1_3",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+MY21m1_4[label="MY21m1_4",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+MY21m2_1[label="MY21m2_1",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+MY21m2_3[label="MY21m2_3",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+MY21m2_4[label="MY21m2_4",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+MY21m3_1[label="MY21m3_1",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+MY21m3_3[label="MY21m3_3",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+MY21m4_1[label="MY21m4_1",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+MY21m4_2[label="MY21m4_2",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+MY21m1_1 -> rowMY21m1[arrowhead="normal"];
+MY21m1_2 -> rowMY21m1[arrowhead="normal"];
+MY21m1_3 -> rowMY21m1[arrowhead="normal"];
+MY21m1_4 -> rowMY21m1[arrowhead="normal"];
+MY21m2_1 -> rowMY21m2[arrowhead="normal"];
+MY21m1_2 -> rowMY21m2[arrowhead="normal"];
+MY21m2_3 -> rowMY21m2[arrowhead="normal"];
+MY21m2_4 -> rowMY21m2[arrowhead="normal"];
+MY21m3_1 -> rowMY21m3[arrowhead="normal"];
+MY21m1_3 -> rowMY21m3[arrowhead="normal"];
+MY21m3_3 -> rowMY21m3[arrowhead="normal"];
+MY21m4_1 -> rowMY21m4[arrowhead="normal"];
+MY21m4_2 -> rowMY21m4[arrowhead="normal"];
+MY21m3_3 -> rowMY21m4[arrowhead="normal"];
+{rank = same;MY21m1_1;MY21m1_2;MY21m1_3;MY21m1_4;MY21m2_1;MY21m2_3;MY21m2_4;MY21m3_1;MY21m3_3;MY21m4_1;MY21m4_2;}
+legend[label="Equalities among split rows:
+MY21m1_2=MY21m2_2
+MY21m1_3=MY21m3_2
+MY21m3_3=MY21m4_3
+",shape=box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> MY21m2_4[arrowhead=none, label=""];
+Int1 -> MY21m3_1[arrowhead=none, label="F | 173 | .32±.14"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> MY21m2_1[arrowhead=none, label="B | 263 | .29±.13"];
+Int2 -> MY21m4_2[arrowhead=none, label=""];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> MY21m1_1[arrowhead=none, label="C | 233 | .31±.14"];
+Int3 -> MY21m4_1[arrowhead=none, label="A | 219 | .2±.12"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> Int1[arrowhead=none, label="L | 27 | .18±.18"];
+Int4 -> Int2[arrowhead=none, label="G | 63 | .11±.13"];
+Int5[shape=point,style=filled,fillcolor=black,label=""];
+Int5 -> MY21m2_3[arrowhead=none, label=""];
+Int5 -> Int3[arrowhead=none, label="M | 20 | .1±.12"];
+Int6[shape=point,style=filled,fillcolor=black,label=""];
+Int6 -> MY21m1_4[arrowhead=none, label=""];
+Int6 -> MY21m3_3[arrowhead=none, label="K | 27 | .24±.16"];
+Int7[shape=point,style=filled,fillcolor=black,label=""];
+Int7 -> MY21m1_2[arrowhead=none, label="E | 23 | .18±.18"];
+Int7 -> MY21m1_3[arrowhead=none, label="J | 19 | .2±.18"];
+Int8[shape=point,style=filled,fillcolor=black,label=""];
+Int8 -> Int6[arrowhead=none, label="N | 6 | .24±.16"];
+Int8 -> Int7[arrowhead=none, label="O | 3 | .18±.23"];
+Int9[shape=point,style=filled,fillcolor=black,label=""];
+Int9 -> Int5[arrowhead=none, label="I | 26 | .13±.15"];
+Int9 -> Int8[arrowhead=none, label=""];
+Int10[shape=point,style=filled,fillcolor=black,label=""];
+Int10 -> Int4[arrowhead=none, label="H | 41 | .22±.18"];
+Int10 -> Int9[arrowhead=none, label=""];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int10[arrowhead=none, label="D | 332 | .41±.12"];
+}

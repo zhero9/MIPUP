@@ -1,0 +1,32 @@
+digraph {
+rowMY21m1[label="MY21m1",shape=box,style=filled,fontsize=40];
+rowMY21m2[label="MY21m2",shape=box,style=filled,fontsize=40];
+rowMY21m3[label="MY21m3",shape=box,style=filled,fontsize=40];
+rowMY21m4[label="MY21m4",shape=box,style=filled,fontsize=40];
+MY21m1[label="MY21m1",shape=oval,style=filled,fontsize=28,fillcolor="#a4c639"];
+MY21m2[label="MY21m2",shape=oval,style=filled,fontsize=28,fillcolor="#cd9575"];
+MY21m3[label="MY21m3",shape=oval,style=filled,fontsize=28,fillcolor="#7fffd4"];
+MY21m4_1[label="MY21m4_1",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+MY21m4_2[label="MY21m4_2",shape=oval,style=filled,fontsize=28,fillcolor="#e9d66b"];
+MY21m1 -> rowMY21m1[arrowhead="normal"];
+MY21m2 -> rowMY21m2[arrowhead="normal"];
+MY21m3 -> rowMY21m3[arrowhead="normal"];
+MY21m4_1 -> rowMY21m4[arrowhead="normal"];
+MY21m4_2 -> rowMY21m4[arrowhead="normal"];
+{rank = same;MY21m1;MY21m2;MY21m3;MY21m4_1;MY21m4_2;}
+legend[label=" Matrix without equal rows.",shape = box,fontsize=18];
+Int1[shape=point,style=filled,fillcolor=black,label=""];
+Int1 -> MY21m3[arrowhead=none, label="F | 167 | .37±.11"];
+Int1 -> MY21m4_1[arrowhead=none, label="C | 167 | .27±.09"];
+Int2[shape=point,style=filled,fillcolor=black,label=""];
+Int2 -> MY21m1[arrowhead=none, label="D | 239 | .36±.09"];
+Int2 -> MY21m4_2[arrowhead=none, label=""];
+Int3[shape=point,style=filled,fillcolor=black,label=""];
+Int3 -> Int1[arrowhead=none, label="G | 80 | .36±.08"];
+Int3 -> Int2[arrowhead=none, label="I | 7 | .28±.14"];
+Int4[shape=point,style=filled,fillcolor=black,label=""];
+Int4 -> MY21m2[arrowhead=none, label="B | 265 | .34±.07"];
+Int4 -> Int3[arrowhead=none, label="H | 10 | .42±.07"];
+GL[label="GL",shape=box,style=filled,fillcolor=white];
+GL -> Int4[arrowhead=none, label="E | 292 | .44±.08"];
+}
