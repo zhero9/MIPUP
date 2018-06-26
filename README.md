@@ -4,22 +4,18 @@ or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
 This repository contains implementations of the two Integer Linear Programs from 
 
-*MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings in graphs and ILP.
+*MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings in graphs and ILP.  
 A. Hujdurović, E. Husić, M. Mehine, M. Milanič, R. Rizzi and A.I. Tomescu (2017). Submitted*
 
 The theoretical background for the above mentioned paper and the implemented program are the following two papers (conference and journal version):
 
-*[The minimum conflict-free row split problem revisited](https://link.springer.com/chapter/10.1007/978-3-319-68705-6_23)
-
-A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu.
-
+*[The minimum conflict-free row split problem revisited](https://link.springer.com/chapter/10.1007/978-3-319-68705-6_23)  
+A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu.   
 Proceedings of the 43rd International Workshop on Graph-Theoretic Concepts in Computer Science (WG 2017), Lecture Notes in Computer Science 10520 (2017) 303-315.* ([full preprint](https://arxiv.org/abs/1701.05492))
 
-*[Perfect phylogenies via branchings in acyclic digraphs and a generalization of Dilworth's theorem](https://dl.acm.org/citation.cfm?id=3182178)
-
-A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu,
-
-ACM Transactions on Algorithms 14 (2018) Art. 20, 26 pp.*
+*[Perfect phylogenies via branchings in acyclic digraphs and a generalization of Dilworth's theorem](https://dl.acm.org/citation.cfm?id=3182178)   
+A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu,   
+ACM Transactions on Algorithms 14 (2018) Art. 20, 26 pp.*  
 
 
 The repository also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
