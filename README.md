@@ -4,9 +4,21 @@ or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
 This repository contains implementations of the two Integer Linear Programs from 
 
-*A. Hujdurović, E. Husić, M. Mehine, M. Milanič, R. Rizzi and A.I. Tomescu (2017). MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings in graphs and ILP, Submitted*
+*MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings in graphs and ILP.
+A. Hujdurović, E. Husić, M. Mehine, M. Milanič, R. Rizzi and A.I. Tomescu (2017). Submitted*
 
-It also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
+The theoretical backgounrd for the above mentioned paper and the implemented program are the following two papers (conference and journal version):
+
+*[The minimum conflict-free row split problem revisited](https://link.springer.com/chapter/10.1007/978-3-319-68705-6_23)
+A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu.
+Proceedings of the 43rd International Workshop on Graph-Theoretic Concepts in Computer Science (WG 2017), Lecture Notes in Computer Science 10520 (2017) 303-315.*[full preprint](https://arxiv.org/abs/1701.05492)
+
+*[Perfect phylogenies via branchings in acyclic digraphs and a generalization of Dilworth's theorem](https://dl.acm.org/citation.cfm?id=3182178)
+A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu,
+ACM Transactions on Algorithms 14 (2018) Art. 20, 26 pp.*
+
+
+The repository also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
 
 ## 1. Background and previous results
 The problems addresed are **Minimum Conflict-Free Row Split problems**. They were originaly proposed
@@ -104,7 +116,7 @@ The output for an instance **matrix.csv** or **matrix.txt** is contained in the 
 	
 The term *algorithm* in the name of the files corresponds to either:
 - **ip**: an optimal solution of the MCRS problem,
-- **ipd**: an optimail solution of the MCDRS problem.
+- **ipd**: an optimal solution of the MCDRS problem.
 
 The edges of the phylogenetic tree from the .dot file are labeled with:
 - for binary inputs: **S|n**, where **S** (a letter **A,B,C,...**) is the name given by MIPUP to the group of mutations having the same binary profile in all the samples, and **n** is the number of mutations in this group. This group of mutations occurred on this edge of the phylogenetic tree. The mutations corresponding to **S** can be found in *matrix_algorithm_columns.csv*. 
@@ -174,6 +186,29 @@ Navigate to your *mipup.jar* executable and call the following code from the com
 	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.txt ip VAF1 t
 
 **path_to_data_file.txt** is the input file and value **t** is the threshold. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem. 
+
+### 5.3 Multiple Optima
+The program also offers a possibility of finding several (or all) optimum solutions. You can choose either a fixed number that represents the maximum number of optima produced, or indicate that you want all optimum solutions to be reported. Note: the running time can increase greatly when looking for all optima. To produce at most **k** (e.g., **k= 10**; the program reports k solutions if they exist) call the following code from the command line: 
+
+	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.csv ip k
+or 	
+
+	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.txt ip VAF1 t k
+	
+To find all optima call the following code from the command line (m - represents the option for all solutions):
+
+	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.csv ip m
+or 	
+
+	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.txt ip VAF1 t m
+
+#### 5.3.1 Multiple Optima Output
+
+The output in the case of multiple optima for an instance **matrix.csv** or **matrix.txt** is contained in the folder **matrix_RS**, and consists of the following three files for each solution **i**:
+- *matrix_algorithm_s**i**_RS.csv*: Contains the optimal conflict-free row split matrix, in the binary .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.
+- *matrix_algorithm_s**i**_tree.dot*: Contains the perfect phylogenetic tree of the above conflict-free matrix, in dot format. In can be vizualized with [Graphviz](http://www.graphviz.org/) for example.
+- *matrix_algorithm_s**i**_columns.csv*:
+(See Section 4.)
 
 ## 6. Instalation
 MIPUP requires the full version of the IBM CPLEX Optimizer and Java. The free version is bounded for linear programs containing up to 1000 variables and constraints. Note that it is possible to obtain the full academic version (this can take more than a week, but if you have an institutional email recognized by IBM there is no waiting period). 
