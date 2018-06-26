@@ -187,7 +187,7 @@ Navigate to your *mipup.jar* executable and call the following code from the com
 
 **path_to_data_file.txt** is the input file and value **t** is the threshold. Write **ip** for an optimal solution to the MCRS problem or **ipd** for an optimal solution to the MCDRS problem. 
 
-### 6. Multiple Optima
+## 6. Multiple Optima
 The program also offers a possibility of finding several (or all) optimum solutions. You can choose either a fixed number that represents the maximum number of optima produced, or indicate that you want all optimum solutions to be reported. Note: the running time can increase greatly when looking for all optima. To produce at most **k** (e.g., **k= 10**; the program reports k solutions if they exist) call the following code from the command line: 
 
 	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.csv ip k
@@ -202,7 +202,7 @@ or
 
 	java -jar -Djava.library.path=/path_to_cplex_binary_(found under <CPLEX>/bin directory)/ mipup.jar path_to_data_file.txt ip VAF1 t m
 
-#### 6.1. Multiple Optima Output
+### 6.1. Multiple Optima Output
 
 The output in the case of multiple optima for an instance **matrix.csv** or **matrix.txt** is contained in the folder **matrix_RS**, and consists of the following three files for each solution ***i***:
 - *matrix_algorithm_s**i**_RS.csv*,
