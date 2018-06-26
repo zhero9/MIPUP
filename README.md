@@ -204,7 +204,7 @@ or
 
 #### 5.3.1 Multiple Optima Output
 
-The output in the case of multiple optima for an instance **matrix.csv** or **matrix.txt** is contained in the folder **matrix_RS**, and consists of the following three files for each solution * **i** *:
+The output in the case of multiple optima for an instance **matrix.csv** or **matrix.txt** is contained in the folder **matrix_RS**, and consists of the following three files for each solution ***i***:
 - *matrix_algorithm_s**i**_RS.csv*: Contains the optimal conflict-free row split matrix, in the binary .csv format. If a row labeled r is split into k rows in the output matrix, the labels of the resulting rows will be r_1, r_2, ..., r_k.
 - *matrix_algorithm_s**i**_tree.dot*: Contains the perfect phylogenetic tree of the above conflict-free matrix, in dot format. In can be vizualized with [Graphviz](http://www.graphviz.org/) for example.
 - *matrix_algorithm_s**i**_columns.csv*:
