@@ -2,10 +2,10 @@
 **For questions or problems with this code, contact [edinehusic@gmail.com](mailto:edinehusic@gmail.com),
 or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
-This repository contains implementations of the two Integer Linear Programs from 
+This repository contains implementations of the tumor evolution discovery method described in:
 
-*[MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings and ILP](http://dx.doi.org/10.1093/bioinformatics/bty683)
-E. Husić, X. Li, A. Hujdurović, M. Mehine, R. Rizzi, V. Mäkinen, M. Milanič, A. I. Tomescu
+*[MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings and ILP](http://dx.doi.org/10.1093/bioinformatics/bty683),
+E. Husić, X. Li, A. Hujdurović, M. Mehine, R. Rizzi, V. Mäkinen, M. Milanič, A. I. Tomescu,
 Bioinformatics, 2018*
 
 The theoretical background for the above mentioned paper and the implemented program are the following two papers (conference and journal version):
@@ -17,7 +17,6 @@ Proceedings of the 43rd International Workshop on Graph-Theoretic Concepts in Co
 *[Perfect phylogenies via branchings in acyclic digraphs and a generalization of Dilworth's theorem](https://dl.acm.org/citation.cfm?id=3182178)   
 A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu,   
 ACM Transactions on Algorithms 14 (2018) Art. 20, 26 pp.*  
-
 
 The repository also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
 
