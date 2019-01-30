@@ -6,17 +6,17 @@ This repository contains implementations of the method for discovering tumor evo
 
 *[MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings and ILP](http://dx.doi.org/10.1093/bioinformatics/bty683),
 E. Husić, X. Li, A. Hujdurović, M. Mehine, R. Rizzi, V. Mäkinen, M. Milanič, A. I. Tomescu,
-Bioinformatics, DOI [10.1093/bioinformatics/bty683](https://doi.org/10.1093/bioinformatics/bty683).*
+**Bioinformatics**, DOI [10.1093/bioinformatics/bty683](https://doi.org/10.1093/bioinformatics/bty683).*
 
 The theoretical background for the above mentioned paper and the implemented program are the following two papers (conference and journal version):
 
 *[The minimum conflict-free row split problem revisited](https://link.springer.com/chapter/10.1007/978-3-319-68705-6_23)  
 A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu.   
-Proceedings of the 43rd International Workshop on Graph-Theoretic Concepts in Computer Science (WG 2017), Lecture Notes in Computer Science 10520 (2017) 303-315.* ([full preprint](https://arxiv.org/abs/1701.05492))
+**Proceedings of the 43rd International Workshop on Graph-Theoretic Concepts in Computer Science (WG 2017)**, Lecture Notes in Computer Science 10520 (2017) 303-315.* ([full preprint](https://arxiv.org/abs/1701.05492))
 
 *[Perfect phylogenies via branchings in acyclic digraphs and a generalization of Dilworth's theorem](https://dl.acm.org/citation.cfm?id=3182178)   
 A. Hujdurović, E. Husić, M. Milanič, R. Rizzi, A. I. Tomescu,   
-ACM Transactions on Algorithms 14 (2018) Art. 20, 26 pp.*  
+**ACM Transactions on Algorithms** 14 (2018) Art. 20, 26 pp.*  
 
 The repository also contains implementations of one greedy heuristic, and one local search heuristic (without any constant approximation guarantees) that are not mentioned in the paper.
 
