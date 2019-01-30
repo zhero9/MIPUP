@@ -6,7 +6,7 @@ This repository contains implementations of the tumor evolution discovery method
 
 *[MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings and ILP](http://dx.doi.org/10.1093/bioinformatics/bty683),
 E. Husić, X. Li, A. Hujdurović, M. Mehine, R. Rizzi, V. Mäkinen, M. Milanič, A. I. Tomescu,
-Bioinformatics, 2018*
+Bioinformatics, 2018.*
 
 The theoretical background for the above mentioned paper and the implemented program are the following two papers (conference and journal version):
 
