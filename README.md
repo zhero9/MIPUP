@@ -2,7 +2,7 @@
 **For questions or problems with this code, contact [edinehusic@gmail.com](mailto:edinehusic@gmail.com),
 or open an [ISSUE](https://github.com/zhero9/MIPUP/issues) on github.**
 
-This repository contains implementations of the tumor evolution discovery method described in:
+This repository contains implementations of the method for discovering tumor evolution described in:
 
 *[MIPUP: Minimum perfect unmixed phylogenies for multi-sampled tumors via branchings and ILP](http://dx.doi.org/10.1093/bioinformatics/bty683),
 E. Husić, X. Li, A. Hujdurović, M. Mehine, R. Rizzi, V. Mäkinen, M. Milanič, A. I. Tomescu,
